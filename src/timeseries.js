@@ -2,22 +2,40 @@
 function timeseries() {
     var myChart = Highcharts.chart('container', {
         chart: {
-            type: 'bar'
+            zoomType: 'x'
+        },
+        title: {
+            text: 'AstroDev Webviewer'
+        },
+        subtitle: {
+            text: document.ontouchstart === undefined ? 
+                'Click and drag in the plot area to zoom in' : 
+                'Pinch in the plot area to zoom in'
+                // changes for which device is used to view
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            type: 'linear',
+            title: {
+                text: 'Cadence'
+            },
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Flux'
             }
         },
-        series: [{
-            name: 'Jane',
-            data: [1,0,4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+        data: {
+            csv: document.getElementById('csv').innerHTML
+        },
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: {
+            name: 'Sample Test Data - Kepler ID 4385148'
+        }
     });
 }
