@@ -1,5 +1,5 @@
 
-$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function(data) {
+$.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', function(data) {
         
     Highcharts.chart('container', {
         chart: {
