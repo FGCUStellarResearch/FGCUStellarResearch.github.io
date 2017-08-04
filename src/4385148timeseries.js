@@ -1,46 +1,44 @@
 
-function timeseries() {
-    $.getJSON('./data/test4385148.json', function(data) {
-            
-        Highcharts.chart('container', {
-            chart: {
-                zoomType: 'x'
-            },
+$.getJSON('./data/test4385148.json', function(data) {
+        
+    Highcharts.chart('container', {
+        chart: {
+            zoomType: 'x'
+        },
+        title: {
+            text: 'AstroDev Webviewer'
+        },
+        subtitle: {
+            text: document.ontouchstart === undefined ? 
+                'Click and drag in the plot area to zoom in' : 
+                'Pinch in the plot area to zoom in'
+                // changes for which device is used to view
+        },
+        legend: {
+            enabled: false
+        },
+        xAxis: {
+            type: 'linear',
             title: {
-                text: 'AstroDev Webviewer'
+                text: 'Cadence'
             },
-            subtitle: {
-                text: document.ontouchstart === undefined ? 
-                    'Click and drag in the plot area to zoom in' : 
-                    'Pinch in the plot area to zoom in'
-                    // changes for which device is used to view
-            },
-            legend: {
-                enabled: false
-            },
-            xAxis: {
-                type: 'linear',
-                title: {
-                    text: 'Cadence'
-                },
-            },
-            yAxis: {
-                title: {
-                    text: 'Flux'
+        },
+        yAxis: {
+            title: {
+                text: 'Flux'
+            }
+        },
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: false
                 }
-            },
-            plotOptions: {
-                series: {
-                    marker: {
-                        enabled: false
-                    }
-                }
-            },
-            series: [{
-                name: 'Sample Test Data - Kepler ID 4385148',
-                data: data
-            }]
-        });
-
+            }
+        },
+        series: [{
+            name: 'Sample Test Data - Kepler ID 4385148',
+            data: data
+        }]
     });
-}
+
+});
