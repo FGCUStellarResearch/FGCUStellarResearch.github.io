@@ -1,5 +1,5 @@
 
-$.getJSON('./data/test4385148.json', function(data) {
+$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.json&callback=?', function(data) {
         
     Highcharts.chart('container', {
         chart: {
@@ -18,7 +18,7 @@ $.getJSON('./data/test4385148.json', function(data) {
             enabled: false
         },
         xAxis: {
-            type: 'linear',
+            type: 'datetime',
             title: {
                 text: 'Cadence'
             },
@@ -36,6 +36,7 @@ $.getJSON('./data/test4385148.json', function(data) {
             }
         },
         series: [{
+            type: 'area',
             name: 'Sample Test Data - Kepler ID 4385148',
             data: data
         }]
