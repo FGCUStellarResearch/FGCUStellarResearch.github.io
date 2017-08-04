@@ -1,6 +1,6 @@
 
 function timeseries() {
-    $.getJSON('./data/test4385148.csv', function(data) {
+    $.getJSON('./data/test4385148.json', function(data) {
             
         Highcharts.chart('container', {
             chart: {
@@ -28,9 +28,6 @@ function timeseries() {
                 title: {
                     text: 'Flux'
                 }
-            },
-            data: {
-                csv: document.getElementById('csv').innerHTML
             },
             plotOptions: {
                 series: {
