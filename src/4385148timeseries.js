@@ -36,7 +36,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=usdeur.jso
             }
         },
         series: [{
-            type: 'area',
+            //type: 'area',
             name: 'Sample Test Data - Kepler ID 4385148',
             data: data
         }]
