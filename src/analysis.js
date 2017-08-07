@@ -1,13 +1,11 @@
 
-// begin code import from 
-// https://mounirmesselmeni.github.io/2012/11/20/reading-csv-file-with-javascript-and-html5-file-api/
 function handleFiles(files) {
     // Check for the various File API support.
     if (window.FileReader) {
         // FileReader are supported.
         getAsText(files[0]);
     } else {
-        alert('FileReader are not supported in this browser.');
+        alert('Your browser is not supported for this tool. Try updating or using Chrome or Firefox instead');
     }
 }
 
@@ -41,14 +39,16 @@ function processData(csv) {
 
 function errorHandler(evt) {
     if(evt.target.error.name == "NotReadableError") {
-        alert("Canno't read file !");
+        alert("The selected file could not be read. Please check it and try again");
     }
 }
-
-// end imported code
 
 function switchview() {
     document.getElementById("info-box").style.visibility="hidden";
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
+}
+
+function csvtojson() {
+
 }
