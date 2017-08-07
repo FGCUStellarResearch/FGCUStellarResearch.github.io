@@ -2,6 +2,18 @@
 $.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', function(data) {
         
     Highcharts.chart('container', {
+        exporting: {
+            chartOptions: { // specific options for the exported image
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                }
+            },
+            fallbackToExportServer: false
+        },
         chart: {
             zoomType: 'x'
         },
@@ -15,10 +27,13 @@ $.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', functio
                 // changes for which device is used to view
         },
         legend: {
+            enabled: true
+        },
+        tooltip: {
             enabled: false
         },
         xAxis: {
-            type: 'datetime',
+            //type: 'datetime',
             title: {
                 text: 'Cadence'
             },
