@@ -1,217 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>FGCU Stellar Research Homepage</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="FGCU Stelar Reasearch Homepage">
+    <meta name="description" content="AstroDev Webviewer - FGCU Stelar Reasearch">
     <meta name="designer" content="Lindsey Carboneau">
     <meta name="author" content="Lindsey Carboneau">
-    <meta name="contributors" content="Sean Gorman, Kelsey Sinclair">
     <meta name="shortcut icon" href="./img/favicon.ico">
     <!-- TODO: update with acutal favicon name/path -->
     
-    <!-- Bootstrap core CSS and JS resources. Note using 3.3.7, waiting for stable 4.x release -->
-    <link rel="stylesheet" href="./3.3.7/css/bootstrap.min.css">
-    <script src="./3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Using the Lato font family to imitate Avenir, FGCU's preferred typeface -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-   
-    <style>
-        .navbar {
-            margin-bottom: 0;
-            margin-right: 0;
-            border-radius: 0;
-            background-color: white;
-            border: none;
-            font-family: 'Lato', sans-serif;
-            font-size: large;
-        }
-        
-        .navbar li {
-            margin-left: 1em;
-        }
-        
-        .vcenter {
-            display: inline-block;
-            vertical-align: middle;
-            float: none;
-        }
-        
-        .footstyle {
-            font-family: 'Lato', sans-serif;
-            font-size: x-small;
-        }
-        
-        .setfont {
-            font-family: 'Lato', sans-serif;
-        }
-        
-        .largefont {
-            font-size: large;
-        }
-        
-        .xlfont {
-            font-size: x-large;
-        }
-        
-        .colorfont {
-            font-color: green;
-        }
-        
-        .glyphicon {
-            display: inline;
-        }
-        
-        .smindent {
-            padding-left: 0.3em;
-        }
-        
-        .lgindent {
-            padding-left: 1em;
-        }
-        
-    </style>
+    <!-- Tachyons CSS resources -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
     
 </head>
+
 <body>
-
-    <div class="page-header">
-    <!-- This is a good place to put a cover photo type image bar. For now it's just for spacing -->
-    </div>
-  
-    <div class="row">    
-        <div class="col-sm-1"></div>
-        <div class="col-sm-3 vcenter">
-            <a href="#"><img src="./img/Logo-draft.png" alt="FGCU Stellar Research" class="img-responsive" style="width:75%"></a>
+    <!-- placeholder -->
+    
+    <nav class="Navigation">
+        <a class="Logo" href="/">
+            <img src="./img/Logo-draft2.png" alt="FGCU Stellar Research" width="400" height="87">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            <a class="link dim gray f6 f5-l dib mr3 mr4-l avenir" href="/" title="Home">Home</a>
+            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./aboutus.html" title="About Us">About Us</a>
+            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./research.html" title="Research">Research</a>
+            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./news.html" title="News">News</a>
+            <a class="link dim gray f6 f5-l dib no-underline avenir" href="./contact.html" title="Contact">Contact</a>
         </div>
-        
-        <div class="col-md-6 vcenter">
-            <div class="row">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thisNavbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
+    </nav>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="thisNavbar">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <!-- Not sure if something should be here? Dropdown seems to not really work, need to actually test on mobile -->
-                                    <li class="active"><a href="./index.html">Home <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="./aboutus.html">About Us</a></li>
-                                    <li><a href="./research.html">Research</a></li>
-                                    <li><a href="./news.html">News</a></li>
-                                    <li><a href="./links.html">Links</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
-                                </li>
-                            </ul>
-
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav>
-            </div>    
-        </div>
-        
+    <section class="mw5 mw7-ns center pa3 ph5-ns">
+    </section>
+    
+    <div class="dt-ns dt--fixed-ns">
+      <div class="dtc-ns tc pv4">
+        <article class="bg-white center mw5 mv4 dim">
+      <div class="pv2 ph3">
+         <h1 class="f6 ttu tracked">K2 Data Pipeline</h1>
+      </div>
+      <a class="Logo" href="/">  
+        <img src="./img/first_img_sample.jpg" class="w-100 db" alt="EPIC data reduction and detrending">
+      </a>  
+    </article>
+      </div>
+      <div class="dtc-ns tc pv4">
+        <article class="bg-white center mw5 mv4 dim">
+          <div class="pv2 ph3">
+             <h1 class="f6 ttu tracked">Spectroscopy at SARA</h1>
+          </div>
+          <a class="Logo" href="/">
+            <img src="./img/SARA.png" class="w-100 db" alt="Partnering to achieve our research goals - The Southeastern Association for Reasearch in Astronomy">
+          </a>  
+        </article>
+      </div>
+      <div class="dtc-ns tc pv4">
+        <article class="bg-white center mw5 mv4 dim">
+      <div class="pv2 ph3">
+         <h1 class="f6 ttu tracked">AstroDev Visualization Tool</h1>
+      </div>
+      <a class="Logo" href="./AstroDevWebviewer.html">
+        <img src="./img/exoplanet_neighborhood.png" class="w-100 db" alt="Our Exoplanet Neighborhood!">
+      </a>  
+    </article>
+      </div>
     </div>
     
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-6 setfont">
-            <br><br><br>
-            <p>
-            A nice intro taking about the group, based off the mini bio style with links to FGCU and the Whitaker Center.
-            </p>
-        </div>
-        <div class="col-md-4">
-            <a href="http://www.fgcu.edu/WhitakerCenter/index.html"><img src="./img/Whitaker_Center_Resize.jpg"></a>
-            <br><br><br>
-        </div>
-        
-    </div>
+    <section class="mw5 mw7-ns center pa3 ph5-ns">
+    </section>
+
     
-    <div class="container-fluid">
-        <div class="row setfont">
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-9">
-                        <p>
-                            <span class="glyphicon glyphicon-star xlfont" aria-hidden="true"></span>
-                            <span class="largefont lgindent">Kepler Pipeline</span>
-                        </p>
-                        <p>A little description about it and the goal</p>
-                        <button type="button" class="btn btn-info">Learn More</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <p>
-                            <span class="glyphicon glyphicon-console xlfont" aria-hidden="true"></span>
-                            <span class="largefont lgindent">AstroDev Visualization Tool</span>
-                        </p>
-                        <p>A little description about it and the goal</p>
-                        <button type="button" class="btn btn-info">Learn More</button>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <p>
-                            <span class="glyphicon glyphicon-camera xlfont" aria-hidden="true"></span>
-                            <span class="largefont lgindent">Spectroscopy Work (?)</span>
-                        </p>
-                        <p>A little description about it and the goal</p>
-                        <button type="button" class="btn btn-info">Learn More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <br><br><br><br><br><br>
-        </div>
-    </div>
-  
+    
+    <script src='lib/d3.js'></script>
+    <script src='lib/lodash.js'></script>
+    <script src='src/analysis.js'></script>
 </body>
 
-<footer>
-    <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-4 footstyle">
-            <ul style="list-style: none;">
-                <li><a href="http://www.fgcu.edu">Florida Gulf Coast University</a></li>
-                <li><a href="http://www.fgcu.edu/WhitakerCenter/index.html">Whitaker Center for STEM Education</a></li>
-                <li><a href="http://www.fgcu.edu/CAS/Departments/CPhy/index.asp">FGCU Department of Chemistry and Physics</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3 footstyle">
-            <ul style="list-style: none;">
-                <li>© 2017 FGCU Stellar Research</li>
-            </ul>
-        </div>
-        <div class="col-md-1">
-        </div>
+<footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+    <div class="tr mt3">
+      <ul style="list-style: none;">
+        <li><a href="http://www.fgcu.edu" class="f7 dib ph2 link blue dim">Florida Gulf Coast University</a></li>
+        <li><a href="http://www.fgcu.edu/WhitakerCenter/index.html" class="f7 dib ph2 link blue dim">Whitaker Center for STEM Education</a></li>
+        <li><a href="http://www.fgcu.edu/CAS/Departments/CPhy/index.asp" class="f7 dib ph2 link blue dim">FGCU Department of Chemistry and Physics</a></li>
+      </ul>
+      <small class="f7 db tc">© 2017 FGCU Stellar Research</small>
     </div>
 </footer>
+
 
 </html>
