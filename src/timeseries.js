@@ -52,7 +52,7 @@ function timeseries(data,targetID,targetSource) {
         },
         series: [{
             
-            name: 'Sample Test Data - Kepler ID 4385148',
+            name: targetSource + ' : ' + targetID,
             data: data
         }]
     });

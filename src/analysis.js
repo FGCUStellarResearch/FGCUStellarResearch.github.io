@@ -49,6 +49,32 @@ function switchview() {
     document.getElementById("container").style.visibility="visible";
 }
 
-function csvtojson() {
+function csvtojson(csv) {
+    var allTextLines = csv.split(/\r\n|\n/);
+    // first identify if data file contains headers
+    var i = 0;
+    while(isNaN(allTextLines[i]) || isNaN(allTextLines[i+1])) {
+        // either this line or the next is not a number, so the current line i snot a line of data (probably)
+        // look for what seems to be the start of data - handles non-standardized headers ok
+        switch(allTextLines[i]) {
+            case "[Kepler]":
+                // placeholder
 
+                break;
+
+            case "": // K2
+                // placeholder
+
+                break;
+            
+            default:
+                // placeholder
+        }
+
+    }
+    // determine the source of the data, which will determine how the csv is parsed
+
+    // consider a switch here, to handle Kepler, K2, TESS (?), etc., plus default
+
+    // default assume first column == Time, second column == Flux data
 }
