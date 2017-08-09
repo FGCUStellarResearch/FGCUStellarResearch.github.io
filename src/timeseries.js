@@ -52,7 +52,7 @@ function timeseries(data,targetID,targetSource) {
         },
         series: [{
             
-            name: targetSource + ' : ' + targetID,
+            name: targetSource + ' ID: ' + targetID,
             data: data
         }]
     });

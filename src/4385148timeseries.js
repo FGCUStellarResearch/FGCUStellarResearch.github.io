@@ -1,5 +1,5 @@
 
-$.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', function(data) {
+$.getJSON('./data/test4385148.json', function(data) {
         
     Highcharts.chart('container', {
         exporting: {

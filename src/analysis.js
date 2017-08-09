@@ -20,7 +20,7 @@ function getAsText(fileToRead) {
 
 function loadHandler(event) {
     var csv = event.target.result;
-    processData(csv);
+    csvtojson(csv);
 }
 
 function processData(csv) {
@@ -51,15 +51,16 @@ function switchview() {
 
 function csvtojson(csv) {
     var allTextLines = csv.split(/\r\n|\n/);
+    
     // first identify if data file contains headers
     var i = 0;
-    while(isNaN(allTextLines[i]) || isNaN(allTextLines[i+1])) {
-        // either this line or the next is not a number, so the current line i snot a line of data (probably)
-        // look for what seems to be the start of data - handles non-standardized headers ok
-        switch(allTextLines[i]) {
-            case "[Kepler]":
-                // placeholder
-
+    var targetSource;
+    var targetID;
+    var targetData = [];
+    switch(allTextLines[0].split(' ')[0]) {
+            case "Kepler":
+                targetSource = "Kepler";
+                targetID = allTextLines[2].split(/[[\]]{1,2}/)[1];
                 break;
 
             case "": // K2
@@ -69,12 +70,24 @@ function csvtojson(csv) {
             
             default:
                 // placeholder
+                break;
         }
-
+    while(isNaN(allTextLines[i].split(',')[0]) || isNaN(allTextLines[i+1].split(',')[0]) || allTextLines[i].split(',') == "") {
+        // either this line or the next is not a number, so the current line is not a line of data (probably)
+        // look for what seems to be the start of data - handles non-standardized headers ok
+        i++;
     }
+    for (; i < allTextLines.length - 1; i++) {
+        dataline = allTextLines[i].split(',');
+        targetData.push([+dataline[0],+dataline[2]]);
+    }
+    lastline = allTextLines[i].split(',');
+    targetData.push([+lastline[0],+lastline[2]]);
+    console.log(targetSource + targetID); // for debugging
+    
     // determine the source of the data, which will determine how the csv is parsed
+    // default assume first column == Time, second(third?) column == Flux data
 
-    // consider a switch here, to handle Kepler, K2, TESS (?), etc., plus default
-
-    // default assume first column == Time, second column == Flux data
+    // graph it -- TODO: call should be at a higher level, but the passing of data is beyond me atm
+    timeseries(targetData,targetID,targetSource);
 }
