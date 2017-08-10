@@ -1,93 +1,11 @@
+function discreteFastFourier() {
+    //placeholder
+    alert("DFFT may take a few seconds!");
+    var frequency = _.range(0.0225, 1.0, 0.001);
 
-function handleFiles(files) {
-    // Check for the various File API support.
-    if (window.FileReader) {
-        // FileReader are supported.
-        getAsText(files[0]);
-    } else {
-        alert('Your browser is not supported for this tool. Try updating or using Chrome or Firefox instead');
-    }
+
 }
 
-function getAsText(fileToRead) {
-    var reader = new FileReader();
-    // Read file into memory as UTF-8      
-    reader.readAsText(fileToRead);
-    // Handle errors load
-    reader.onload = loadHandler;
-    reader.onerror = errorHandler;
-}
-
-function loadHandler(event) {
-    var csv = event.target.result;
-    csvtojson(csv);
-}
-
-function processData(csv) {
-    var allTextLines = csv.split(/\r\n|\n/);
-    var lines = [];
-    for (var i=0; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(';');
-            var tarr = [];
-            for (var j=0; j<data.length; j++) {
-                tarr.push(data[j]);
-            }
-            lines.push(tarr);
-    }
-    console.log(lines);
-}
-
-function errorHandler(evt) {
-    if(evt.target.error.name == "NotReadableError") {
-        alert("The selected file could not be read. Please check it and try again");
-    }
-}
-
-function switchview() {
-    document.getElementById("info-box").style.visibility="hidden";
-    document.getElementById("graph-area").style.display="block";
-    document.getElementById("container").style.visibility="visible";
-}
-
-function csvtojson(csv) {
-    var allTextLines = csv.split(/\r\n|\n/);
-    
-    // first identify if data file contains headers
-    var i = 0;
-    var targetSource;
-    var targetID;
-    var targetData = [];
-    switch(allTextLines[0].split(' ')[0]) {
-            case "Kepler":
-                targetSource = "Kepler";
-                targetID = allTextLines[2].split(/[[\]]{1,2}/)[1];
-                break;
-
-            case "": // K2
-                // placeholder
-
-                break;
-            
-            default:
-                // placeholder
-                break;
-        }
-    while(isNaN(allTextLines[i].split(',')[0]) || isNaN(allTextLines[i+1].split(',')[0]) || allTextLines[i].split(',') == "") {
-        // either this line or the next is not a number, so the current line is not a line of data (probably)
-        // look for what seems to be the start of data - handles non-standardized headers ok
-        i++;
-    }
-    for (; i < allTextLines.length - 1; i++) {
-        dataline = allTextLines[i].split(',');
-        targetData.push([+dataline[0],+dataline[2]]);
-    }
-    lastline = allTextLines[i].split(',');
-    targetData.push([+lastline[0],+lastline[2]]);
-    console.log(targetSource + targetID); // for debugging
-    
-    // determine the source of the data, which will determine how the csv is parsed
-    // default assume first column == Time, second(third?) column == Flux data
-
-    // graph it -- TODO: call should be at a higher level, but the passing of data is beyond me atm
-    timeseries(targetData,targetID,targetSource);
+function detrend() {
+    //placeholder
 }

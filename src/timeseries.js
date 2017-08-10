@@ -1,5 +1,5 @@
 
-function timeseries(data,targetID,targetSource) {
+function timeseries(targetID,targetSource) {
 
     Highcharts.chart('container', {
         exporting: {
@@ -9,7 +9,7 @@ function timeseries(data,targetID,targetSource) {
                         dataLabels: {
                             enabled: true
                         }
-                    }
+                    },
                 }
             },
             fallbackToExportServer: false
@@ -36,7 +36,7 @@ function timeseries(data,targetID,targetSource) {
             
             title: {
                 text: 'Time'
-            },
+            }
         },
         yAxis: {
             title: {
@@ -53,8 +53,14 @@ function timeseries(data,targetID,targetSource) {
         series: [{
             
             name: targetSource + ' ID: ' + targetID,
-            data: data
+            data: targetData
         }]
     });
+}
 
+function addNewData(chart,targetData) {
+    chart.series[0].setData(targetData);
+    chart.xAxis[0].min = targetData[0][0];
+    chart.xAxis[0].isDirty = true;
+    chart.redraw();
 }

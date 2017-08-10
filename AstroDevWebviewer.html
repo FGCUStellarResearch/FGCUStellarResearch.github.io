@@ -60,26 +60,38 @@
                 </span>
             </div>
     </div>
-
+     
     <div id="graph-area" style="display:none">
-        <section class="mw5 mw7-ns center pa3 ph5-ns">
-            <div id="container" style="width:100%; height:400px; visibility:hidden">
+        <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
+            <div id="container" style="visibility:hidden">
                 <script type="text/javascript" src="./src/timeseries.js"></script>
                 <small class="f7 db tc silver">Graph data display</small>
             </div>
         </section>
+    </div>   
+    
+    <div>
+        <section class="mw5 mw7-ns center pa3 ph5-ns" style="visibility:hidden">
+            <span>
+                <!-- with input that accepts one file -->
+                <script type="text/javascript" src="./src/analysis.js"></script>
+                    <button id="DFFT" onclick="discreteFastFourier()">DFFT</button>
+            </span>
+        </section>
     </div>
-            
+    
     <div>
         <section class="mw5 mw7-ns center pa3 ph5-ns">
             <span>
                 <!-- with input that accepts one file -->
-                <script type="text/javascript" src="./src/analysis.js"></script>
+                <script type="text/javascript" src="./src/filing.js"></script>
                     <label for="csvFileInput" class="custom-file-upload"> Select file </label>
                     <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
             </span>
         </section>
     </div>
+
+
 </body>
 
 <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
