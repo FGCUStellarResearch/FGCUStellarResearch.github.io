@@ -47,7 +47,7 @@ function switchview() {
     document.getElementById("info-box").style.visibility="hidden";
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
-    document.getElementById("DFFT").style.visibility="visible";
+    document.getElementById("analysis").style.visibility="visible";
 }
 
 function csvtojson(csv) {

@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./tachyons/css/tachyons.min.css"/>
     <!-- Highcharts JS resources -->
     <script src="./lib/highcharts.js"></script>
+    <!-- Math JS to handle what was previously calculated with numpy/scipy -->
+    <script src="./lib/math.min.js"></script>
     
     <style>
         
@@ -71,11 +73,16 @@
     </div>   
     
     <div>
-        <section class="mw5 mw7-ns center pa3 ph5-ns" style="visibility:hidden">
+        <section id="analysis" class="pv4 ph2 tc-l" style="visibility:hidden">
             <span>
                 <!-- with input that accepts one file -->
                 <script type="text/javascript" src="./src/analysis.js"></script>
-                    <button id="DFFT" onclick="discreteFastFourier()">DFFT</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="discreteFastFourier()">DFFT</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculatePhase()">Phase</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateDetrend()">Detrend</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateBLS()">BLS</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="timeseries()">Timeseries</button>
+                    
             </span>
         </section>
     </div>

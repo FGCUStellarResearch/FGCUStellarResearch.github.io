@@ -8,4 +8,19 @@ function discreteFastFourier() {
 
 function detrend() {
     //placeholder
+    // constant type:
+    var constReturn = targetFlux - (mean(targetFlux))
+    var
+}
+
+function calculateDetrend() {
+    //placeholder
+}
+
+function calculatePhase() {
+    // placeholder
+}
+
+function calculateBLS() {
+    //placeholder
 }
