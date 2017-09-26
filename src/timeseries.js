@@ -1,6 +1,19 @@
 
-function timeseries() {
-    var myChart = Highcharts.chart('container', {
+function timeseries(targetID,targetSource) {
+
+    Highcharts.chart('container', {
+        exporting: {
+            chartOptions: { // specific options for the exported image
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    },
+                }
+            },
+            fallbackToExportServer: false
+        },
         chart: {
             zoomType: 'x'
         },
@@ -13,19 +26,22 @@ function timeseries() {
                 'Pinch in the plot area to zoom in'
                 // changes for which device is used to view
         },
+        legend: {
+            enabled: true
+        },
+        tooltip: {
+            enabled: false
+        },
         xAxis: {
-            type: 'linear',
+            
             title: {
-                text: 'Cadence'
-            },
+                text: 'Time'
+            }
         },
         yAxis: {
             title: {
                 text: 'Flux'
             }
-        },
-        data: {
-            csv: document.getElementById('csv').innerHTML
         },
         plotOptions: {
             series: {
@@ -34,8 +50,17 @@ function timeseries() {
                 }
             }
         },
-        series: {
-            name: 'Sample Test Data - Kepler ID 4385148'
-        }
+        series: [{
+            
+            name: targetSource + ' ID: ' + targetID,
+            data: targetData
+        }]
     });
+}
+
+function addNewData(chart,targetData) {
+    chart.series[0].setData(targetData);
+    chart.xAxis[0].min = targetData[0][0];
+    chart.xAxis[0].isDirty = true;
+    chart.redraw();
 }

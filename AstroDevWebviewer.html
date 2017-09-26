@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./tachyons/css/tachyons.min.css"/>
     <!-- Highcharts JS resources -->
     <script src="./lib/highcharts.js"></script>
+    <!-- Math JS to handle what was previously calculated with numpy/scipy -->
+    <script src="./lib/math.min.js"></script>
     
     <style>
         
@@ -60,26 +62,43 @@
                 </span>
             </div>
     </div>
-
+     
     <div id="graph-area" style="display:none">
-        <section class="mw5 mw7-ns center pa3 ph5-ns">
-            <div id="container" style="width:100%; height:400px; visibility:hidden">
+        <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
+            <div id="container" style="visibility:hidden">
                 <script type="text/javascript" src="./src/timeseries.js"></script>
                 <small class="f7 db tc silver">Graph data display</small>
             </div>
         </section>
+    </div>   
+    
+    <div>
+        <section id="analysis" class="pv4 ph2 tc-l" style="visibility:hidden">
+            <span>
+                <!-- with input that accepts one file -->
+                <script type="text/javascript" src="./src/analysis.js"></script>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="discreteFastFourier()">DFFT</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculatePhase()">Phase</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateDetrend()">Detrend</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateBLS()">BLS</button>
+                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="timeseries()">Timeseries</button>
+                    
+            </span>
+        </section>
     </div>
-            
+    
     <div>
         <section class="mw5 mw7-ns center pa3 ph5-ns">
             <span>
                 <!-- with input that accepts one file -->
-                <script type="text/javascript" src="./src/analysis.js"></script>
+                <script type="text/javascript" src="./src/filing.js"></script>
                     <label for="csvFileInput" class="custom-file-upload"> Select file </label>
-                    <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview();timeseries();">
+                    <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
             </span>
         </section>
     </div>
+
+
 </body>
 
 <footer class="pv4 ph3 ph5-m ph6-l mid-gray">

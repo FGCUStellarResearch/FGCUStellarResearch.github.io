@@ -1,5 +1,5 @@
 
-$.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', function(data) {
+$.getJSON('./data/test4385148.json', function(data) {
         
     Highcharts.chart('container', {
         exporting: {
@@ -33,9 +33,9 @@ $.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', functio
             enabled: false
         },
         xAxis: {
-            //type: 'datetime',
+            
             title: {
-                text: 'Cadence'
+                text: 'Time'
             },
         },
         yAxis: {
@@ -51,7 +51,6 @@ $.getJSON('https://fgcustellarresearch.github.io/data/test4385148.json', functio
             }
         },
         series: [{
-            //type: 'area',
             name: 'Sample Test Data - Kepler ID 4385148',
             data: data
         }]
