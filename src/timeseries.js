@@ -1,5 +1,5 @@
 
-function timeseries(targetID,targetSource) {
+function timeseries(targetID,targetSource,data) {
 
     Highcharts.chart('container', {
         exporting: {
@@ -53,7 +53,7 @@ function timeseries(targetID,targetSource) {
         series: [{
             
             name: targetSource + ' ID: ' + targetID,
-            data: targetData
+            data: data
         }]
     });
 

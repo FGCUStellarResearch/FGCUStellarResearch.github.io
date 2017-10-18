@@ -24,6 +24,7 @@ function loadHandler(event) {
 }
 
 function processData(csv) {
+    // TODO: determine if this is necessary to keep; should have been replaced by csvtojson()
     var allTextLines = csv.split(/\r\n|\n/);
     var lines = [];
     for (var i=0; i<allTextLines.length; i++) {
@@ -57,8 +58,8 @@ function csvtojson(csv) {
     
     // first identify if data file contains headers
     var i = 0;
-    var targetSource;
-    var targetID;
+    window.targetSource = "";
+    window.targetID = "";
     window.targetData = [];
     window.targetTime = [];
     window.targetFlux = [];
@@ -99,7 +100,7 @@ function csvtojson(csv) {
     the sort() function is required because without it, the graph refuses to display; sort() is the lesser evil 
 */
     targetData.sort(sortFunction).shift();
-    timeseries(targetID, targetSource);
+    timeseries(targetID, targetSource, targetData);
 }
 
 function sortFunction(a, b) {
