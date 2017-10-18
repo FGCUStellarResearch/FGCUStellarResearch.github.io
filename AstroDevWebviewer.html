@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +14,10 @@
     <link rel="stylesheet" href="./tachyons/css/tachyons.min.css"/>
     <!-- Highcharts JS resources -->
     <script src="./lib/highcharts.js"></script>
+    <script src="./lib/exporting.js"></script>
+    <script src="./lib/data.js"></script>
+    <!-- JQuery is important -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- Math JS to handle what was previously calculated with numpy/scipy -->
     <script src="./lib/math.min.js"></script>
     
@@ -28,6 +31,10 @@
             border: 1px solid #ccc;
             display: inline-block;
             padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        label {
             cursor: pointer;
         }
     </style>
@@ -48,20 +55,9 @@
             <a class="link dim gray f6 f5-l dib no-underline avenir" href="./contact.html" title="Contact">Contact</a>
         </div>
     </nav>
-
-    <div id="info-box">
-            <!-- placeholder -->
-            <div class="flex items-center justify-center pa4 bg-lightest-blue navy">
-                <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
-                    <title>info icon</title>
-                    <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
-                </svg>
-                <span class="ml3 dark-blue avenir">
-                    <p>If the Webviewer does not load, make sure your browser is up-to-date!</p>
-                    <p><a href="/WebviewerSample.html">Click here</a> to see a sample</p>
-                </span>
-            </div>
-    </div>
+    
+    <!-- hack-y way to create a little bit of padding between the nav bar and graph area to avoid directly modifying either of the elements themselves -->
+    <div class="pa3"></div> 
      
     <div id="graph-area" style="display:none">
         <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
@@ -77,28 +73,37 @@
             <span>
                 <!-- with input that accepts one file -->
                 <script type="text/javascript" src="./src/analysis.js"></script>
-                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="discreteFastFourier()">DFFT</button>
-                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculatePhase()">Phase</button>
-                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateDetrend()">Detrend</button>
-                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="calculateBLS()">BLS</button>
-                    <button id="DFFT" class="mw5 mw7-ns center pa3 ph5-ns" onclick="timeseries()">Timeseries</button>
-                    
+                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="discreteFastFourier()">DFFT</label>
+                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
+                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDetrend()">Detrend</label>
+                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateBLS()">BLS</label>
+                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
             </span>
+                <div class="pa3"></div> <!-- more hack-y layout padding -->
+            <label for="csvFileInput" class="mw5 mw7-ns center ba b--light-silver pa3 custom-file-upload">Select New File</label>
+            <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
         </section>
     </div>
-    
-    <div>
-        <section class="mw5 mw7-ns center pa3 ph5-ns">
-            <span>
-                <!-- with input that accepts one file -->
-                <script type="text/javascript" src="./src/filing.js"></script>
-                    <label for="csvFileInput" class="custom-file-upload"> Select file </label>
+
+
+    <div id="info-box">
+            <!-- placeholder -->
+            <div class="flex items-center justify-center pa4 bg-lightest-blue navy">
+                <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+                    <title>info icon</title>
+                    <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
+                </svg>
+                <span class="ml3 dark-blue avenir">
+                    <p>If the Webviewer does not load, make sure your browser is up-to-date!</p>
+
+                    <script type="text/javascript" src="./src/filing.js"></script>
+                    <label for="csvFileInput" class="custom-file-upload bg-white"> Select file </label>
                     <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
-            </span>
-        </section>
+           
+                    <p><a href="/WebviewerSample.html">Click here</a> to see a sample</p>
+                </span>
+            </div>
     </div>
-
-
 </body>
 
 <footer class="pv4 ph3 ph5-m ph6-l mid-gray">

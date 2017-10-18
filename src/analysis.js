@@ -10,7 +10,7 @@ function detrend() {
     //placeholder
     // constant type:
     var constReturn = targetFlux - (mean(targetFlux))
-    var
+    //var
 }
 
 function calculateDetrend() {

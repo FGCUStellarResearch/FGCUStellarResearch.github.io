@@ -19,6 +19,7 @@ function timeseries(targetID,targetSource) {
         },
         title: {
             text: 'AstroDev Webviewer'
+            // there's supposed to be a way to change font family/weight, but it hasn't worked for me yet
         },
         subtitle: {
             text: document.ontouchstart === undefined ? 
@@ -33,7 +34,6 @@ function timeseries(targetID,targetSource) {
             enabled: false
         },
         xAxis: {
-            
             title: {
                 text: 'Time'
             }
@@ -56,11 +56,6 @@ function timeseries(targetID,targetSource) {
             data: targetData
         }]
     });
-}
 
-function addNewData(chart,targetData) {
-    chart.series[0].setData(targetData);
-    chart.xAxis[0].min = targetData[0][0];
-    chart.xAxis[0].isDirty = true;
-    chart.redraw();
+    
 }
