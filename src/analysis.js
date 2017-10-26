@@ -16,7 +16,7 @@ function discreteFastFourier() {
 function detrend() {
     //placeholder
     // constant type:
-    var constReturn = targetFlux - (mean(targetFlux))
+    var constReturn = targetFlux - (mean(targetFlux));
     //var
 }
 
@@ -30,4 +30,15 @@ function calculatePhase() {
 
 function calculateBLS() {
     //placeholder
+}
+
+function timeseries() {
+    // placeholder
+    // TODO: needs to be able to handle using the results of the DFT in the future
+    if (useDFT == true) {
+        // use fluxes as calculated from DFT
+        // ask why AD uses this in the DFT call - you can do the DFT on the DFT??
+    }
+    var labels = ['Time','Counts'];
+    submit(targetData);
 }

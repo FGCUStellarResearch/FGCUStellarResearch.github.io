@@ -50,7 +50,7 @@ function switchview() {
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
     document.getElementById("analysis").style.visibility="visible";
-    document.getElementById("csvFileInput2").style.visibility="visible";
+    document.getElementById("csvFileInput").style.visibility="visible";
 }
 
 function csvtojson(csv) {
@@ -63,6 +63,7 @@ function csvtojson(csv) {
     window.targetData = [];
     window.targetTime = [];
     window.targetFlux = [];
+    window.useDFT = false;
     switch(allTextLines[0].split(' ')[0]) {
         // different data sources may have special case input formats to deal with
             case "Kepler":
@@ -100,7 +101,7 @@ function csvtojson(csv) {
     the sort() function is required because without it, the graph refuses to display; sort() is the lesser evil 
 */
     targetData.sort(sortFunction).shift();
-    timeseries(targetID, targetSource, targetData);
+    timeseries();
 }
 
 function sortFunction(a, b) {

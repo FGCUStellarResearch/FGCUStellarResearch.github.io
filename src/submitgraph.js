@@ -1,5 +1,5 @@
 
-function timeseries(targetID,targetSource,data) {
+function submit(data) {
 
     Highcharts.chart('container', {
         exporting: {
@@ -35,12 +35,12 @@ function timeseries(targetID,targetSource,data) {
         },
         xAxis: {
             title: {
-                text: 'Time'
+                text: "Time"
             }
         },
         yAxis: {
             title: {
-                text: 'Flux'
+                text: "Counts"
             }
         },
         plotOptions: {
