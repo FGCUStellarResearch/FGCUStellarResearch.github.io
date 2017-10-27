@@ -15,13 +15,34 @@ function discreteFastFourier() {
 
 function detrend() {
     //placeholder
-    // constant type:
+    tempFlux = targetFlux;
+    tempTime = targetTime;
+    meanFlux = mean(targetData);
+
+    counter = tempTime.length;
+    while (counter > 0) {
+        // create time bins
+        binTime = numeric.linspace(tempTime[0],tempTime[tempTime.length - 1],40);
+        binFlux = bindata(tempTime,tempFlux,binTime);
+
+        // for loop to replace NaN's with the average flux
+        // original did it differently, but this is more readable 
+        for (var i=0; i<binFlux.length; i++) {
+            if (numeric.isNaN(binFlux[i])) binFlux[i] = meanFlux;
+        }
+
+        pflux = numeric.spline(tempTime,tempFlux).at(numeric.linspace(tempTime[0],tempTime[tempTime.length - 1],40))
+    }
+
+
     var constReturn = targetFlux - (mean(targetFlux));
+    console.log(constReturn);
     //var
 }
 
 function calculateDetrend() {
     //placeholder
+
 }
 
 function calculatePhase() {
@@ -41,4 +62,8 @@ function timeseries() {
     }
     var labels = ['Time','Counts'];
     submit(targetData);
+}
+
+function bindata() {
+    // placeholder
 }
