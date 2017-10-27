@@ -7,6 +7,7 @@ function clearWindowVariables() {
 
 function discreteFastFourier() {
     //placeholder
+    // Don't use FFT from numericJS package - probably makes bad assumptions
     alert("DFFT may take a few seconds!");
     var frequency = _.range(0.0225, 1.0, 0.001);
 
