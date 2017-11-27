@@ -39,11 +39,15 @@ function detrend() {
     var constReturn = targetFlux - (mean(targetFlux));
     console.log(constReturn);
     //var
-}
+} // end of detrend
+
+
+
 
 function calculateDetrend() {
     //placeholder
-
+    var constReturn = targetFlux - (mean(targetFlux));
+    console.log(constReturn);
 }
 
 function calculatePhase() {
