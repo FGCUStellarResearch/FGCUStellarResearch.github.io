@@ -24,6 +24,7 @@ function loadHandler(event) {
 }
 
 function processData(csv) {
+    // TODO: determine if this is necessary to keep; should have been replaced by csvtojson()
     var allTextLines = csv.split(/\r\n|\n/);
     var lines = [];
     for (var i=0; i<allTextLines.length; i++) {
@@ -44,10 +45,12 @@ function errorHandler(evt) {
 }
 
 function switchview() {
+    // exclusively used to hide and show elements on the webviewer's first page load
     document.getElementById("info-box").style.visibility="hidden";
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
     document.getElementById("analysis").style.visibility="visible";
+    document.getElementById("csvFileInput").style.visibility="visible";
 }
 
 function csvtojson(csv) {
@@ -55,12 +58,14 @@ function csvtojson(csv) {
     
     // first identify if data file contains headers
     var i = 0;
-    var targetSource;
-    var targetID;
+    window.targetSource = "";
+    window.targetID = "";
     window.targetData = [];
     window.targetTime = [];
     window.targetFlux = [];
+    window.useDFT = false;
     switch(allTextLines[0].split(' ')[0]) {
+        // different data sources may have special case input formats to deal with
             case "Kepler":
                 targetSource = "Kepler";
                 targetID = allTextLines[2].split(/[[\]]{1,2}/)[1];
@@ -88,16 +93,15 @@ function csvtojson(csv) {
     }
     lastline = allTextLines[i].split(',');
     targetData.push([+lastline[0],+lastline[1]]);
-    console.log(targetSource + targetID); // for debugging
-    
-    // determine the source of the data, which will determine how the csv is parsed
-    // default assume first column == Time, second(third?) column == Flux data
+    console.log(targetSource + targetID); // for debugging; never seen by users
 
-    // desperate to fix this error 15 thing - trying brute force first:
-    targetData.sort(sortFunction);
 
-    // graph it -- TODO: call should be at a higher level, but the passing of data is beyond me atm
-    timeseries(targetID,targetSource);
+/*  full disclosure here, sort() causes an issue where the first index, targetData[0][i] is 0,NaN
+    the shift() removes that 0,NaN entry, but it's likely that a point or two of data are being lost in translation
+    the sort() function is required because without it, the graph refuses to display; sort() is the lesser evil 
+*/
+    targetData.sort(sortFunction).shift();
+    timeseries();
 }
 
 function sortFunction(a, b) {

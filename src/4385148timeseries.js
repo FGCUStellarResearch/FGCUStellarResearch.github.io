@@ -1,4 +1,5 @@
-
+// TODO: update the non-sample timeseries to allow users to view the sample within 
+//       the regular tool space instead of the sample window (which doesn't allow file uploads)
 $.getJSON('./data/test4385148.json', function(data) {
         
     Highcharts.chart('container', {
@@ -19,6 +20,7 @@ $.getJSON('./data/test4385148.json', function(data) {
         },
         title: {
             text: 'AstroDev Webviewer'
+            // there's supposed to be a way to change font family/weight, but it hasn't worked for me yet
         },
         subtitle: {
             text: document.ontouchstart === undefined ? 
