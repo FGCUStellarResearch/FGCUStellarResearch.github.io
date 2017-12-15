@@ -97,8 +97,8 @@ function timeseries() {
         // use fluxes as calculated from DFT
         // ask why AD uses this in the DFT call - you can do the DFT on the DFT??
     }
-    var labels = ['Time','Counts'];
-    submit(targetData);
+    //var labels = ['Time','Counts'];
+    submit(targetData,'Time','Counts');
 }
 
 

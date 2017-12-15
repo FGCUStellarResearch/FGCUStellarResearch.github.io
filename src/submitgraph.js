@@ -1,5 +1,5 @@
 
-function submit(data) {
+function submit(data,labelX,labelY) {
 
     Highcharts.chart('container', {
         exporting: {
@@ -35,12 +35,12 @@ function submit(data) {
         },
         xAxis: {
             title: {
-                text: "Time"
+                text: labelX
             }
         },
         yAxis: {
             title: {
-                text: "Counts"
+                text: labelY
             }
         },
         plotOptions: {
