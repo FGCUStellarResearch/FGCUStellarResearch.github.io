@@ -1,7 +1,8 @@
 function clearWindowVariables() {
     // resests all global (window) variables to defaults; called on button push and new file selection
-    // TODO: there's no reason the variables need to be global; calculations made here are within the scope
-    //        of the other functions if they're using class variables, so do that and cleanup gets easier
+    // NOTE: see notes on filehandler.js csvtojson() function re: globals
+    // TODO: change away from globals; calculations made here are within the scope of the other 
+    //       functions if they're using class variables, so do that and cleanup gets easier
 
 }
 
@@ -12,14 +13,15 @@ function discreteFastFourier(times, fluxes, freq) {
     //x = 
 }
 
-function detrend() {
+function calculateDetrend() {
     //placeholder
     tempFlux = targetFlux;
     dataFlux = targetFlux;
     tempTime = targetTime;
     meanFlux = math.mean(targetData);
+    var binFlux;
     function tester(element) {
-        return Math.abs(element) < 3 * tsStd
+        return Math.abs(element) > 3 * tsStd
     }
 
     counter = tempTime.length;
@@ -30,11 +32,11 @@ function detrend() {
 
         // for loop to replace NaN's with the average flux
         // original did it differently, but this is more readable 
-        for (i = 0; i < binFlux.length; i++) {
-            if (numeric.isNaN(binFlux[i])) binFlux[i] = meanFlux;
+        for (i = 0; i < binFlux.b.length; i++) {
+            if (numeric.isNaN(binFlux.b[i])) binFlux.b[i] = meanFlux;
         }
 
-        pOut = numeric.spline(binTime,binFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],40));
+        pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],40));
 
         fluxesDFT = [];
         for (i = 0; i < pOut.length; i++) {
@@ -43,18 +45,30 @@ function detrend() {
         tsStd = math.std(fluxesDFT);
 
         counter = fluxesDFT.findIndex(tester); // returns -1 when finished, exiting while loop
-        tempTime = tempTime.filter(times => Math.abs(times) < (3*tsStd));
-        tempFlux = tempFlux.filter(fluxes => Math.abs(fluxes) < (3*tsStd));
+        
+        // NOTE: javascript makes this condition a mess, because you're dealing with too many arrays
+        //       it's possible it can be done more efficiently, but this seemed readable 
+        temp = [];
+        for (i = 0; i < tempTime.length; i++) {
+            if (Math.abs(fluxesDFT[i]) < (3*tsStd)) {
+                temp.push(tempTime[i]);
+            }
+        }
+        tempTime = temp;
+        tempFlux = fluxesDFT.filter(fluxes => Math.abs(fluxes) < (3*tsStd));
     }
 
-    pOut = numeric.spline(binTime,binFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1], 40));
+    pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1], 40));
+    fluxesDFT = [];
     for (i = 0; i < dataFlux.length; i++) {
-        fluxesDFT.push(dataFlux[i] - pOut[i]);
+        fluxesDFT.push(dataFlux[i] - pOut[binFlux.inds[i]]);
     }
 
     fDFTMean = nanmean(fluxesDFT);
-    while (fluxesDFT.findIndex(x => isNaN(x))) {
-        fluxesDFT[fluxesDFT.findIndex(x => isNaN(x))] = fDFTMean;
+    for (i = 0; i < fluxesDFT.length; i++) {
+        if(isNaN(fluxesDFT[i])) {
+            fluxesDFT[i] = fDFTMean;
+        }
     }
 
     return {
@@ -62,7 +76,7 @@ function detrend() {
         fluxesDFT: fluxesDFT
     }
 
-} // end of detrend
+} // end of calculateDetrend
 
 
 function calculateDFT() {
@@ -72,14 +86,15 @@ function calculateDFT() {
     var frequency = _.range(0.0225, 1.0, 0.001);
 }
 
-function calculateDetrend() {
-    //placeholder
-    var detrending = detrend();
+function detrend() {
+    // calls calculateDetrend to do the heavy lifting math, then creates the format the
+    // graphing extention needs to show the outcome
+    var detrending = calculateDetrend();
     graphData = [];
-    for (i = 0; i < detrending.targetTime; i++) {
+    for (i = 0; i < detrending.targetTime.length - 1; i++) {
         graphData.push([+detrending.targetTime[i],+detrending.fluxesDFT[i]]);
     }
-    submit(graphData);
+    submit(graphData,'Time','Counts');
 }
 
 function calculatePhase() {
@@ -91,13 +106,11 @@ function calculateBLS() {
 }
 
 function timeseries() {
-    // placeholder
-    // TODO: needs to be able to handle using the results of the DFT in the future
-    if (useDFT == true) {
+    // TODO: needs to be able to handle recognizing and using either the results of the DFT or raw?
+    //if (useDFT == true) {
         // use fluxes as calculated from DFT
         // ask why AD uses this in the DFT call - you can do the DFT on the DFT??
-    }
-    //var labels = ['Time','Counts'];
+    //}
     submit(targetData,'Time','Counts');
 }
 
@@ -130,15 +143,21 @@ function bindata(x,y,gx) {
 
     var bins = [];
     bins.push(gx[0]-binwidth[0]/2);
-    for (i = 1; i < gx.length; i++) {
+    for (i = 1; i < gx.length-1; i++) {
         bins.push(gx[i]+binwidth[i]/2);
     }
+    bins.push(gx[gx.length-1]); // otherwise there aren't enough bins?
 
     // "Shift bins so the interval is '( ]' instead of '[ )' " <-- MATLAB implementation comment
     bins = bins.map(x => x + math.max(eps, (eps*math.abs(x))));
 
     var histResults = histCount(x, bins);
-    histResults.bincounts = histResults.bincounts.splice(0,1).pop(); // remove first & last bins
+    histResults.bincounts.splice(0,1); // remove first ...
+    histResults.bincounts.pop(); // & last bins; changes the size of the array
+    /* NOTE: I spent a few hours debugging this initially; unlike in some other languages, you
+             *cannot* have this as a single line function - that is, you must first slice, then pop
+             specifically: array.splice().pop()  will only splice(), and the pop() will not happen
+    */
     
     // This following section is translated directly from Python AstroDev; there are no comments 
     //     because I'm not entirely certain what the intermediate steps do, just their final result
@@ -158,8 +177,10 @@ function bindata(x,y,gx) {
         b.push(sumTemp/histResults.bincounts[counterBin]);
         counterBin++;
     }
-
-    return b;
+    return {
+        b: b,
+        inds : histResults.inds
+    }
 }
 
 
@@ -175,7 +196,7 @@ function diff(inputArray) {
 
 
 // NOTE: This is a bit messy, but there is no standard method (that I found) to implement
-//     the binning and counting of MATLAB and NumPy (histc and digitize*);
+//     the binning and counting of MATLAB and NumPy (histc and digitize* respectively);
 //     I went with the most readable solution, which may not be the most efficient or
 //     sophisticated method; I saw one implementation use mappings and reduces, but
 //     it was difficult to read and I'm not convinced it would have returned the same results

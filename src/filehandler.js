@@ -53,11 +53,23 @@ function switchview() {
     document.getElementById("csvFileInput").style.visibility="visible";
 }
 
+function setDetrended() {
+    // small helper to indicate that the selected file's data has already been detrended, was a toggle in original
+    // TODO: consider finishing this - I can make the button disabled, but can I re-enable it on new file load?
+    document.getElementById("").style.disabled; // TODO: fill in "" with detrend button's ID
+}
+
 function csvtojson(csv) {
     var allTextLines = csv.split(/\r\n|\n/);
     
     // first identify if data file contains headers
     var i = 0;
+    /* NOTE: these 'window' variables are equivallent to globals since all our javascript runs inside the window scope;
+             this is something that should be looked into again later, as not passing variables along and instead modifying
+             global values (or having global variables at all) is, at the very least, a bad practice. Globals generally 
+             ought to be reserved for static values. Currently this is a "good enough" implementation 
+    */
+    // TODO: if these are going to be globals, they should probably be declared in a constructor
     window.targetSource = "";
     window.targetID = "";
     window.targetData = [];
@@ -77,26 +89,28 @@ function csvtojson(csv) {
                 break;
             
             default:
-                // placeholder
+                // TODO: should probably throw an error if unrecognized source, as it'll fail regardless (and probably not gracefully)
                 break;
         }
     while(isNaN(allTextLines[i].split(',')[0]) || isNaN(allTextLines[i+1].split(',')[0]) || allTextLines[i].split(',') == "") {
         // either this line or the next is not a number, so the current line is not a line of data (probably)
-        // look for what seems to be the start of data - handles non-standardized headers ok
+        // look for what seems to be the start of data - handles non-standardized headers ok, not strenously tested though
         i++;
     }
     for (; i < allTextLines.length - 1; i++) {
         dataline = allTextLines[i].split(',');
         targetData.push([+dataline[0],+dataline[1]]);
         targetTime.push(+dataline[0]);
-        targetFlux.push(+dataline[2]); // NOTE: using dataline[2] because it's going into the detrender later
+        targetFlux.push(+dataline[2]); 
+        // NOTE: using dataline[2] because it's going into the detrender later
+        // TODO: needs updating, as different sources may different data layouts, so this hardcoding isn't ideal
     }
     lastline = allTextLines[i].split(',');
     targetData.push([+lastline[0],+lastline[1]]);
     console.log(targetSource + targetID); // for debugging; never seen by users
 
 
-/*  full disclosure here, sort() causes an issue where the first index, targetData[0][i] is 0,NaN
+/*  NOTE: full disclosure here, sort() causes an issue where the first index, targetData[0][i] is 0,NaN
     the shift() removes that 0,NaN entry, but it's likely that a point or two of data are being lost in translation
     the sort() function is required because without it, the graph refuses to display; sort() is the lesser evil 
 */
