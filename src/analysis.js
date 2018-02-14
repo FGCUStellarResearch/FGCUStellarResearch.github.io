@@ -1,3 +1,6 @@
+// Global Declarations
+const DEFAULT_BIN_SIZE = 40;
+
 function clearWindowVariables() {
     // resests all global (window) variables to defaults; called on button push and new file selection
     // NOTE: see notes on filehandler.js csvtojson() function re: globals
@@ -9,7 +12,7 @@ function clearWindowVariables() {
 function discreteFastFourier(times, fluxes, freq) {
     //placeholder
     var shape = freq.length;
-    var xMean = Math.sum(fluxes) / fluxes.length;
+    var xMean = math.sum(fluxes) / fluxes.length;
     //x = 
 }
 
@@ -21,13 +24,13 @@ function calculateDetrend() {
     meanFlux = math.mean(targetData);
     var binFlux;
     function tester(element) {
-        return Math.abs(element) > 3 * tsStd
+        return math.abs(element) > 3 * tsStd
     }
 
     counter = tempTime.length;
     while (counter > 0) {
         // create time bins
-        binTime = numeric.linspace(tempTime[0],tempTime[tempTime.length - 1],40);
+        binTime = numeric.linspace(tempTime[0],tempTime[tempTime.length - 1],DEFAULT_BIN_SIZE);
         binFlux = bindata(tempTime,tempFlux,binTime);
 
         // for loop to replace NaN's with the average flux
@@ -36,7 +39,7 @@ function calculateDetrend() {
             if (numeric.isNaN(binFlux.b[i])) binFlux.b[i] = meanFlux;
         }
 
-        pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],40));
+        pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
 
         fluxesDFT = [];
         for (i = 0; i < pOut.length; i++) {
@@ -50,12 +53,12 @@ function calculateDetrend() {
         //       it's possible it can be done more efficiently, but this seemed readable 
         temp = [];
         for (i = 0; i < tempTime.length; i++) {
-            if (Math.abs(fluxesDFT[i]) < (3*tsStd)) {
+            if (math.abs(fluxesDFT[i]) < (3*tsStd)) {
                 temp.push(tempTime[i]);
             }
         }
         tempTime = temp;
-        tempFlux = fluxesDFT.filter(fluxes => Math.abs(fluxes) < (3*tsStd));
+        tempFlux = fluxesDFT.filter(fluxes => math.abs(fluxes) < (3*tsStd));
     }
 
     pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1], 40));
@@ -132,7 +135,7 @@ function bindata(x,y,gx) {
         }
     }
     // simple error handling; this might signal corrupted data... TODO: better handling
-    if (time.length == 0) {console.log("Flux data all NaN's in bindata")}; 
+    if (flux.length == 0) {console.log("Flux data all NaN's in bindata")}; 
     
     var binwidth = diff(gx);
 
@@ -143,13 +146,14 @@ function bindata(x,y,gx) {
 
     var bins = [];
     bins.push(gx[0]-binwidth[0]/2);
-    for (i = 1; i < gx.length-1; i++) {
+    for (i = 0; i < binwidth.length; i++) { // defines the left-hand limit of the element by using the right-hand limit of the previous element
         bins.push(gx[i]+binwidth[i]/2);
     }
-    bins.push(gx[gx.length-1]); // otherwise there aren't enough bins?
+    bins.push(gx[gx.length-1]+binwidth[binwidth.length-1]/2); // define the right-hand limit of the last element
 
     // "Shift bins so the interval is '( ]' instead of '[ )' " <-- MATLAB implementation comment
-    bins = bins.map(x => x + math.max(eps, (eps*math.abs(x))));
+    // bins[interval] becomes the original number plus the bigger of eps and eps * the abs value of the original number
+    bins = bins.map(binInterval => binInterval + math.max(eps, (eps*math.abs(binInterval))));
 
     var histResults = histCount(x, bins);
     histResults.bincounts.splice(0,1); // remove first ...
@@ -189,7 +193,7 @@ function bindata(x,y,gx) {
 function diff(inputArray) {
     var outputArray = [];
     for (i =0; i < (inputArray.length - 1); i++) {
-        outputArray.push(inputArray[i+1] - inputArray[i]);
+        outputArray.push(math.abs(inputArray[i+1] - inputArray[i]));
     }
     return outputArray;
 }
@@ -201,9 +205,8 @@ function diff(inputArray) {
 //     sophisticated method; I saw one implementation use mappings and reduces, but
 //     it was difficult to read and I'm not convinced it would have returned the same results
 // *digitize doesn't do exactly the same thing as histc either, so there was a mess of python to compensate
-// THIS FUNCTION RETURNS AN OBJECT - the best way for returning multiple arrays, especially different sizes
+// THIS FUNCTION RETURNS AN OBJECT - the easiest way for returning multiple arrays, especially different sizes
 function histCount(values, bins) {
-    // 
     var inds = []; // same size as values (x); the index of the bin this value belongs in
     var bincounts = Array(bins.length).fill(0); // same size as bins (gx); the number of values in this bin
     // NOTE: new Array() is heavily frowned on by javascript "standards" **BUT** in this case we
