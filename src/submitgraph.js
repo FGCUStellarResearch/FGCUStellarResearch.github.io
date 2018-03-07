@@ -2,18 +2,7 @@
 function submit(data,labelX,labelY) {
 
     Highcharts.chart('container', {
-        exporting: {
-            chartOptions: { // specific options for the exported image
-                plotOptions: {
-                    series: {
-                        dataLabels: {
-                            enabled: true
-                        }
-                    },
-                }
-            },
-            fallbackToExportServer: false
-        },
+
         chart: {
             zoomType: 'x'
         },

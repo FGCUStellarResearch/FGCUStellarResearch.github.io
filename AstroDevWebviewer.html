@@ -15,12 +15,17 @@
     <!-- Highcharts JS resources -->
     <script src="./lib/highcharts.js"></script>
     <script src="./lib/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
     <script src="./lib/data.js"></script>
     <!-- JQuery is important -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- Math related JS libs to handle what was previously calculated with numpy/scipy -->
     <script src="./lib/math.min.js"></script>
     <script src='./lib/numeric-1.2.6.min.js'></script>
+    <script src="./lib/regression.js"></script>
+
+    <!-- The source for all my pain and woe. Oh and also the calculations we're doing, incidentally -->
+    <script type="text/javascript" src="./src/analysis.js"></script>
     
     <style>
         
@@ -37,6 +42,7 @@
 
         label {
             cursor: pointer;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -73,14 +79,15 @@
         <section id="analysis" class="pv4 ph2 tc-l" style="visibility:hidden">
             <span>
                 <!-- with input that accepts one file -->
-                <script type="text/javascript" src="./src/analysis.js"></script>
-                    <label id="dfftbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="discreteFastFourier()">DFFT</label>
+                    <label id="dfftbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDFT()">DFFT</label>
                     <label id="phasebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
                     <label id="detrendbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="detrend()">Detrend</label>
                     <label id="blsbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">BLS</label>
                     <label id="timebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
             </span>
-                <div class="pa3"></div> <!-- more hack-y layout padding -->
+            <div class="pa3">Phase Frequency: <input type="number" name="newphasefreq" style="width:3em" value="5" onchange="updatePhaseFrequency(this.value)"></div>
+            
+            <div class="pa3"></div> <!-- more hack-y layout padding -->
             <label for="csvFileInput" class="mw5 mw7-ns center ba b--light-silver pa3 custom-file-upload">Select New File</label>
             <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
         </section>

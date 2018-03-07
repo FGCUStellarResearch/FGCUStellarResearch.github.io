@@ -4,16 +4,51 @@ const DEFAULT_BIN_SIZE = 40;
 function clearWindowVariables() {
     // resests all global (window) variables to defaults; called on button push and new file selection
     // NOTE: see notes on filehandler.js csvtojson() function re: globals
-    // TODO: change away from globals; calculations made here are within the scope of the other 
+    // TODO: change away from globals? calculations made here are within the scope of the other 
     //       functions if they're using class variables, so do that and cleanup gets easier
 
 }
 
 function discreteFastFourier(times, fluxes, freq) {
-    //placeholder
-    var shape = freq.length;
+    //performs the DFT on the original flux data
     var xMean = math.sum(fluxes) / fluxes.length;
-    //x = 
+    var LSF = numeric.solve(targetData); // Least-Squares on the original flux
+    // this and the for loop coming up take the place of the scipy signal.detrend?
+    // TODO: maybe use numeric.solve instead of linear - cut down on packages
+    var x = fluxes;
+    for (i = 0; i < fluxes.length; i++) {
+        x -= LSF[0]*times[i] + LSF[1];
+        x = x/xMean;
+    }
+
+    var ttt = numeric.transpose(times);
+    var concArr = numeric.tensor(freq,ttt);
+    var scalar = -2 * math.PI * math.sqrt(-1);
+    var w = numeric.exp(math.dotMultiply(scalar, concArr));
+
+    var sumArr = numeric.rep([freq.length,times.length],0) // equivalent? to numpy/matlab zeros()
+    var counterX = 0;
+    for (i=1; i < freq.length; i++) {
+        var counterY = 0;
+        for (j = 1; j < times.length; j++) {
+            sumArr[counterX][counterY] = x[j] * w[i,j];
+            counterY += 1;
+        }
+        counterX += 1;
+    }
+    // NOTE: is this right? this seems really weird. why does the loop start at 1? why are the
+    //     the counters x and y not the same as i and j?? what? this whole thing concerns me greatly
+
+    // numpy.sum(axis=1) sums across rows; there's almost certainly a way to do this in JS
+    // but I'm pretty sure the function boils down to a (more efficient?) version of this:
+    var X = numeric.rep([freq.length],0);
+    for (i = 0; i < freq.length; i++) {
+        for (j = 0; j < times.length; j++) {
+            X[i] += sumArr[i][j];
+        }
+    }
+    X = numeric.pow(numeric.abs(X),2);
+    return X;
 }
 
 function calculateDetrend() {
@@ -35,15 +70,15 @@ function calculateDetrend() {
 
         // for loop to replace NaN's with the average flux
         // original did it differently, but this is more readable 
-        for (i = 0; i < binFlux.b.length; i++) {
-            if (numeric.isNaN(binFlux.b[i])) binFlux.b[i] = meanFlux;
+        for (i = 0; i < binFlux.avgBinFlux.length; i++) {
+            if (numeric.isNaN(binFlux.avgBinFlux[i])) binFlux.avgBinFlux[i] = meanFlux;
         }
 
-        pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
+        pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
 
         fluxesDFT = [];
-        for (i = 0; i < pOut.length; i++) {
-            fluxesDFT.push(tempFlux[i] - pOut[i]);
+        for (i = 0; i < binFlux.inds.length; i++) {
+            fluxesDFT.push(tempFlux[i] - pOut[binFlux.inds[i]]);
         }
         tsStd = math.std(fluxesDFT);
 
@@ -61,7 +96,7 @@ function calculateDetrend() {
         tempFlux = fluxesDFT.filter(fluxes => math.abs(fluxes) < (3*tsStd));
     }
 
-    pOut = numeric.spline(binTime,binFlux.b).at(numeric.linspace(binTime[0],binTime[binTime.length - 1], 40));
+    pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
     fluxesDFT = [];
     for (i = 0; i < dataFlux.length; i++) {
         fluxesDFT.push(dataFlux[i] - pOut[binFlux.inds[i]]);
@@ -86,7 +121,13 @@ function calculateDFT() {
     // placeholder
     // Don't use FFT from numericJS package - probably makes bad assumptions
     alert("DFFT may take a few seconds!");
-    var frequency = _.range(0.0225, 1.0, 0.001);
+    var frequency = numeric.linspace(0.0225, 1.0, 9775); // equivalent? to numpy: arange(0.0225,1.0,0.001)
+    var powers = discreteFastFourier(targetTime,targetFlux,frequency);
+    graphData = [];
+    for (i = 0; i < powers.X.length; i ++) {
+        graphData.push([+freq[i],+powers.X[i]]);
+    }
+    submit(graphData, 'Frequency', 'Power');
 }
 
 function detrend() {
@@ -102,6 +143,11 @@ function detrend() {
 
 function calculatePhase() {
     // placeholder
+}
+
+function updatePhaseFrequency(value) {
+    phaseFrequency = value;
+    console.log("window.phaseFrequency is now: " + phaseFrequency);
 }
 
 function calculateBLS() {
@@ -155,34 +201,19 @@ function bindata(x,y,gx) {
     // bins[interval] becomes the original number plus the bigger of eps and eps * the abs value of the original number
     bins = bins.map(binInterval => binInterval + math.max(eps, (eps*math.abs(binInterval))));
 
-    var histResults = histCount(x, bins);
-    histResults.bincounts.splice(0,1); // remove first ...
-    histResults.bincounts.pop(); // & last bins; changes the size of the array
-    /* NOTE: I spent a few hours debugging this initially; unlike in some other languages, you
-             *cannot* have this as a single line function - that is, you must first slice, then pop
-             specifically: array.splice().pop()  will only splice(), and the pop() will not happen
+    var histResults = histCount(time, flux, bins);
+    histResults.bincounts.splice(0,1); // remove first; changes the size of the array
+    histResults.avgBinFlux.splice(0,1); // remove first again; changes the size of the array
+    /* NOTE: I spent several hours debugging this; the original python did a slice, then pop
+        this ended up completely removing an entire bin and threw off all sorts of calculations
+        because array sizes didn't match up properly. The first bin should always be empty from
+        the way we find which bin things fall into - we look for the first index where the value
+        in bins is greater than the time, therefore since bins[0] is smaller than the first time
+        bins[1] is always the first element capable of being larger than time[0]
     */
     
-    // This following section is translated directly from Python AstroDev; there are no comments 
-    //     because I'm not entirely certain what the intermediate steps do, just their final result
-    var b = [];
-    var counterBin = 0;
-    for (i = 0; i < 40; i++) {
-        var sumTemp = [];
-        var tempBinArr = [];
-        counterR = 0;
-        histResults.inds.forEach(function(element) {
-            if (element == i) {
-                tempBinArr.push(y[counterR]);
-            }
-            counterR++;
-        });
-        sumTemp = tempBinArr.reduce((a, b) => a + b, 0);
-        b.push(sumTemp/histResults.bincounts[counterBin]);
-        counterBin++;
-    }
     return {
-        b: b,
+        avgBinFlux: histResults.avgBinFlux,
         inds : histResults.inds
     }
 }
@@ -206,22 +237,28 @@ function diff(inputArray) {
 //     it was difficult to read and I'm not convinced it would have returned the same results
 // *digitize doesn't do exactly the same thing as histc either, so there was a mess of python to compensate
 // THIS FUNCTION RETURNS AN OBJECT - the easiest way for returning multiple arrays, especially different sizes
-function histCount(values, bins) {
-    var inds = []; // same size as values (x); the index of the bin this value belongs in
-    var bincounts = Array(bins.length).fill(0); // same size as bins (gx); the number of values in this bin
+function histCount(times, flux, bins) {
+    var inds = []; // same size as values (x); the index of the bin this time value belongs in
+    var avgBinFlux = Array(bins.length).fill(0); // same size as bins(gx); the average flux value of this time bin
+    var bincounts = Array(bins.length).fill(0); // same size as bins (gx); the number of flux values in this bin
     // NOTE: new Array() is heavily frowned on by javascript "standards" **BUT** in this case we
     //     really need it to exactly match the length of bins while being initially full of 0's;
     //     this is one of the few properly justified reasons for using new Array(), because we aren't
     //     ever testing length, or iterating through the elements; it's a strictly indexed counter
 
-    for (i = 0; i < values.length; i++) {
+    for (i = 0; i < times.length; i++) {
         // find where bins[n] <= values[i] <= bins[n+1]; push the index and update the bincount
-        inds.push(bins.findIndex(x => values[i] <= x));
+        inds.push(bins.findIndex(x => times[i] <= x));
+        avgBinFlux[inds[i]] += flux[i];
         bincounts[inds[i]] += 1;
+    }
+    for (i = 0; i < avgBinFlux.length; i++) {
+        avgBinFlux[i] = avgBinFlux[i]/bincounts[i];
     }
     return {
         inds: inds,
-        bincounts: bincounts
+        bincounts: bincounts,
+        avgBinFlux: avgBinFlux
     }
 }
 

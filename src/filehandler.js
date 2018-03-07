@@ -76,6 +76,7 @@ function csvtojson(csv) {
     window.targetTime = [];
     window.targetFlux = [];
     window.useDFT = false;
+    window.phaseFrequency = 5;
     switch(allTextLines[0].split(' ')[0]) {
         // different data sources may have special case input formats to deal with
             case "Kepler":
