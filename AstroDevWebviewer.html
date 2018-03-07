@@ -82,10 +82,13 @@
                     <label id="dfftbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDFT()">DFFT</label>
                     <label id="phasebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
                     <label id="detrendbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="detrend()">Detrend</label>
-                    <label id="blsbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">BLS</label>
+                    <!-- <label id="blsbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">BLS</label> -->
                     <label id="timebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
             </span>
-            <div class="pa3">Phase Frequency: <input type="number" name="newphasefreq" style="width:3em" value="5" onchange="updatePhaseFrequency(this.value)"></div>
+            <div class="pa3"></div>
+            <div>Phase Frequency: <input type="number" name="newphasefreq" style="width:3em" value="5" onchange="updatePhaseFrequency(this.value)"></div>
+            <div class="pa1"></div>
+            <div><input type="checkbox" name="useDetrend" onchange="updateUseDetrended()">Use detrended flux</div>
             
             <div class="pa3"></div> <!-- more hack-y layout padding -->
             <label for="csvFileInput" class="mw5 mw7-ns center ba b--light-silver pa3 custom-file-upload">Select New File</label>

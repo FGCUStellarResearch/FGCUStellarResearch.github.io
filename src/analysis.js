@@ -9,7 +9,7 @@ function clearWindowVariables() {
 
 }
 
-function discreteFastFourier(times, fluxes, freq) {
+function discreteFourierTransform(times, fluxes, freq) {
     //performs the DFT on the original flux data
     var xMean = math.sum(fluxes) / fluxes.length;
     var LSF = numeric.solve(targetData); // Least-Squares on the original flux
@@ -120,9 +120,9 @@ function calculateDetrend() {
 function calculateDFT() {
     // placeholder
     // Don't use FFT from numericJS package - probably makes bad assumptions
-    alert("DFFT may take a few seconds!");
+    alert("DFFT may take several seconds - Please be patient!");
     var frequency = numeric.linspace(0.0225, 1.0, 9775); // equivalent? to numpy: arange(0.0225,1.0,0.001)
-    var powers = discreteFastFourier(targetTime,targetFlux,frequency);
+    var powers = discreteFourierTransform(targetTime,targetFlux,frequency);
     graphData = [];
     for (i = 0; i < powers.X.length; i ++) {
         graphData.push([+freq[i],+powers.X[i]]);
@@ -134,20 +134,53 @@ function detrend() {
     // calls calculateDetrend to do the heavy lifting math, then creates the format the
     // graphing extention needs to show the outcome
     var detrending = calculateDetrend();
+    detrendedFlux = detrending.fluxesDFT;
     graphData = [];
     for (i = 0; i < detrending.targetTime.length - 1; i++) {
-        graphData.push([+detrending.targetTime[i],+detrending.fluxesDFT[i]]);
+        graphData.push([+detrending.targetTime[i],+detrendedFlux[i]]);
     }
     submit(graphData,'Time','Counts');
 }
 
 function calculatePhase() {
     // placeholder
+    var period = 1/phaseFrequency;
+    var phase = [];
+    var time = targetTime;
+    for (i = 0; i < time.length; i++) {
+        phase.push((time[i]/period) % 1);
+    }
+    var phaseTwo = [];
+    for (i = 0; i < phase.length; i++) {
+        phaseTwo.push(phase[i]+1);
+    }
+
+    if (useDFT && (detrendedFlux.length != 0)) {
+        fluxesHere = detrendedFlux;
+    }
+    else { fluxesHere = targetFlux}
+
+    // NOTE: these might be more efficiently done but this follows the standards for graphing already set
+    graphData = [];
+    for (i = 0; i < phase.length; i++) {
+        graphData.push([+phase[i], +fluxesHere[i]]);
+    }
+    graphData2 = [];
+    for (i = 0; i < phaseTwo.length; i++) {
+        graphData2.push([+phaseTwo[i], +fluxesHere[i]]);
+    }
+
+    submitScatter(graphData,graphData2,'Phase', 'Counts');
 }
 
 function updatePhaseFrequency(value) {
     phaseFrequency = value;
     console.log("window.phaseFrequency is now: " + phaseFrequency);
+}
+
+function updateUseDetrended() {
+    useDFT = !useDFT;
+    console.log("window.useDFT is now: ", useDFT);
 }
 
 function calculateBLS() {

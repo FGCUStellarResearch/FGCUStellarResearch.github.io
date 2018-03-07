@@ -75,6 +75,7 @@ function csvtojson(csv) {
     window.targetData = [];
     window.targetTime = [];
     window.targetFlux = [];
+    window.detrendedFlux = [];
     window.useDFT = false;
     window.phaseFrequency = 5;
     switch(allTextLines[0].split(' ')[0]) {
