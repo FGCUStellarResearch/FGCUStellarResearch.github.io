@@ -74,7 +74,7 @@ function calculateDetrend() {
             if (numeric.isNaN(binFlux.avgBinFlux[i])) binFlux.avgBinFlux[i] = meanFlux;
         }
 
-        pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
+        pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(tempTime);
 
         fluxesDFT = [];
         for (i = 0; i < binFlux.inds.length; i++) {
@@ -96,7 +96,7 @@ function calculateDetrend() {
         tempFlux = fluxesDFT.filter(fluxes => math.abs(fluxes) < (3*tsStd));
     }
 
-    pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(numeric.linspace(binTime[0],binTime[binTime.length - 1],DEFAULT_BIN_SIZE));
+    pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(tempTime);
     fluxesDFT = [];
     for (i = 0; i < dataFlux.length; i++) {
         fluxesDFT.push(dataFlux[i] - pOut[binFlux.inds[i]]);

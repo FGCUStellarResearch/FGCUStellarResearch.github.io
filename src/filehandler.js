@@ -103,7 +103,7 @@ function csvtojson(csv) {
         dataline = allTextLines[i].split(',');
         targetData.push([+dataline[0],+dataline[1]]);
         targetTime.push(+dataline[0]);
-        targetFlux.push(+dataline[2]); 
+        targetFlux.push(+dataline[1]); 
         // NOTE: using dataline[2] because it's going into the detrender later
         // TODO: needs updating, as different sources may different data layouts, so this hardcoding isn't ideal
     }
