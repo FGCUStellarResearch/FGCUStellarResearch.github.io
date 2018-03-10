@@ -144,7 +144,7 @@ function detrend() {
 
 function calculatePhase() {
     // placeholder
-    var period = 1/phaseFrequency;
+    var period = phaseFrequency;// TODO: see note in update
     var phase = [];
     var time = targetTime;
     for (i = 0; i < time.length; i++) {
@@ -175,6 +175,7 @@ function calculatePhase() {
 
 function updatePhaseFrequency(value) {
     phaseFrequency = value;
+    // TODO: Change to phasePeriod
     console.log("window.phaseFrequency is now: " + phaseFrequency);
 }
 
