@@ -42,9 +42,78 @@ function submit(data,labelX,labelY) {
         },
         series: [{
             
-            name: targetSource + ' ID: ' + targetID,
+            //name: targetSource + ' ID: ' + targetID,
             data: data
-        }]
+        }],
+
+
+        // the following was taken from a stackoverflow and so the code formatting is broken but the output looks good so ¯\_(ツ)_/¯
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: [{
+                    textKey: "printChart",
+                    onclick: function () {
+                        var titulo = this.options.subtitle.text;
+                        this.setTitle(null, { text: ' ' });
+                        this.print();
+                        this.setTitle(null, { text: titulo });
+                    },
+                },
+                {
+                    separator:	true
+                },	
+                {
+                        text: 'Export to PNG',
+                        onclick: function() {
+                            this.exportChart({
+                                type: "image/png"
+                            }, {
+                                subtitle: {
+                                    text: ''
+                                }});
+                        },
+                        separator: false
+                    }, {
+                textKey: "downloadJPEG",
+                onclick: function() {
+                    this.exportChart({
+                        type: "image/jpeg"
+                    }, {
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+            }, {
+                textKey: "downloadPDF",
+                onclick: function() {
+                    this.exportChart({
+                        type: "application/pdf"
+                    }, {
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+            }, {
+                textKey: "downloadSVG",
+                onclick: function() {
+                    this.exportChart({
+                        type: "image/svg+xml"
+                    }, {
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+                        
+                        
+                        
+                    }]
+                }
+            }
+        }
     });
 
     

@@ -77,7 +77,8 @@ function csvtojson(csv) {
     window.targetFlux = [];
     window.detrendedFlux = [];
     window.useDFT = false;
-    window.phaseFrequency = 5;
+    document.getElementById("useDetrend").checked = false;
+    window.phasePeriod = 5;
     switch(allTextLines[0].split(' ')[0]) {
         // different data sources may have special case input formats to deal with
             case "Kepler":
@@ -92,6 +93,8 @@ function csvtojson(csv) {
             
             default:
                 // TODO: should probably throw an error if unrecognized source, as it'll fail regardless (and probably not gracefully)
+                targetSource = "Kepler";
+                targetID = "";
                 break;
         }
     while(isNaN(allTextLines[i].split(',')[0]) || isNaN(allTextLines[i+1].split(',')[0]) || allTextLines[i].split(',') == "") {
@@ -101,9 +104,9 @@ function csvtojson(csv) {
     }
     for (; i < allTextLines.length - 1; i++) {
         dataline = allTextLines[i].split(',');
-        targetData.push([+dataline[0],+dataline[1]]);
+        targetData.push([+dataline[0],+dataline[2]]);
         targetTime.push(+dataline[0]);
-        targetFlux.push(+dataline[1]); 
+        targetFlux.push(+dataline[2]); 
         // NOTE: using dataline[2] because it's going into the detrender later
         // TODO: needs updating, as different sources may different data layouts, so this hardcoding isn't ideal
     }

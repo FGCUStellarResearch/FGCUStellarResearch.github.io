@@ -15,9 +15,17 @@
     <!-- Highcharts JS resources -->
     <script src="./lib/highcharts.js"></script>
     <script src="./lib/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
     <script src="./lib/data.js"></script>
     <!-- JQuery is important -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Math related JS libs to handle what was previously calculated with numpy/scipy -->
+    <script src="./lib/math.min.js"></script>
+    <script src='./lib/numeric-1.2.6.min.js'></script>
+    <script src="./lib/regression.js"></script>
+
+    <!-- The source for all my pain and woe. Oh and also the calculations we're doing, incidentally -->
+    <script type="text/javascript" src="./src/analysis.js"></script>
     
     <style>
         
@@ -30,6 +38,11 @@
             display: inline-block;
             padding: 6px 12px;
             cursor: pointer;
+        }
+
+        label {
+            cursor: pointer;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -52,7 +65,17 @@
     <div id="graph-area">
         <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
             <div id="container">
-                <script type="text/javascript" src="./src/4385148timeseries.js"></script>
+                <script type="text/javascript" src="./src/filehandler.js">
+                    function handleSampleFile() {
+                        // Check for the various File API support.
+                        if (window.FileReader) {
+                            // FileReader are supported.
+                            getAsText("./data/testfile01_ts.out");
+                        } else {
+                            alert('Your browser is not supported for this tool. Try updating or using Chrome or Firefox instead');
+                        }
+                    }
+                </script>
                 <small class="f7 db tc silver">Graph data display</small>
             </div>
         </section>
@@ -64,13 +87,22 @@
             <span>
                 <!-- with input that accepts one file -->
                 <script type="text/javascript" src="./src/analysis.js"></script>
-                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="discreteFastFourier()">DFFT</label>
-                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
-                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDetrend()">Detrend</label>
-                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateBLS()">BLS</label>
-                    <label id="DFFT" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
+                    <label id="dfftbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="discreteFastFourier()">DFT</label>
+                    <label id="phasebuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
+                    <label id="detrendbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDetrend()">Detrend</label>
+                    <!-- <label id="blsbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateBLS()">BLS</label> -->
+                    <label id="timebuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
                     
             </span>
+            <div class="pa3"></div>
+            <div>Phase Period: <input type="number" name="newphasefreq" style="width:3em" value="5" onchange="updatePhasePeriod(this.value)"></div>
+            <div class="pa1"></div>
+            <div><input type="checkbox" name="useDetrend" onchange="updateUseDetrended()">Use detrended flux</div>
+            
+            <div class="pa3"></div> <!-- more hack-y layout padding -->
+            <label for="returntosender" class="mw5 mw7-ns center ba b--light-silver pa3  br-pill">
+                <a href="/AstroDevWebviewer.html" class="no-underline">Return to Full Webviewer</a>
+            </label>
         </section>
     </div>
            

@@ -10,59 +10,45 @@ function clearWindowVariables() {
 }
 
 function discreteFourierTransform(times, fluxes, freq) {
-    //performs the DFT on the original flux data
-    var xMean = math.sum(fluxes) / fluxes.length;
-    var LSF = numeric.solve(targetData); // Least-Squares on the original flux
-    // this and the for loop coming up take the place of the scipy signal.detrend?
-    // TODO: maybe use numeric.solve instead of linear - cut down on packages
-    var x = fluxes;
-    for (i = 0; i < fluxes.length; i++) {
-        x -= LSF[0]*times[i] + LSF[1];
-        x = x/xMean;
-    }
+    var X = []; // our result if we ever get there omg this is really awful
+    //performs the DFT on the original/detrended flux data
+    var multiplier = 2 * Math.PI;
+    // properly predefine the multiplier matrix because it's just gonna be a nightmare
+    var dotMatrix = numeric.rep([freq.length, times.length],0);
+    var W1 = numeric.rep([freq.length, times.length],0);
+    var W2 = numeric.rep([freq.length, times.length],0);
 
-    var ttt = numeric.transpose(times);
-    var concArr = numeric.tensor(freq,ttt);
-    var scalar = -2 * math.PI * math.sqrt(-1);
-    var w = numeric.exp(math.dotMultiply(scalar, concArr));
-
-    var sumArr = numeric.rep([freq.length,times.length],0) // equivalent? to numpy/matlab zeros()
-    var counterX = 0;
-    for (i=1; i < freq.length; i++) {
-        var counterY = 0;
-        for (j = 1; j < times.length; j++) {
-            sumArr[counterX][counterY] = x[j] * w[i,j];
-            counterY += 1;
-        }
-        counterX += 1;
-    }
-    // NOTE: is this right? this seems really weird. why does the loop start at 1? why are the
-    //     the counters x and y not the same as i and j?? what? this whole thing concerns me greatly
-
-    // numpy.sum(axis=1) sums across rows; there's almost certainly a way to do this in JS
-    // but I'm pretty sure the function boils down to a (more efficient?) version of this:
-    var X = numeric.rep([freq.length],0);
     for (i = 0; i < freq.length; i++) {
+        sumX1 = 0;
+        sumX2 = 0;
         for (j = 0; j < times.length; j++) {
-            X[i] += sumArr[i][j];
+            // matrix multiplication and it's gross yo
+            dotMatrix[i][j] = freq[i] * times[j] * multiplier;
+            W1[i][j] = Math.cos(dotMatrix[i][j]);
+            W2[i][j] = Math.sin(dotMatrix[i][j]);
+            sumX1 += W1[i][j] * fluxes[j];
+            sumX2 += W2[i][j] * fluxes[j];
         }
+        // console.log(X.push(Math.sqrt(Math.pow(sumX1, 2) + Math.pow(sumX2, 2))));
+        // use above to debug - it's an easy way to see how far into the loop you get. yes it's a print statement debug, fight me
+        X.push(Math.sqrt(Math.pow(sumX1, 2) + Math.pow(sumX2, 2))); 
     }
-    X = numeric.pow(numeric.abs(X),2);
+    // one of the worst things I've ever done, really
+
     return X;
 }
 
 function calculateDetrend() {
     //placeholder
     tempFlux = targetFlux;
-    dataFlux = targetFlux;
     tempTime = targetTime;
     meanFlux = math.mean(targetData);
     var binFlux;
-    function tester(element) {
-        return math.abs(element) > 3 * tsStd
+    function removeOutlier(array) {
+        return array.filter(element => math.abs(element) < 3 * tsStd)
     }
 
-    counter = tempTime.length;
+    var counter = 1; // the loop needs to run at least once
     while (counter > 0) {
         // create time bins
         binTime = numeric.linspace(tempTime[0],tempTime[tempTime.length - 1],DEFAULT_BIN_SIZE);
@@ -77,29 +63,32 @@ function calculateDetrend() {
         pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(tempTime);
 
         fluxesDFT = [];
-        for (i = 0; i < binFlux.inds.length; i++) {
-            fluxesDFT.push(tempFlux[i] - pOut[binFlux.inds[i]]);
+        for (i = 0; i < tempFlux.length; i++) {
+            fluxesDFT.push(tempFlux[i] - pOut[i]);
         }
         tsStd = math.std(fluxesDFT);
 
-        counter = fluxesDFT.findIndex(tester); // returns -1 when finished, exiting while loop
         
         // NOTE: javascript makes this condition a mess, because you're dealing with too many arrays
         //       it's possible it can be done more efficiently, but this seemed readable 
-        temp = [];
+        checkTime = [];
+        checkFlux = [];
         for (i = 0; i < tempTime.length; i++) {
             if (math.abs(fluxesDFT[i]) < (3*tsStd)) {
-                temp.push(tempTime[i]);
+                checkTime.push(tempTime[i]);
+                checkFlux.push(tempFlux[i]);
             }
         }
-        tempTime = temp;
-        tempFlux = fluxesDFT.filter(fluxes => math.abs(fluxes) < (3*tsStd));
+        counter = tempTime.length - checkTime.length;
+        // what this ought to mean is that, if no elements are removed this loop as outliers, the loop ends (counter == 0)
+        tempTime = checkTime;
+        tempFlux = checkFlux;
     }
 
-    pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(tempTime);
+    pOut = numeric.spline(binTime,binFlux.avgBinFlux).at(targetTime);
     fluxesDFT = [];
-    for (i = 0; i < dataFlux.length; i++) {
-        fluxesDFT.push(dataFlux[i] - pOut[binFlux.inds[i]]);
+    for (i = 0; i < targetFlux.length; i++) {
+        fluxesDFT.push(targetFlux[i] - pOut[i]);
     }
 
     fDFTMean = nanmean(fluxesDFT);
@@ -108,6 +97,12 @@ function calculateDetrend() {
             fluxesDFT[i] = fDFTMean;
         }
     }
+    
+    graphData = [];
+    for (i = 0; i < pOut.length - 1; i++) {
+        graphData.push([+targetTime[i],+pOut[i]]);
+    }
+    submit(graphData,'Time','Counts');
 
     return {
         targetTime: targetTime,
@@ -122,10 +117,11 @@ function calculateDFT() {
     // Don't use FFT from numericJS package - probably makes bad assumptions
     alert("DFFT may take several seconds - Please be patient!");
     var frequency = numeric.linspace(0.0225, 1.0, 9775); // equivalent? to numpy: arange(0.0225,1.0,0.001)
-    var powers = discreteFourierTransform(targetTime,targetFlux,frequency);
+    var whichFlux = (useDFT && (detrendedFlux.length > 0)) ? detrendedFlux: targetFlux;
+    var powers = discreteFourierTransform(targetTime,whichFlux,frequency);
     graphData = [];
-    for (i = 0; i < powers.X.length; i ++) {
-        graphData.push([+freq[i],+powers.X[i]]);
+    for (i = 0; i < powers.length; i ++) {
+        graphData.push([+frequency[i],+powers[i]]);
     }
     submit(graphData, 'Frequency', 'Power');
 }
@@ -143,12 +139,10 @@ function detrend() {
 }
 
 function calculatePhase() {
-    // placeholder
-    var period = phaseFrequency;// TODO: see note in update
     var phase = [];
     var time = targetTime;
     for (i = 0; i < time.length; i++) {
-        phase.push((time[i]/period) % 1);
+        phase.push((time[i]/phasePeriod) % 1);
     }
     var phaseTwo = [];
     for (i = 0; i < phase.length; i++) {
@@ -173,10 +167,9 @@ function calculatePhase() {
     submitScatter(graphData,graphData2,'Phase', 'Counts');
 }
 
-function updatePhaseFrequency(value) {
-    phaseFrequency = value;
-    // TODO: Change to phasePeriod
-    console.log("window.phaseFrequency is now: " + phaseFrequency);
+function updatePhasePeriod(value) {
+    phasePeriod = value;
+    console.log("window.phaseFrequency is now: " + phasePeriod);
 }
 
 function updateUseDetrended() {
