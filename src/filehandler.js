@@ -11,6 +11,8 @@ function handleFiles(files) {
 
 function getAsText(fileToRead) {
     var reader = new FileReader();
+    // Get the name of the file so we know what the target is
+    window.targetFilename = fileToRead.name;
     // Read file into memory as UTF-8      
     reader.readAsText(fileToRead);
     // Handle errors load
@@ -70,15 +72,17 @@ function csvtojson(csv) {
              ought to be reserved for static values. Currently this is a "good enough" implementation 
     */
     // TODO: if these are going to be globals, they should probably be declared in a constructor
+    //       and maybe they really shouldn't be globals...
     window.targetSource = "";
     window.targetID = "";
-    window.targetData = [];
     window.targetTime = [];
     window.targetFlux = [];
     window.detrendedFlux = [];
+    window.DFTtimeseries = [];
+    window.DFTdetrendedseries = [];
     window.useDFT = false;
     document.getElementById("useDetrend").checked = false;
-    window.phasePeriod = 5;
+    window.phaseFreq = 5;
     switch(allTextLines[0].split(' ')[0]) {
         // different data sources may have special case input formats to deal with
             case "Kepler":
@@ -86,15 +90,20 @@ function csvtojson(csv) {
                 targetID = allTextLines[2].split(/[[\]]{1,2}/)[1];
                 break;
 
-            case "": // K2
-                // placeholder
+            // case "": // K2
+            //     // placeholder
 
-                break;
+            //     break;
             
             default:
                 // TODO: should probably throw an error if unrecognized source, as it'll fail regardless (and probably not gracefully)
                 targetSource = "Kepler";
-                targetID = "";
+                try {
+                    targetID = targetFilename.split('ktwo')[1].split('-')[0];
+                }
+                catch (anyError) {
+                    targetID = "ID unknown: " + targetFilename;
+                }
                 break;
         }
     while(isNaN(allTextLines[i].split(',')[0]) || isNaN(allTextLines[i+1].split(',')[0]) || allTextLines[i].split(',') == "") {
@@ -104,22 +113,19 @@ function csvtojson(csv) {
     }
     for (; i < allTextLines.length - 1; i++) {
         dataline = allTextLines[i].split(',');
-        targetData.push([+dataline[0],+dataline[2]]);
         targetTime.push(+dataline[0]);
         targetFlux.push(+dataline[2]); 
         // NOTE: using dataline[2] because it's going into the detrender later
         // TODO: needs updating, as different sources may different data layouts, so this hardcoding isn't ideal
     }
     lastline = allTextLines[i].split(',');
-    targetData.push([+lastline[0],+lastline[1]]);
     console.log(targetSource + targetID); // for debugging; never seen by users
 
+    // NOTE: adding this small function to normalize flux; divides all target data values by the median flux value
+    //       it might be more appropriate in analysis.js instead, but it should be done before any analysis takes place
+    window.medianFlux = math.median(targetFlux);
+    targetFlux = targetFlux.map(x => x / medianFlux);
 
-/*  NOTE: full disclosure here, sort() causes an issue where the first index, targetData[0][i] is 0,NaN
-    the shift() removes that 0,NaN entry, but it's likely that a point or two of data are being lost in translation
-    the sort() function is required because without it, the graph refuses to display; sort() is the lesser evil 
-*/
-    targetData.sort(sortFunction).shift();
     timeseries();
 }
 
@@ -130,4 +136,52 @@ function sortFunction(a, b) {
     else {
         return (a[0] < b[0]) ? -1 : 1;
     }
+}
+
+function asciiOutput () {
+    var textFile = null, 
+      makeTextFile = function(data) {
+        var dataBlob = new Blob([data], {type: 'text/plain'});
+
+        if (textFile !== null) {
+            window.URL.revokeObjectURL(textFile);
+        }
+
+        textFile = window.URL.createObjectURL(dataBlob);
+        return textFile;
+    };
+
+    var create = document.getElementById(),
+      textbox = document.getElementById();
+
+      create.addEventListener();
+}
+
+function outputCSV() {
+    // create array of arrays - reverse of the reading in function
+    dataline = [];
+    // for () {
+    //     // push the values for the calculated variables (all in the window/global, unless that changes)
+    // }
+}
+
+function csvworksheet () {
+    var test_array = [["name1", 2, 3], ["name2", 4, 5], ["name3", 6, 7], ["name4", 8, 9], ["name5", 10, 11]];
+
+	var csvContent = "data:text/csv;charset=utf-8,";
+	$("#pressme").click(function(){
+		test_array.forEach(function(infoArray, index){
+			dataString = infoArray.join(",");
+			csvContent += dataString+ "\n";
+		});
+
+		var encodedUri = encodeURI(csvContent);
+		
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click(); // This will download the data file named "my_data.csv".
+	});
 }

@@ -1,11 +1,17 @@
 // NOTE: in creating graphData before submitting, the unary operator '+' just makes sure that
-//     the things being pushed to the array is, in fact, a number instead of a function or something
+//     the thing being pushed to the array is, in fact, a number instead of a function or something
 function submit(data,labelX,labelY) {
 
     Highcharts.chart('container', {
 
         chart: {
-            zoomType: 'x'
+            zoomType: 'x',
+            marginTop: 100,
+            marginRight: 50
+        },
+        mapNavigation: {
+            enabled: true,
+            enableButtons: false
         },
         title: {
             text: 'AstroDev Webviewer'
@@ -21,7 +27,9 @@ function submit(data,labelX,labelY) {
             enabled: true
         },
         tooltip: {
-            enabled: false
+            enabled: true,
+            useHtml: true,
+            pointFormat:'<tr><td style="color: {series.color}">' + labelY + ': </td>' + '<td style="text-align: right"><b>{point.y} </b></td></tr>'
         },
         xAxis: {
             title: {
@@ -33,6 +41,16 @@ function submit(data,labelX,labelY) {
                 text: labelY
             }
         },
+        legend: {
+            // labelFormatter: function () {
+            //     return this.name
+            // }, 
+            layout: 'vertical',
+            align: 'center',
+            title: {
+                text: 'Median Flux: ' + round(medianFlux, 1) + '<br/>Estimated Noise: ' + round((getNoise() * 1000000), 0) + 'ppm'
+            }
+        },
         plotOptions: {
             series: {
                 marker: {
@@ -41,14 +59,15 @@ function submit(data,labelX,labelY) {
             }
         },
         series: [{
-            
-            //name: targetSource + ' ID: ' + targetID,
+            name: 'EPIC ' + targetID, // targetSource +  <= in case we get to a point where multiple input sources are being used
             data: data
         }],
 
 
         // the following was taken from a stackoverflow and so the code formatting is broken but the output looks good so ¯\_(ツ)_/¯
         exporting: {
+            sourceWidth: 1250,
+            sourceHeight: 400,
             buttons: {
                 contextButton: {
                     menuItems: [{
@@ -69,6 +88,9 @@ function submit(data,labelX,labelY) {
                             this.exportChart({
                                 type: "image/png"
                             }, {
+                                title: {
+                                    text: ''
+                                },
                                 subtitle: {
                                     text: ''
                                 }});
@@ -80,6 +102,9 @@ function submit(data,labelX,labelY) {
                     this.exportChart({
                         type: "image/jpeg"
                     }, {
+                        title: {
+                            text: ''
+                        },
                         subtitle: {
                             text: ''
                         }
@@ -91,6 +116,9 @@ function submit(data,labelX,labelY) {
                     this.exportChart({
                         type: "application/pdf"
                     }, {
+                        title: {
+                            text: ''
+                        },
                         subtitle: {
                             text: ''
                         }
@@ -102,6 +130,9 @@ function submit(data,labelX,labelY) {
                     this.exportChart({
                         type: "image/svg+xml"
                     }, {
+                        title: {
+                            text: ''
+                        },
                         subtitle: {
                             text: ''
                         }
@@ -136,6 +167,16 @@ function submitScatter(data, data2, labelX, labelY) {
                 'Pinch in the plot area to zoom in'
                 // changes for which device is used to view
         },
+        legend: {
+            // labelFormatter: function () {
+            //     return this.name
+            // }, 
+            layout: 'vertical',
+            align: 'center',
+            title: {
+                text: 'Median Flux: ' + round(medianFlux, 1) + '<br/>Estimated Noise: ' + round((getNoise() * 1000000), 0) + 'ppm'
+            }
+        },
         xAxis: {
             title: {
                 enabled: true,
@@ -148,15 +189,106 @@ function submitScatter(data, data2, labelX, labelY) {
             }
         },
         series: [{
-            name: 'Phase 1',
+            showInLegend: false,
+            name: 'Phase',
             color: 'rgba(223, 83, 83, .5)',
+            marker: {
+                symbol: 'circle'
+            },
             data: data
     
         }, {
+            showInLegend: false,
             name: 'Phase 2',
-            color: 'rgba(119, 152, 191, .5)',
+            color: 'rgba(223, 83, 83, .5)',
+            marker: {
+                symbol: 'circle'
+            },
             data: data2
-        }]
+        }],
+
+
+        // the following was taken from a stackoverflow and so the code formatting is broken but the output looks good so ¯\_(ツ)_/¯
+        exporting: {
+            sourceWidth: 1250,
+            sourceHeight: 400,
+            buttons: {
+                contextButton: {
+                    menuItems: [{
+                    textKey: "printChart",
+                    onclick: function () {
+                        var titulo = this.options.subtitle.text;
+                        this.setTitle(null, { text: ' ' });
+                        this.print();
+                        this.setTitle(null, { text: titulo });
+                    },
+                },
+                {
+                    separator:	true
+                },	
+                {
+                        text: 'Export to PNG',
+                        onclick: function() {
+                            this.exportChart({
+                                type: "image/png"
+                            }, {
+                                title: {
+                                    text: ''
+                                },
+                                subtitle: {
+                                    text: ''
+                                }});
+                        },
+                        separator: false
+                    }, {
+                textKey: "downloadJPEG",
+                onclick: function() {
+                    this.exportChart({
+                        type: "image/jpeg"
+                    }, {
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+            }, {
+                textKey: "downloadPDF",
+                onclick: function() {
+                    this.exportChart({
+                        type: "application/pdf"
+                    }, {
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+            }, {
+                textKey: "downloadSVG",
+                onclick: function() {
+                    this.exportChart({
+                        type: "image/svg+xml"
+                    }, {
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        }
+                    });
+                }
+                        
+                        
+                        
+                    }]
+                }
+            }
+        }
     });
     
 }

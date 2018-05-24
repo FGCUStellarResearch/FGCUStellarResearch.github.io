@@ -42,7 +42,7 @@ function calculateDetrend() {
     //placeholder
     tempFlux = targetFlux;
     tempTime = targetTime;
-    meanFlux = math.mean(targetData);
+    meanFlux = math.mean(targetFlux);
     var binFlux;
     function removeOutlier(array) {
         return array.filter(element => math.abs(element) < 3 * tsStd)
@@ -98,11 +98,12 @@ function calculateDetrend() {
         }
     }
     
-    graphData = [];
-    for (i = 0; i < pOut.length - 1; i++) {
-        graphData.push([+targetTime[i],+pOut[i]]);
-    }
-    submit(graphData,'Time','Counts');
+    // for debugging purposes; was used to verify that the bins were working correctly
+    // graphData = [];
+    // for (i = 0; i < pOut.length - 1; i++) {
+    //     graphData.push([+targetTime[i],+pOut[i]]);
+    // }
+    // submit(graphData,'Time','Counts'); 
 
     return {
         targetTime: targetTime,
@@ -115,15 +116,36 @@ function calculateDetrend() {
 function calculateDFT() {
     // placeholder
     // Don't use FFT from numericJS package - probably makes bad assumptions
-    alert("DFFT may take several seconds - Please be patient!");
-    var frequency = numeric.linspace(0.0225, 1.0, 9775); // equivalent? to numpy: arange(0.0225,1.0,0.001)
-    var whichFlux = (useDFT && (detrendedFlux.length > 0)) ? detrendedFlux: targetFlux;
-    var powers = discreteFourierTransform(targetTime,whichFlux,frequency);
-    graphData = [];
-    for (i = 0; i < powers.length; i ++) {
-        graphData.push([+frequency[i],+powers[i]]);
+    if ((DFTtimeseries.length > 0) && !(useDFT)) {
+        graphData = DFTtimeseries;
     }
-    submit(graphData, 'Frequency', 'Power');
+    else if (useDFT && (DFTdetrendedseries.length > 0)) {
+        graphData = DFTdetrendedseries;
+    }
+    else {
+        var addInfo = ""
+        if (detrendedFlux.length == 0 && useDFT) {
+            addInfo = "\nData is being detrended first!";
+            var detrending = calculateDetrend();
+            detrendedFlux = detrending.fluxesDFT;
+        }
+        
+        alert("DFT may take several seconds - Please be patient!" + addInfo);
+        var frequency = numeric.linspace(0.0225, 1.0, 9775); // equivalent? to numpy: arange(0.0225,1.0,0.001)
+        var whichFlux = (useDFT) ? detrendedFlux: targetFlux;
+        var powers = discreteFourierTransform(targetTime,whichFlux,frequency);
+        var scale = 2/targetTime.length;
+        powers = powers.map(x => x * scale);
+        graphData = [];
+        for (i = 0; i < powers.length; i ++) {
+            graphData.push([+frequency[i],+powers[i]]);
+        }
+        if (useDFT) DFTdetrendedseries = graphData;
+        else DFTtimeseries = graphData;
+    } // end if DFT was already run
+    //graphData = (useDFT && (DFTdetrendedseries > 0)) ? DFTdetrendedseries: DFTtimeseries;
+    
+    submit(graphData, 'Frequency', 'Amplitude');
 }
 
 function detrend() {
@@ -131,18 +153,19 @@ function detrend() {
     // graphing extention needs to show the outcome
     var detrending = calculateDetrend();
     detrendedFlux = detrending.fluxesDFT;
-    graphData = [];
+    detrendGraphData = [];
     for (i = 0; i < detrending.targetTime.length - 1; i++) {
-        graphData.push([+detrending.targetTime[i],+detrendedFlux[i]]);
+        detrendGraphData.push([+detrending.targetTime[i],+detrendedFlux[i]]);
     }
-    submit(graphData,'Time','Counts');
+    submit(detrendGraphData,'Time','Detrended Relative Flux');
 }
 
 function calculatePhase() {
     var phase = [];
+    var period = 1/phaseFreq;
     var time = targetTime;
     for (i = 0; i < time.length; i++) {
-        phase.push((time[i]/phasePeriod) % 1);
+        phase.push((time[i]/period) % 1);
     }
     var phaseTwo = [];
     for (i = 0; i < phase.length; i++) {
@@ -155,21 +178,21 @@ function calculatePhase() {
     else { fluxesHere = targetFlux}
 
     // NOTE: these might be more efficiently done but this follows the standards for graphing already set
-    graphData = [];
+    phaseGraphData1 = [];
     for (i = 0; i < phase.length; i++) {
-        graphData.push([+phase[i], +fluxesHere[i]]);
+        phaseGraphData1.push([+phase[i], +fluxesHere[i]]);
     }
-    graphData2 = [];
+    phaseGraphData2 = [];
     for (i = 0; i < phaseTwo.length; i++) {
-        graphData2.push([+phaseTwo[i], +fluxesHere[i]]);
+        phaseGraphData2.push([+phaseTwo[i], +fluxesHere[i]]);
     }
 
-    submitScatter(graphData,graphData2,'Phase', 'Counts');
+    submitScatter(phaseGraphData1,phaseGraphData2,'Phase', 'Counts');
 }
 
 function updatePhasePeriod(value) {
-    phasePeriod = value;
-    console.log("window.phaseFrequency is now: " + phasePeriod);
+    phaseFreq = value;
+    console.log("window.phaseFrequency is now: " + phaseFreq);
 }
 
 function updateUseDetrended() {
@@ -187,7 +210,11 @@ function timeseries() {
         // use fluxes as calculated from DFT
         // ask why AD uses this in the DFT call - you can do the DFT on the DFT??
     //}
-    submit(targetData,'Time','Counts');
+    seriesGraphData = [];
+    for (i = 0; i < targetFlux.length - 1; i++) {
+        seriesGraphData.push([+targetTime[i],+targetFlux[i]]);
+    }
+    submit(seriesGraphData,'Time','Relative Flux');
 }
 
 
@@ -303,4 +330,20 @@ function nanmean(input) {
     }
     mean = sum / count;
     return mean;
+}
+
+// simple helper function to define decimal rounding with precision
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
+
+function getNoise() {
+    // if (useDFT) {
+    //     return math.std(diff(detrendedFlux));
+    // }
+    // else {
+    //     return math.std(diff(targetFlux));
+    // }
+    return math.std(diff(targetFlux));
 }
