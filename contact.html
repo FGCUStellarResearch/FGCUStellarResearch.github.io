@@ -12,6 +12,21 @@
     
     <!-- Tachyons CSS resources -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 50%;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
     
 </head>
 
@@ -30,25 +45,28 @@
             <a class="link dim gray f6 f5-l dib avenir" href="./contact.html" title="Contact">Contact</a>
         </div>
     </nav>
-
-    <section class="cf ph3 ph5-ns">
+    <section class="cf ph3 ph5-ns clearfix">
         <article class="mw6-ns br3 hidden ba b--black-10 mv4">
             <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">Contact Information</h1>
             <div class="pa3 bt b--black-10">
-                <p class="f6 f5-ns lh-copy measure">
-                <b>Derek Buzasi</b><br>
-                Whitaker Eminent Scholar<br>
-                Department of Chemistry and Physics <br>
-                Florida Gulf Coast University<br><br>
+                <p class="f6 f5-ns lh-copy clearfix">
+                        <section>
+                            <img src="http://tachyons.io/img/cat-720.jpg" width="500" alt="Closeup photo of a tabby cat yawning." style="float: left; padding-top: 3em; padding-left: 1em">
+                            <!-- https://www.w3schools.com/css/tryit.asp?filename=trycss_layout_float2 -->
+                        </section>
+                    <b>Derek Buzasi</b><br>
+                    Whitaker Eminent Scholar<br>
+                    Department of Chemistry and Physics <br>
+                    Florida Gulf Coast University<br><br>
 
-                10501 FGCU Blvd S <br>
-                Fort Myers, FL 33965 <br><br>
+                    10501 FGCU Blvd S <br>
+                    Fort Myers, FL 33965 <br><br>
 
 
-                Office: WH 224<br>
-                Phone: (239) 590-1285<br>
-                E-Mail: dbuzasi@fgcu.edu<br>
-                <br><br>
+                    Office: WH 224<br>
+                    Phone: (239) 590-7444<br>
+                    E-Mail: dbuzasi@fgcu.edu<br>
+                    <br><br>
 
 
                 </p>
