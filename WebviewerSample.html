@@ -29,6 +29,45 @@
     
     <style>
         
+        .dropbtn {
+            background-color: #2f7ed8;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #2f7ed8;
+        }
         input[type="file"]{
             display: none;
         }
@@ -39,6 +78,7 @@
             padding: 6px 12px;
             cursor: pointer;
         }
+
 
         label {
             cursor: pointer;
@@ -91,9 +131,15 @@
 
             <!-- Here is where the buttons to change the input for the sample tool go -->
 
-            <label for="returntosender" class="mw5 mw7-ns center ba b--light-silver pa3  br-pill">
-                <a href="http://astrodevwebviewer.com" class="no-underline">Go to Full Analysis Tool</a>
-            </label>
+            <div class="dropdown">
+                <button class="dropbtn">Choose Target</button>
+                <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                </div>
+            </div>  
+            
         </section>
     </div>
 
@@ -108,7 +154,7 @@
                     <p>If the Webviewer does not load, make sure your browser is up-to-date!</p>
 
                     <script type="text/javascript" src="./src/filehandler.js"></script>
-                    <label for="csvFileInput" class="custom-file-upload bg-white"> Select Sample </label>
+                    <label for="csvFileInput" class="custom-file-upload bg-white"> View Sample </label>
                     <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
            
                     <!-- <p><a href="/WebviewerSample.html">Click here</a> to see a sample</p> -->
@@ -120,6 +166,7 @@
 
 
 <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+        <a href="http://astrodevwebviewer.com" class="no-underline pa5">Go to Full Analysis Tool</a>
     <div class="tr mt3">
       <ul style="list-style: none;">
         <li><a href="http://www.fgcu.edu" class="f7 dib ph2 link blue dim">Florida Gulf Coast University</a></li>
