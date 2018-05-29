@@ -62,50 +62,59 @@
             <a class="link dim gray f6 f5-l dib no-underline avenir" href="./contact.html" title="Contact">Contact</a>
         </div>
     </nav>
-    <div id="graph-area">
+
+    <div id="graph-area" style="display:none">
         <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
-            <div id="container">
-                <script type="text/javascript" src="./src/filehandler.js">
-                    function handleSampleFile() {
-                        // Check for the various File API support.
-                        if (window.FileReader) {
-                            // FileReader are supported.
-                            getAsText("./data/testfile01_ts.out");
-                        } else {
-                            alert('Your browser is not supported for this tool. Try updating or using Chrome or Firefox instead');
-                        }
-                    }
-                </script>
+            <div id="container" style="visibility:hidden">
+                <script type="text/javascript" src="./src/submitgraph.js"></script>
                 <small class="f7 db tc silver">Graph data display</small>
             </div>
         </section>
     </div>
 
-    
     <div>
-        <section class="pv4 ph2 tc-l">
+        <section id="analysis" class="pv4 ph2 tc-l" style="visibility: hidden;">
             <span>
                 <!-- with input that accepts one file -->
-                <script type="text/javascript" src="./src/analysis.js"></script>
-                    <label id="dfftbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="discreteFastFourier()">DFT</label>
-                    <label id="phasebuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
-                    <label id="detrendbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDetrend()">Detrend</label>
-                    <!-- <label id="blsbuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateBLS()">BLS</label> -->
-                    <label id="timebuttonsample" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
-                    
+                    <label id="timebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
+                    <label id="detrendbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="detrend()">Detrend</label>
+                    <label id="phasebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculatePhase()">Phase</label>
+                    <label id="dfftbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="calculateDFT()">DFT</label>
+                    <!-- <label id="blsbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">BLS</label> -->
             </span>
             <div class="pa3"></div>
-            <div>Phase Period: <input type="number" name="newphasefreq" style="width:3em" value="5" onchange="updatePhasePeriod(this.value)"></div>
+            <div>Phase Frequency: <input type="number" name="newphasefreq" value="0.2" step=".00001" onchange="updatePhasePeriod(this.value);calculatePhase()"></div>
             <div class="pa1"></div>
-            <div><input type="checkbox" name="useDetrend" onchange="updateUseDetrended()">Use detrended flux</div>
+            <div><input type="checkbox" id="useDetrend" onchange="updateUseDetrended()">Use detrended flux</div>
             
             <div class="pa3"></div> <!-- more hack-y layout padding -->
+
+            <!-- Here is where the buttons to change the input for the sample tool go -->
+
             <label for="returntosender" class="mw5 mw7-ns center ba b--light-silver pa3  br-pill">
                 <a href="http://astrodevwebviewer.com" class="no-underline">Go to Full Analysis Tool</a>
             </label>
         </section>
     </div>
+
+    <div id="info-box">
+            <!-- placeholder -->
+            <div class="flex items-center justify-center pa4 bg-lightest-blue navy">
+                <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+                    <title>info icon</title>
+                    <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
+                </svg>
+                <span class="ml3 dark-blue avenir">
+                    <p>If the Webviewer does not load, make sure your browser is up-to-date!</p>
+
+                    <script type="text/javascript" src="./src/filehandler.js"></script>
+                    <label for="csvFileInput" class="custom-file-upload bg-white"> Select Sample </label>
+                    <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
            
+                    <!-- <p><a href="/WebviewerSample.html">Click here</a> to see a sample</p> -->
+                </span>
+            </div>
+    </div>
 
 </body>
 
