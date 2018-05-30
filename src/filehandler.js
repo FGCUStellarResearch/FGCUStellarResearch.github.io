@@ -9,6 +9,16 @@ function handleFiles(files) {
     }
 }
 
+function handleSampleFiles(path) {
+    // placeholder
+    var request = new XMLHttpRequest();
+    request.open('GET', path);
+    request.responseType = 'text';
+
+    request.onload = loadHandlerSample();
+    request.send();
+}
+
 function getAsText(fileToRead) {
     var reader = new FileReader();
     // Get the name of the file so we know what the target is
@@ -22,6 +32,12 @@ function getAsText(fileToRead) {
 
 function loadHandler(event) {
     var csv = event.target.result;
+    csvtojson(csv);
+}
+
+function loadHandlerSample(request) {
+    //
+    var csv = request.response;
     csvtojson(csv);
 }
 
