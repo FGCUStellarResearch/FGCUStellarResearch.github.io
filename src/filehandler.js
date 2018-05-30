@@ -10,12 +10,12 @@ function handleFiles(files) {
 }
 
 function handleSampleFiles(path) {
-    // placeholder
+    window.targetFilename = path.split('/')[1];
     var request = new XMLHttpRequest();
     request.open('GET', path);
     request.responseType = 'text';
 
-    request.onload = loadHandlerSample();
+    request.onload = loadHandlerSample;
     request.send();
 }
 
@@ -37,7 +37,7 @@ function loadHandler(event) {
 
 function loadHandlerSample(request) {
     //
-    var csv = request.response;
+    var csv = request.currentTarget.response;
     csvtojson(csv);
 }
 
@@ -68,7 +68,6 @@ function switchview() {
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
     document.getElementById("analysis").style.visibility="visible";
-    document.getElementById("csvFileInput").style.visibility="visible";
 }
 
 function setDetrended() {

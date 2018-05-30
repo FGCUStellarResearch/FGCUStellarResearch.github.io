@@ -113,7 +113,7 @@
     </div>
 
     <div>
-        <section id="analysis" class="pv4 ph2 tc-l" style="visibility: hidden;">
+        <section id="analysis" class="pv2 ph2 tc-l" style="visibility: hidden;">
             <span>
                 <!-- with input that accepts one file -->
                     <label id="timebutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">Timeseries</label>
@@ -130,15 +130,31 @@
             <div class="pa3"></div> <!-- more hack-y layout padding -->
 
             <!-- Here is where the buttons to change the input for the sample tool go -->
-
-            <div class="dropdown">
-                <button class="dropbtn">Choose Target</button>
-                <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+            <span>
+                <div class="ph3">
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out');switchview()">
+                        204193529: Eclipsing binary
+                    </label>
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo204328600-c15_target1_ts.out');switchview()">
+                        204328600: Rotating variable with flares
+                    </label>
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo211804579-c05_target1_ts.out');switchview()">
+                        211804579: Exoplanet candidate
+                    </label>
                 </div>
-            </div>  
+                <div class="ph3 mt2">
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo212152922-c05_target1_ts.out');switchview()">
+                        212152922: Exoplanet candidate
+                    </label>
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo249661654-c15_target1_ts.out');switchview()">
+                        249661654: Eclipsing binary
+                    </label>
+                    <label class="f6 br3 dib center ba b--light-blue pa3" onclick="handleSampleFiles('data/pipeout_ktwo250088244-c15_target1_ts.out');switchview()">
+                        250088244: Exoplanet candidate
+                    </label>
+                </div>
+            </span>
+
             
         </section>
     </div>
@@ -154,8 +170,9 @@
                     <p>If the Webviewer does not load, make sure your browser is up-to-date!</p>
 
                     <script type="text/javascript" src="./src/filehandler.js"></script>
-                    <label for="csvFileInput" class="custom-file-upload bg-white"> View Sample </label>
-                    <input type="file" id="csvFileInput" onchange="handleFiles(this.files);switchview()">
+                    <label class="custom-file-upload bg-white" onclick="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out');switchview()">
+                         View Sample 
+                    </label>
            
                     <!-- <p><a href="/WebviewerSample.html">Click here</a> to see a sample</p> -->
                 </span>
