@@ -15,19 +15,6 @@
 
 <body>
     <div id="header"></div><br />
-    
-    <nav class="Navigation">
-        <a class="Logo" href="/">
-            <img src="./img/Logo-draft2.png" alt="FGCU Stellar Research" width="400" height="87">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="/" title="Home">Home</a>
-            <a class="link dim gray f6 f5-l dib mr3 mr4-l avenir" href="./aboutus.html" title="About Us">About Us</a>
-            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./research.html" title="Research">Research</a>
-            <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./news.html" title="News">News</a>
-            <a class="link dim gray f6 f5-l dib no-underline avenir" href="./contact.html" title="Contact">Contact</a>
-        </div>
-    </nav>
 
     <section>
         <img class="center" style="padding-top: 3em" src="img/Stellargroup2019.jpg" width="500" alt="Photo of outer space">
@@ -227,6 +214,7 @@
     <div id="footer"></div>
 
     <script>
+        // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
         $("#header").load("header.html")
         $("#footer").load("footer.html")
     </script>
