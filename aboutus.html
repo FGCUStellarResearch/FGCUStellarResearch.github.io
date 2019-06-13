@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>FGCU Stellar Research Homepage</title>
-    <meta charset="utf-8">
-    <meta name="description" content="AstroDev Webviewer - FGCU Stelar Reasearch">
-    <meta name="designer" content="Lindsey Carboneau">
-    <meta name="author" content="Lindsey Carboneau">
-    <meta name="shortcut icon" href="./img/favicon.ico">
-    <!-- TODO: update with acutal favicon name/path -->
-    
-    <!-- Tachyons CSS resources -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+<!-- Tachyons CSS resources -->
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+<!-- local CSS resources-->
+<link rel="stylesheet" href="./3.3.7/css/local-themes.css"/>
 
-    <style>
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            width: 50%;
-        }
-    </style>
-    
+
+<head>
+    <!-- JQuery is important -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
+
 <body>
-    <!-- placeholder -->
+    <div id="header"></div><br />
     
     <nav class="Navigation">
         <a class="Logo" href="/">
@@ -236,21 +224,15 @@
         </div>
       
     
-    <script src='lib/d3.js'></script>
-    <script src='lib/lodash.js'></script>
-    <script src='src/analysis.js'></script>
+    <div id="footer"></div>
+
+    <script>
+        $("#header").load("header.html")
+        $("#footer").load("footer.html")
+    </script>
+
+
 </body>
 
-<footer class="pv4 ph3 ph5-m ph6-l mid-gray">
-    <div class="tr mt3">
-      <ul style="list-style: none;">
-        <li><a href="http://www.fgcu.edu" class="f7 dib ph2 link blue dim">Florida Gulf Coast University</a></li>
-        <li><a href="http://www.fgcu.edu/WhitakerCenter/index.html" class="f7 dib ph2 link blue dim">Whitaker Center for STEM Education</a></li>
-        <li><a href="http://www.fgcu.edu/CAS/Departments/CPhy/index.asp" class="f7 dib ph2 link blue dim">FGCU Department of Chemistry and Physics</a></li>
-      </ul>
-      <small class="f7 db tc">© 2017 FGCU Stellar Research</small>
-    </div>
-</footer>
-
-
 </html>
+
