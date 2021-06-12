@@ -16,8 +16,6 @@
       rel="stylesheet"
       href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"
     />
-    <!-- JQuery is important -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   </head>
 
   <body>
@@ -28,14 +26,14 @@
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-12 text-center">
-            <h1 class="font-weight-light">
-              Welcome!
-            </h1>
-            <p class="lead">Check out what we've been up to recently, or take a look at our
-              web-based visual analysis tool.</p>
-            <a
-              class="btn btn-primary"
-              href="WebviewerSample.html">Try the Tool!</a>
+            <h1 class="font-weight-light">Welcome!</h1>
+            <p class="lead">
+              Check out what we've been up to recently, or take a look at our
+              web-based visual analysis tool.
+            </p>
+            <a class="btn btn-primary" href="WebviewerSample.html"
+              >Try the Tool!</a
+            >
           </div>
         </div>
       </div>
@@ -81,6 +79,10 @@
     </section> -->
 
     <div id="footer"></div>
+
+    <!-- JQuery is important -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
     <script>
       // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
       $("#header").load("header.html");
