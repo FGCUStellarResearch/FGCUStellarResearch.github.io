@@ -1,54 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>FGCU Stellar Research - Home</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-<head>
     <!-- Tachyons CSS resources -->
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"
+    />
     <!-- JQuery is important -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    
-</head>
+  </head>
 
-<body>
-    <div id="header"></div><br />
+  <body>
+    <div id="header"></div>
 
-    <section class="mw5 mw7-ns center pa2">
-    </section>
+    <!-- Full Page Image Header with Vertically Centered Content -->
+    <header class="masthead darken">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12 text-center">
+            <h1 class="font-weight-light">
+              Welcome!
+            </h1>
+            <p class="lead">Check out what we've been up to recently, or take a look at our
+              web-based visual analysis tool.</p>
+            <a
+              class="btn btn-primary"
+              href="WebviewerSample.html">Try the Tool!</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- <section class="mw5 mw7-ns center pa2"></section>
 
     <section class="w-100 pv3 f6 ph3 ph4-ns">
       <div class="mw9 center ph3-ns">
         <div class="cf ph2-ns">
           <div class="fl w-100 w-30-ns pa2">
             <div class="bg-white tc pv4 v-mid" style="height: 200px">
-                <p>
-                    Welcome! <br><br>
-        
-                    Check out what we've been up to recently, or take a look at our web-based visual analysis tool
-                    <br><br>
-                </p>
-                <a class="f6 link dim br3 ba ph3 pv2 mb2 dib dark-gray" href="WebviewerSample.html">Try the Tool!</a>
+              <p>
+                Welcome! <br /><br />
+
+                Check out what we've been up to recently, or take a look at our
+                web-based visual analysis tool.
+                <br /><br />
+              </p>
+              <a
+                class="f6 link dim br3 ba ph3 pv2 mb2 dib dark-gray"
+                href="WebviewerSample.html"
+                >Try the Tool!</a
+              >
             </div>
           </div>
           <div class="fl w-100 w-60-ns pa2">
-            <div class="bg-white tc pv4"><img src="img/tessFL.jpg" alt="TESS Press Release First Light" width="500em">
-              <figcaption><font size="1" color="gray">
-                <i>Photo Credit: NASA</i>
-              </font></figcaption></div>
+            <div class="bg-white tc pv4">
+              <img
+                src="img/tessFL.jpg"
+                alt="TESS Press Release First Light"
+                width="500em"
+              />
+              <figcaption>
+                <font size="1" color="gray">
+                  <i>Photo Credit: NASA</i>
+                </font>
+              </figcaption>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    
-    
+    </section> -->
+
     <div id="footer"></div>
-
     <script>
-        // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
-        $("#header").load("header.html")
-        $("#footer").load("footer.html")
+      // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
     </script>
-
-</body>
-
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

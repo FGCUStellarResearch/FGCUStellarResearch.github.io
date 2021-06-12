@@ -1,0 +1,26 @@
+/* Navbar Styles */
+.navbar{border-radius:0;}
+.navbar-toggler{border:1px solid rgba(0,0,0,0.2);}
+.navbar-toggler:hover{background:rgb(240,240,240)}
+.navbar-toggler:focus{outline:0;}
+
+/* Navbar Collapse Styles To Stack Items At Mobile Widths*/
+@media(max-width:47.9em) {
+  .navbar .navbar-brand {float:none;display: inline-block;}
+  .navbar .navbar-nav>.nav-item { float: none; margin-left: .1rem;}
+  .navbar .navbar-nav {float:none !important;}
+  .nav-item{width:100%;text-align:left;} 
+}
+
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background: url('/img/tessFL.jpg') no-repeat center center;
+  color: white;
+  background-size: cover;
+}
+
+.about-us-banner {
+  background: url('/img/Stellargroup2019.jpg') no-repeat center center;
+  background-size: cover;
+}

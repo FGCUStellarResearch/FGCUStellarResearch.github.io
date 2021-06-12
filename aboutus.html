@@ -1,226 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <!-- Tachyons CSS resources -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"
+  />
+  <!-- local CSS resources-->
+  <link rel="stylesheet" href="./3.3.7/css/local-themes.css" />
 
-<!-- Tachyons CSS resources -->
-<link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
-<!-- local CSS resources-->
-<link rel="stylesheet" href="./3.3.7/css/local-themes.css"/>
-
-
-<head>
+  <head>
+    <title>FGCU Stellar Research - About Us</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
     <!-- JQuery is important -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-</head>
+  </head>
 
+  <body>
+    <div id="header"></div>
+    <br />
+    <header class="about-us-banner">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+          <h1>FGCU Stellar Research Group 2021-2022</h1>
+        </div>
+      </div>
+    </header>
 
-<body>
-    <div id="header"></div><br />
+    <h1 class="center">Current Members</h1>
 
-    <section>
-        <img class="center" style="padding-top: 3em" src="img/Stellargroup2019.jpg" width="500" alt="Photo of outer space">
-        <h1 class="center athelas">FGCU Stellar Research Group 2018-2019</h1>
-        <p class="measure lh-copy">
-              <!-- placeholder -->
-              <br>
+    <div class="card mb-3 mx-auto" style="max-width: 540px">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            src="https://fgcu360.com/wp-content/uploads/2018/04/Derek_Buzasi-480-200x300.jpg"
+            class="card-img"
+            alt="Picture of Derek Buzasi"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Derek Buzasi</h5>
+            <p class="card-text">
+              <i
+                >Whitaker Eminent Scholar in Science at Florida Gulf Coast
+                University</i
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="center">Former Members</h1>
+
+    <div class="card mb-3 mx-auto" style="max-width: 540px">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            src="img\lindsey.jpg"
+            class="card-img"
+            alt="Picture of Lindsey Carboneau"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Lindsey Carboneau</h5>
+            <p class="card-text">
+              <i>Software Engineering Undergraduate</i><br /><br />
+              Lindsey is a graduating Software Engineering student. She is
+              currently working on developing the ensemble detrending algorithm
+              for the TASOC photometry pipeline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3 mx-auto" style="max-width: 540px">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            src="img\hannah.jpg"
+            class="card-img"
+            alt="Picture of Hannah Andrews"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Hannah Andrews</h5>
+            <p class="card-text">
+              <i>Software Engineering Undergraduate</i><br /><br />
+              Hannah is a Senior in Software Engineering and a recipient of the
+              <a
+                href="https://fgcu360.com/2018/05/smart-scholar-bound-aerospace-career"
+                class="link blue dim"
+                >SMART Scholarship</a
+              >. When she isn't working with the Air Force on aerospace
+              software, she works on projects with Kepler and K2 data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dt pa4">
+      <div class="dtc v-mid">
+        <img
+          src="https://fgcu360.com/wp-content/uploads/2018/04/Derek_Buzasi-480-200x300.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Derek Buzasi </b><br />
+          <i
+            >Whitaker Eminent Scholar in Science at Florida Gulf Coast
+            University</i
+          ><br /><br />
+          <!-- placeholder -->
         </p>
-    </section>
-
-    <div class="dt pa4">
-        <div class="dtc v-mid">
-            <img src="https://fgcu360.com/wp-content/uploads/2018/04/Derek_Buzasi-480-200x300.jpg" alt="A picture of this great person" class="mw4" />
-        </div>
-        <div class="dtc v-mid pl3">
-            <p class="lh-copy">
-                <b>Derek Buzasi </b><br>
-                <i>Whitaker Eminent Scholar in Science at Florida Gulf Coast University</i><br><br>
-                <!-- placeholder -->
-            </p>
-        </div>
+      </div>
     </div>
     <section>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\lindsey.jpg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Lindsey Carboneau </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    Lindsey is a graduating Software Engineering student. <br>
-                    She is currently working on developing the ensemble detrending algorithm for the TASOC photometry pipeline
-                </p>
-            </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\lindsey.jpg"
+            alt="A picture of this great person"
+            class="mw4"
+          />
         </div>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\hannah.jpg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Hannah Andrews </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    Hannah is a Senior in Software Engineering and a recipient of the <a href="https://fgcu360.com/2018/05/smart-scholar-bound-aerospace-career" class="link blue dim">SMART Scholarship</a>. <br>
-                    When she isn't working with the Air Force on aerospace software, she works on projects with Kepler and K2 data.
-                </p>
-            </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Lindsey Carboneau </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            Lindsey is a graduating Software Engineering student. <br />
+            She is currently working on developing the ensemble detrending
+            algorithm for the TASOC photometry pipeline
+          </p>
         </div>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\chaise2.png" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Chaise Ballotti</b><br>
-                    <i>Software Engineering & Physics Undergraduate</i><br><br>
-                    Chaise transferred to FGCU in 2018 and is planning on being one of the first to graduate with the new Physics major. <br>
-                    He is currently working on a project using Limb Darkening parameters to learn more about host stars.
-                </p>
-            </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\hannah.jpg"
+            alt="A picture of this great person"
+            class="mw4"
+          />
         </div>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\dory.jpg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Dory Mauretour </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    Dory is a Junior in Software Engineering, and is originally from Haiti.<br>
-                    Her project uses gPhoton to look at light curves for B stars in GALEX data.
-                </p>
-            </div>
-        </div><div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\gibson2.png" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Gilbert J. Green III </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    Gibson is a Sophomore in Software Engineering, and started working with us as part of the Honors class.<br> <!-- This was a different class than John took? -->
-                    He is also working with gPhoton to look at GALEX data and create light curves.
-                </p>
-            </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Hannah Andrews </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            Hannah is a Senior in Software Engineering and a recipient of the
+            <a
+              href="https://fgcu360.com/2018/05/smart-scholar-bound-aerospace-career"
+              class="link blue dim"
+              >SMART Scholarship</a
+            >. <br />
+            When she isn't working with the Air Force on aerospace software, she
+            works on projects with Kepler and K2 data.
+          </p>
         </div>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                    <img src="img\personplaceholder.svg" alt="A picture of this great person" class="mw4" />
-                <!-- <img src="img\john.jpg" alt="A picture of this great person" class="mw4" /> -->
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>John Maurer </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    John is a Sophomore in Software Engineering, and started working with us as part of the Honors class.<br> <!-- I don't remember the name - it goes here -->
-                    He is also working on comparing transit fitting codes for investigating Limb Darkening.
-                </p>
-            </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\chaise2.png"
+            alt="A picture of this great person"
+            class="mw4"
+          />
         </div>
-        <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\adam.jpeg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Adam Dressel </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    Adam is a Junior in Software Engineering and the newest member of our team.<br>
-                    He is working on a project using TESS data to look for visual counterparts to overlapping GRB events observed by Swift.
-                </p>
-            </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Chaise Ballotti</b><br />
+            <i>Software Engineering & Physics Undergraduate</i><br /><br />
+            Chaise transferred to FGCU in 2018 and is planning on being one of
+            the first to graduate with the new Physics major. <br />
+            He is currently working on a project using Limb Darkening parameters
+            to learn more about host stars.
+          </p>
         </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\dory.jpg"
+            alt="A picture of this great person"
+            class="mw4"
+          />
+        </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Dory Mauretour </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            Dory is a Junior in Software Engineering, and is originally from
+            Haiti.<br />
+            Her project uses gPhoton to look at light curves for B stars in
+            GALEX data.
+          </p>
+        </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\gibson2.png"
+            alt="A picture of this great person"
+            class="mw4"
+          />
+        </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Gilbert J. Green III </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            Gibson is a Sophomore in Software Engineering, and started working
+            with us as part of the Honors class.<br />
+            <!-- This was a different class than John took? -->
+            He is also working with gPhoton to look at GALEX data and create
+            light curves.
+          </p>
+        </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\personplaceholder.svg"
+            alt="A picture of this great person"
+            class="mw4"
+          />
+          <!-- <img src="img\john.jpg" alt="A picture of this great person" class="mw4" /> -->
+        </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>John Maurer </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            John is a Sophomore in Software Engineering, and started working
+            with us as part of the Honors class.<br />
+            <!-- I don't remember the name - it goes here -->
+            He is also working on comparing transit fitting codes for
+            investigating Limb Darkening.
+          </p>
+        </div>
+      </div>
+      <div class="dt pa4">
+        <div class="dtc v-mid">
+          <img
+            src="img\adam.jpeg"
+            alt="A picture of this great person"
+            class="mw4"
+          />
+        </div>
+        <div class="dtc v-mid pl3">
+          <p class="lh-copy">
+            <b>Adam Dressel </b><br />
+            <i>Software Engineering Undergraduate</i><br /><br />
+            Adam is a Junior in Software Engineering and the newest member of
+            our team.<br />
+            He is working on a project using TESS data to look for visual
+            counterparts to overlapping GRB events observed by Swift.
+          </p>
+        </div>
+      </div>
     </section>
 
-
-    <h1 class="ml4 athelas">Former Members</h1>
-    <div class="dt pa4">
-        <div class="dtc v-mid">
-            <img src="img\andy.jpg" alt="A picture of this great person" class="mw4" />
-        </div>
-        <div class="dtc v-mid pl3">
-            <p class="lh-copy">
-                <b>Andy Lezcano</b><br>
-                <i>Test Engineer at STSCI</i><br><br>
-
-                Test engineer for Space Telescope Science Institute. <br> Currently working on the James Webb Space Telescope mission.
-            </p>
-        </div>
-    </div>
-    <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img\katya.jpg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Ekaterina (Katya) Vydra </b><br>
-                    <i>Space Telescope Science Institute JWST Software Engineer</i><br><br>
     
-                    Software engineer for Space Telescope Science Institute. <br> Currently working on the James Webb Space Telescope mission.
-                </p>
-            </div>
-        </div>
     <div class="dt pa4">
-        <div class="dtc v-mid">
-            <img src="img\carly.jpg" alt="A picture of this great person" class="mw4" />
-        </div>
-        <div class="dtc v-mid pl3">
-            <p class="lh-copy">
-                <b>Carly Hesler</b><br>
-                <i>Software Engineer at Northrop Grumman Corporation</i><br><br>
+      <div class="dtc v-mid">
+        <img
+          src="img\andy.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Andy Lezcano</b><br />
+          <i>Test Engineer at STSCI</i><br /><br />
 
-                Previously worked on Global Hawk Mission Planning Correction of Defects. <br> Currently working on preliminary stages (requirements, design documents, etc.) of a new UAV project.
-            </p>
-        </div>
+          Test engineer for Space Telescope Science Institute. <br />
+          Currently working on the James Webb Space Telescope mission.
+        </p>
+      </div>
     </div>
     <div class="dt pa4">
-        <div class="dtc v-mid">
-            <img src="img\sara2.jpg" alt="A picture of this great person" class="mw4" />
-        </div>
-        <div class="dtc v-mid pl3">
-            <p class="lh-copy">
-                <b>Sara Johnson</b><br>
-                <i>Biology BS 2018</i><br><br>
-                Biology major with a microbiology concentration and chemistry minor. Her goal is to complete a PhD in molecular biology. <br>
-                She has research experience in plant systematics, ecology, bioinformatics, HIV, stem cells, and long non-coding RNA.
-            </p>
-        </div>
+      <div class="dtc v-mid">
+        <img
+          src="img\katya.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Ekaterina (Katya) Vydra </b><br />
+          <i>Space Telescope Science Institute JWST Software Engineer</i
+          ><br /><br />
+
+          Software engineer for Space Telescope Science Institute. <br />
+          Currently working on the James Webb Space Telescope mission.
+        </p>
+      </div>
     </div>
     <div class="dt pa4">
-        <div class="dtc v-mid">
-            <img src="img/zechariah.jpg" alt="A picture of this great person" class="mw4" />
-        </div>
-        <div class="dtc v-mid pl3">
-            <p class="lh-copy">
-                <b>Zechariah Dominguez </b><br>
-                <i>Integrated Studies Undergraduate</i><br><br>
-                <!-- placeholder -->
-            </p>
-        </div>
+      <div class="dtc v-mid">
+        <img
+          src="img\carly.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Carly Hesler</b><br />
+          <i>Software Engineer at Northrop Grumman Corporation</i><br /><br />
+
+          Previously worked on Global Hawk Mission Planning Correction of
+          Defects. <br />
+          Currently working on preliminary stages (requirements, design
+          documents, etc.) of a new UAV project.
+        </p>
+      </div>
     </div>
     <div class="dt pa4">
-            <div class="dtc v-mid">
-                <img src="img/harrison.jpg" alt="A picture of this great person" class="mw4" />
-            </div>
-            <div class="dtc v-mid pl3">
-                <p class="lh-copy">
-                    <b>Harrison Paxton </b><br>
-                    <i>Software Engineering Undergraduate</i><br><br>
-                    <!-- placeholder -->
-                </p>
-            </div>
-        </div>
-      
-    
+      <div class="dtc v-mid">
+        <img
+          src="img\sara2.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Sara Johnson</b><br />
+          <i>Biology BS 2018</i><br /><br />
+          Biology major with a microbiology concentration and chemistry minor.
+          Her goal is to complete a PhD in molecular biology. <br />
+          She has research experience in plant systematics, ecology,
+          bioinformatics, HIV, stem cells, and long non-coding RNA.
+        </p>
+      </div>
+    </div>
+    <div class="dt pa4">
+      <div class="dtc v-mid">
+        <img
+          src="img/zechariah.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Zechariah Dominguez </b><br />
+          <i>Integrated Studies Undergraduate</i><br /><br />
+          <!-- placeholder -->
+        </p>
+      </div>
+    </div>
+    <div class="dt pa4">
+      <div class="dtc v-mid">
+        <img
+          src="img/harrison.jpg"
+          alt="A picture of this great person"
+          class="mw4"
+        />
+      </div>
+      <div class="dtc v-mid pl3">
+        <p class="lh-copy">
+          <b>Harrison Paxton </b><br />
+          <i>Software Engineering Undergraduate</i><br /><br />
+          <!-- placeholder -->
+        </p>
+      </div>
+    </div>
+
     <div id="footer"></div>
 
     <script>
-        // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
-        $("#header").load("header.html")
-        $("#footer").load("footer.html")
+      // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
     </script>
-
-
-</body>
-
+  </body>
 </html>
-
