@@ -166,7 +166,3 @@ footer {
   color:#00794C;
   transform:rotateY(360deg);
 }
-
-.btn-rounded {
-  border-radius: 10rem !important;
-}
