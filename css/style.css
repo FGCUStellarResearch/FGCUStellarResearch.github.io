@@ -48,20 +48,45 @@
   }
 }
 
-.masthead {
-  height: 100vh;
-  min-height: 500px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/img/tessFL.jpg") no-repeat center center;
-  color: white;
-  background-size: cover;
-}
-
 .about-us-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("/img/Stellargroup2019.jpg") no-repeat center center;
   color: white;
   background-size: cover;
+}
+
+#canvas {
+  background: #060e1b;
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  background-color: #000000;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+header canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
 }
 
 body {
