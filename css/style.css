@@ -191,3 +191,9 @@ footer {
   color:#00794C;
   transform:rotateY(360deg);
 }
+
+.add-ellipses {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
