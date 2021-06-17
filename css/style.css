@@ -216,3 +216,8 @@ footer {
 i {
   margin-right: 5px;
 }
+
+.footer-img {
+  max-width: 250px;
+  height: auto;
+}
