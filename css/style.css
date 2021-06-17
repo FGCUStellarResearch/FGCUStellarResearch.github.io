@@ -212,3 +212,7 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+i {
+  margin-right: 5px;
+}
