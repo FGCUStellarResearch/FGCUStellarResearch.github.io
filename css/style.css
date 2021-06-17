@@ -75,6 +75,11 @@
   overflow: hidden;
 }
 
+#former-members {
+  background-color:rgb(81, 122, 155, 0.5);
+  color: white;
+}
+
 header {
   position: relative;
   background-color: #000000;
