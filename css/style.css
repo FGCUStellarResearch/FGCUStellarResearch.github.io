@@ -11,7 +11,6 @@
     - Olive: #B8CA99
 */
 
-
 /* Navbar Styles */
 .navbar {
   border-radius: 0;
@@ -76,7 +75,7 @@
 }
 
 #former-members {
-  background-color:rgb(81, 122, 155, 0.5);
+  background-color: rgb(81, 122, 155, 0.5);
   color: white;
 }
 
@@ -114,7 +113,7 @@ body {
   font-weight: 400;
   font-size: 1rem;
   overflow-x: hidden;
-  background:#eeeeee;
+  background: #eeeeee;
   color: #607289;
 }
 
@@ -144,72 +143,72 @@ footer {
 
 .material-card {
   float: none;
-  width:300px;
-  min-height:400px;
-  background:#fff;
-  box-shadow:0 20px 50px rgba(0,0,0,.1);
-  border-radius:10px;
-  transition:0.5s;
+  width: 300px;
+  min-height: 400px;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.5s;
 }
 .material-card:hover {
-  box-shadow:0 30px 70px rgba(0,0,0,.2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
 }
 .material-card .box {
-  text-align:center;
-  padding:20px;
-  box-sizing:border-box;
-  width:100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 .material-card .box .img {
-  width:120px;
-  height:120px;
-  margin:0 auto;
-  border-radius:50%;
-  overflow:hidden;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .material-card .box .img img {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .material-card .box h2 {
-  font-size:20px;
-  color:#262626;
-  margin:20px auto;
+  font-size: 20px;
+  color: #262626;
+  margin: 20px auto;
 }
 .material-card .box h2 span {
-  font-size:14px;
-  background:#00794C;
-  color:#fff;
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:15px;
+  font-size: 14px;
+  background: #00794c;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 15px;
 }
 .material-card .box p {
-  color:#262626;
+  color: #262626;
 }
 .material-card .box span {
-  display:inline-flex;
+  display: inline-flex;
 }
 .material-card .box ul {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 .material-card .box ul li {
-  list-style:none;
-  float:left;
+  list-style: none;
+  float: left;
 }
 .material-card .box ul li a {
-  display:block;
-  color:#aaa;
-  margin:0 10px;
-  font-size:20px;
-  transition:0.5s;
-  text-align:center;
+  display: block;
+  color: #aaa;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: 0.5s;
+  text-align: center;
 }
 .material-card .box ul li:hover a {
-  color:#00794C;
-  transform:rotateY(360deg);
+  color: #00794c;
+  transform: rotateY(360deg);
 }
 
 .add-ellipses {
@@ -225,4 +224,111 @@ i {
 .footer-img {
   max-width: 250px;
   height: auto;
+}
+
+.ftco-section {
+  padding: 7em 0;
+}
+
+.heading-section {
+  font-size: 28px;
+  color: #000;
+}
+
+.wrapper {
+  width: 100%;
+  -webkit-box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18);
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.contact-wrap {
+  background: #fff;
+}
+
+#form-message-warning,
+#form-message-success {
+  display: none;
+}
+
+#form-message-warning {
+  color: red;
+}
+
+#form-message-success {
+  color: #28a745;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#contactForm .error {
+  color: red;
+  font-size: 12px;
+}
+
+#contactForm .form-control {
+  font-size: 16px;
+}
+
+.info-wrap h3 {
+  color: #fff;
+}
+
+.info-wrap .dbox {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 25px;
+}
+.info-wrap .dbox:last-child {
+  margin-bottom: 0;
+}
+.info-wrap .dbox p {
+  margin-bottom: 0;
+}
+.info-wrap .dbox p span {
+  font-weight: 600;
+  color: #fff;
+}
+.info-wrap .dbox p a {
+  color: #fff;
+}
+.info-wrap .dbox .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+.info-wrap .dbox .icon span {
+  font-size: 20px;
+  color: #fff;
+}
+.info-wrap .dbox .text {
+  width: calc(100% - 50px);
+}
+
+@media (min-width: 992px) {
+  .info-wrap {
+    margin-top: -20px;
+    margin-bottom: -20px;
+    border-radius: 5px;
+  }
+}
+
+.submitting {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+  display: none;
+  font-size: 16px;
+  font-weight: bold;
 }
