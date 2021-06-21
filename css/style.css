@@ -406,3 +406,7 @@ i {
         cursor: pointer;
         padding-top: 10px;
       }
+
+      .page-wrap {
+        min-height: 100vh;
+    }
