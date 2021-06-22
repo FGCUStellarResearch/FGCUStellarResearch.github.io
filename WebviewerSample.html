@@ -21,64 +21,62 @@
     />
   </head>
 
-  <body onload="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out'); switchview()">
+  <body onload="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out');switchview()">
+
+    <div class="alert alert-info alert-dismissible fade show text-center m-0" role="alert">
+      <strong>Note: </strong>If the Webviewer is having trouble loading, make sure your browser is up-to-date!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
     <div id="header"></div>
 
-    <div id="graph-area" style="display: none">
-      <section class="mw7 min-h-100 mw9-ns center pa3 ph5-ns">
+    <div class="container pt-4 pb-4" id="graph-area" style="display: none">
         <div id="container" style="visibility: hidden">
           <script type="text/javascript" src="./src/submitgraph.js"></script>
-          <small class="f7 db tc silver">Graph data display</small>
+          <small>Graph data display</small>
         </div>
-      </section>
     </div>
-      <section id="analysis" class="pv2 ph2 tc-l" style="visibility: hidden">
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary btn-rounded" onclick="timeseries()">Timeseries</button>
-            <button type="button" class="btn btn-primary btn-rounded" onclick="detrend()">Detrend</button>
-            <button type="button" class="btn btn-primary btn-rounded" onclick="calculatePhase()">Phase</button>
-            <button type="button" class="btn btn-primary btn-rounded" onclick="calculateDFT()">DFT</button>
-          </div>
-        <div class="pa3"></div>
-        <div>
-          <label for="phaseFrequency">Phase Frequency:</label>
-          <input
-            type="number"
-            id="phaseFrequency"
-            class="form-control"
-            value="0.2"
-            step=".00001"
-            onchange="updatePhasePeriod(this.value);calculatePhase()"
-          />
-        </div>
-        <div class="pa1"></div>
-        <div>
-          <input
-            type="checkbox"
-            id="useDetrend"
-            class="form-control"
-            onchange="updateUseDetrended()"
-          />Use detrended flux
-        </div>
 
-        <div class="pa3"></div>
-        <!-- more hack-y layout padding -->
-
-          <div class="ph3">
-            <div class="form-group">
-              <label for="candidateSelector">Star Candidate:</label>
-              <select class="form-control" id="candidateSelector" onchange="invokeHandler()">
-                <option>204193529: Eclipsing binary</option>
-                <option>204328600: Rotating variable with flares</option>
-                <option>211804579: Exoplanet candidate</option>
-                <option>212152922: Exoplanet candidate</option>
-                <option>249661654: Eclipsing binary</option>
-                <option>250088244: Exoplanet candidate</option>
-              </select>
-            </div>
-      </section>
-
-    
+    <div class="container" id="analysis" style="visibility: hidden;">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary btn-rounded" onclick="timeseries()">Timeseries</button>
+        <button type="button" class="btn btn-primary btn-rounded" onclick="detrend()">Detrend</button>
+        <button type="button" class="btn btn-primary btn-rounded" onclick="calculatePhase()">Phase</button>
+        <button type="button" class="btn btn-primary btn-rounded" onclick="calculateDFT()">DFT</button>
+      </div>
+      <div class="form-group">
+        <label for="phaseFrequencyInput">Phase Frequency:</label>
+        <input
+          type="number"
+          id="phaseFrequencyInput"
+          class="form-control"
+          value="0.2"
+          step=".00001"
+          onchange="updatePhasePeriod(this.value);calculatePhase()" />
+      </div>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          id="useDetrend"
+          class="form-check-input"
+          onchange="updateUseDetrended()" />
+        <label class="form-check-label" for="useDetrend">Use detrended flux</label>
+      </div>
+  
+      <div class="form-group">
+        <label for="candidateSelector">Star Candidate:</label>
+        <select class="form-control" id="candidateSelector" onchange="invokeHandler()">
+          <option>204193529: Eclipsing binary</option>
+          <option>204328600: Rotating variable with flares</option>
+          <option>211804579: Exoplanet candidate</option>
+          <option>212152922: Exoplanet candidate</option>
+          <option>249661654: Eclipsing binary</option>
+          <option>250088244: Exoplanet candidate</option>
+        </select>
+      </div>
+    </div>   
 
     <div id="info-box">
       <!-- placeholder -->
