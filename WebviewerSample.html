@@ -21,7 +21,7 @@
     />
   </head>
 
-  <body>
+  <body onload="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out'); switchview()">
     <div id="header"></div>
 
     <div id="graph-area" style="display: none">
@@ -32,43 +32,20 @@
         </div>
       </section>
     </div>
-
-    <div>
       <section id="analysis" class="pv2 ph2 tc-l" style="visibility: hidden">
-        <span>
-          <!-- with input that accepts one file -->
-          <label
-            id="timebutton"
-            class="mw5 mw7-ns center ba b--light-silver pa3"
-            onclick="timeseries()"
-            >Timeseries</label
-          >
-          <label
-            id="detrendbutton"
-            class="mw5 mw7-ns center ba b--light-silver pa3"
-            onclick="detrend()"
-            >Detrend</label
-          >
-          <label
-            id="phasebutton"
-            class="mw5 mw7-ns center ba b--light-silver pa3"
-            onclick="calculatePhase()"
-            >Phase</label
-          >
-          <label
-            id="dfftbutton"
-            class="mw5 mw7-ns center ba b--light-silver pa3"
-            onclick="calculateDFT()"
-            >DFT</label
-          >
-          <!-- <label id="blsbutton" class="mw5 mw7-ns center ba b--light-silver pa3" onclick="timeseries()">BLS</label> -->
-        </span>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-rounded" onclick="timeseries()">Timeseries</button>
+            <button type="button" class="btn btn-primary btn-rounded" onclick="detrend()">Detrend</button>
+            <button type="button" class="btn btn-primary btn-rounded" onclick="calculatePhase()">Phase</button>
+            <button type="button" class="btn btn-primary btn-rounded" onclick="calculateDFT()">DFT</button>
+          </div>
         <div class="pa3"></div>
         <div>
-          Phase Frequency:
+          <label for="phaseFrequency">Phase Frequency:</label>
           <input
             type="number"
-            name="newphasefreq"
+            id="phaseFrequency"
+            class="form-control"
             value="0.2"
             step=".00001"
             onchange="updatePhasePeriod(this.value);calculatePhase()"
@@ -79,6 +56,7 @@
           <input
             type="checkbox"
             id="useDetrend"
+            class="form-control"
             onchange="updateUseDetrended()"
           />Use detrended flux
         </div>
@@ -86,51 +64,19 @@
         <div class="pa3"></div>
         <!-- more hack-y layout padding -->
 
-        <!-- Here is where the buttons to change the input for the sample tool go -->
-        <span>
           <div class="ph3">
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out');switchview()"
-            >
-              204193529: Eclipsing binary
-            </label>
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo204328600-c15_target1_ts.out');switchview()"
-            >
-              204328600: Rotating variable with flares
-            </label>
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo211804579-c05_target1_ts.out');switchview()"
-            >
-              211804579: Exoplanet candidate
-            </label>
-          </div>
-          <div class="ph3 mt2">
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo212152922-c05_target1_ts.out');switchview()"
-            >
-              212152922: Exoplanet candidate
-            </label>
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo249661654-c15_target1_ts.out');switchview()"
-            >
-              249661654: Eclipsing binary
-            </label>
-            <label
-              class="f6 br3 dib center ba b--light-blue pa3"
-              onclick="handleSampleFiles('data/pipeout_ktwo250088244-c15_target1_ts.out');switchview()"
-            >
-              250088244: Exoplanet candidate
-            </label>
-          </div>
-        </span>
+            <div class="form-group">
+              <label for="candidateSelector">Star Candidate:</label>
+              <select class="form-control" id="candidateSelector" onchange="invokeHandler()">
+                <option>204193529: Eclipsing binary</option>
+                <option>204328600: Rotating variable with flares</option>
+                <option>211804579: Exoplanet candidate</option>
+                <option>212152922: Exoplanet candidate</option>
+                <option>249661654: Eclipsing binary</option>
+                <option>250088244: Exoplanet candidate</option>
+              </select>
+            </div>
       </section>
-    </div>
 
     
 
@@ -171,7 +117,35 @@
 
     <!-- JQuery is important -->
     <script src="bootstrap-4.1.3-dist/js/jquery-3.1.1.min.js"></script>
-
+    <script>
+      function invokeHandler() {
+        var x = document.getElementById("candidateSelector").value;
+        if (x == "204193529: Eclipsing binary") {
+          handleSampleFiles('data/pipeout_ktwo204193529-c15_target1_ts.out');
+          switchview();
+        }
+        else if (x == "204328600: Rotating variable with flares") {
+          handleSampleFiles('data/pipeout_ktwo204328600-c15_target1_ts.out');
+          switchview();
+        }
+        else if (x == "211804579: Exoplanet candidate") {
+          handleSampleFiles('data/pipeout_ktwo211804579-c05_target1_ts.out');
+          switchview();
+        }
+        else if (x == "212152922: Exoplanet candidate") {
+          handleSampleFiles('data/pipeout_ktwo212152922-c05_target1_ts.out');
+          switchview();
+        }
+        else if (x == "249661654: Eclipsing binary") {
+          handleSampleFiles('data/pipeout_ktwo249661654-c15_target1_ts.out');
+          switchview();
+        }
+        else if (x == "250088244: Exoplanet candidate") {
+          handleSampleFiles('data/pipeout_ktwo250088244-c15_target1_ts.out');
+          switchview();
+        }
+      }
+    </script>
     <script>
       // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
       $("#header").load("header.html");
