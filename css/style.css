@@ -335,6 +335,17 @@ i {
   width: calc(100% - 50px);
 }
 
+.header-separator {
+  height: 4px;
+  width: 80px;
+  background-color: #00794C;
+  margin: 14px 0 20px 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
 @media (min-width: 992px) {
   .info-wrap {
     margin-top: -20px;
