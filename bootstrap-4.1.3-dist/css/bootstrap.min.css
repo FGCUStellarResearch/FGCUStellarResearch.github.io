@@ -2172,6 +2172,7 @@ textarea.form-control {
     margin-bottom: 0;
   }
 }
+
 .btn {
   display: inline-block;
   padding: 0.7em 1.4em;
@@ -2189,9 +2190,10 @@ textarea.form-control {
   -ms-user-select: none;
   user-select: none;
   line-height: 1.5;
+  border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media screen and (prefers-reduced-motion: reduce) {
   .btn {
