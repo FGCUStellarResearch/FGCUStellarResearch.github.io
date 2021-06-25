@@ -2193,7 +2193,7 @@ textarea.form-control {
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media screen and (prefers-reduced-motion: reduce) {
   .btn {
@@ -4153,8 +4153,8 @@ input[type="submit"].btn-block {
 }
 .card-img-top {
   width: 100%;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+  height: 20vh;
+  object-fit: cover;
 }
 .card-img-bottom {
   width: 100%;
@@ -5940,6 +5940,11 @@ button.bg-dark:hover {
   padding: 0;
   overflow: hidden;
 }
+
+.embed-responsive .card-img-top {
+  object-fit: cover;
+}
+
 .embed-responsive::before {
   display: block;
   content: "";

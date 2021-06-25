@@ -339,14 +339,12 @@ footer {
 .header-separator {
   height: 4px;
   width: 80px;
-  background-color: #00794c;
   margin: 14px 0 20px 0;
 }
 
 .header-separator-centered {
   height: 4px;
   width: 80px;
-  background-color: #00794c;
   margin: 14px auto 20px auto;
 }
 
@@ -504,4 +502,21 @@ label {
 
 .profile-image img {
   margin-left: 3px
+}
+
+.border-radius-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.border-radius-all {
+  border-radius: 10px;
+}
+
+.background-secondary {
+  background-color: #00794c;
+}
+
+.background-white {
+  background: #fff;
 }
