@@ -4,10 +4,10 @@
 <meta name="author" content="Lindsey Carboneau" />
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
     <a href="/" class="navbar-brand"
-      ><img src="img/horizontal-logo.svg" width="300"
+      ><img src="img/horizontal-logo.svg" width="250"
     /></a>
     <button
       class="navbar-toggler"
@@ -26,28 +26,50 @@
           <a class="nav-link" href="/" title="Home">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="./meet-the-team.html" data-bs-toggle="dropdown">Meet The Team</a>
-            <ul class="dropdown-menu dropdown-menu-end fade-down">
-            <li><a class="dropdown-item" href="./meet-the-team.html#current-members">Current Members</a></li>
-            <li><a class="dropdown-item" href="./meet-the-team.html#former-members">Former Members</a></li>
-            </ul>
+          <a
+            class="nav-link dropdown-toggle"
+            href="./meet-the-team.html"
+            data-bs-toggle="dropdown"
+            >Meet The Team</a
+          >
+          <ul class="dropdown-menu dropdown-menu-end fade-down">
+            <li>
+              <a
+                class="dropdown-item"
+                href="./meet-the-team.html#current-members"
+                >Current Members</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="./meet-the-team.html#former-members"
+                >Former Members</a
+              >
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./research.html"
-            title="Research"
+          <a class="nav-link" href="./facilities.html" title="Facilities"
+            >Facilities</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./research.html" title="Research"
             >Research</a
           >
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./publications.html" title="Publications"
+            >Publications</a
+          >
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="./news.html" title="News">News</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="./contact-us.html"
-            title="Contact Us"
+          <a class="nav-link" href="./contact-us.html" title="Contact Us"
             >Contact Us</a
           >
         </li>
@@ -59,7 +81,6 @@
 
 <script>
   $(document).ready(function () {
-
     var url = window.location;
     // Will only work if string in href matches with location
     $('ul.navbar-nav a[href="' + url + '"]')
