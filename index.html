@@ -16,13 +16,26 @@
   </head>
 
   <body>
-    <div id="header"></div>
-
     <!-- Full Page Image Header with Vertically Centered Content -->
     <header>
-      <canvas id="canvas"></canvas>
-      <div class="container h-100">
-        <div class="row h-100 align-items-center">
+      <div id="header"></div>
+      
+      <div
+      id="carouselExampleIndicators"
+      class="carousel slide my-carousel my-carousel"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="row h-100 align-items-center overlay">
           <div class="col-12 text-center text-white">
             <h1 class="font-weight-light">Welcome to FGCU Stellar Research!</h1>
             <p class="lead">
@@ -33,23 +46,72 @@
             <a class="btn btn-outline-light btn-rounded" href="astrodev-webviewer.html">Try the Tool!</a>
           </div>
         </div>
-      </canvas>
+        <div
+          class="carousel-item active"
+          style="background-image: url('https://www.apo.nmsu.edu/Images/121205ARCSATb.jpg')"
+        ></div>
+        <div
+          class="carousel-item"
+          style="background-image: url('https://static.wixstatic.com/media/6d54bc_2cd15b56c5fa4756b57fb425fbfb8e86~mv2.jpg/v1/fill/w_839,h_765,al_c,q_85,usm_0.66_1.00_0.01/6d54bc_2cd15b56c5fa4756b57fb425fbfb8e86~mv2.webp')"
+        ></div>
+        <div
+          class="carousel-item"
+          style="background-image: url('https://static.wixstatic.com/media/6d54bc_d1e913f25781481881c7f05881849e0e~mv2.jpg/v1/fill/w_765,h_765,al_c,q_85,usm_0.66_1.00_0.01/6d54bc_d1e913f25781481881c7f05881849e0e~mv2.webp')"
+        ></div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    
     </header>
+    
 
     <section id="about">
       <div class="container mt-4 mb-4">
         <div class="row">
           <div class="col-md-auto mb-4 mb-lg-0">
-              <img src="img/fgcu-observatory.jpg" class="img-fluid" style="max-width: 300px; width: 100%; height: auto;">
-            
+            <img
+              src="img/fgcu-observatory.jpg"
+              class="img-fluid"
+              style="max-width: 300px; width: 100%; height: auto"
+            />
           </div>
           <div class="col my-auto">
             <h3>About Us</h3>
             <div class="header-separator background-secondary"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempor tempus efficitur. Etiam sagittis consequat velit, vel lacinia quam volutpat ac. Maecenas elementum posuere ante, sollicitudin tempor ipsum auctor sit amet. Maecenas ac blandit sapien. Curabitur quis dolor tincidunt sem tempus eleifend nec nec purus. Phasellus diam purus, tempus ut consectetur non, pharetra dapibus eros. Nunc pretium commodo ante nec accumsan. Curabitur suscipit lorem cursus, auctor tellus non, finibus risus. Sed commodo libero eget nulla vulputate tempus. Duis mollis est vitae efficitur congue. Nunc cursus enim nec massa sagittis, id sagittis orci pellentesque. Praesent ullamcorper facilisis tellus, vitae ornare dui interdum quis.</p> 
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+              tempor tempus efficitur. Etiam sagittis consequat velit, vel
+              lacinia quam volutpat ac. Maecenas elementum posuere ante,
+              sollicitudin tempor ipsum auctor sit amet. Maecenas ac blandit
+              sapien. Curabitur quis dolor tincidunt sem tempus eleifend nec nec
+              purus. Phasellus diam purus, tempus ut consectetur non, pharetra
+              dapibus eros. Nunc pretium commodo ante nec accumsan. Curabitur
+              suscipit lorem cursus, auctor tellus non, finibus risus. Sed
+              commodo libero eget nulla vulputate tempus. Duis mollis est vitae
+              efficitur congue. Nunc cursus enim nec massa sagittis, id sagittis
+              orci pellentesque. Praesent ullamcorper facilisis tellus, vitae
+              ornare dui interdum quis.
+            </p>
           </div>
         </div>
-      </div>      
+      </div>
     </section>
 
     <div id="footer"></div>
