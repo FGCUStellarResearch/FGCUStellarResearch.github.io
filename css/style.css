@@ -370,6 +370,9 @@ footer {
 .navbar .nav-item:hover .nav-link {
   color: #004785;
 }
+.dropdown-item:active {
+  background-color: #004785;
+}
 .navbar .dropdown-menu.fade-down {
   top: 80%;
   transform: rotateX(-75deg);
