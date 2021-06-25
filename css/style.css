@@ -237,7 +237,7 @@ footer {
   text-overflow: ellipsis;
 }
 
-i {
+.card-subtitle i {
   margin-right: 10px;
 }
 
