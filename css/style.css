@@ -394,6 +394,24 @@ footer a:hover {
   }
 }
 
+@media (max-width: 768px) {
+  #about img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #about .header-separator {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #about h3, p {
+    text-align: center;
+  }
+}
+
 .navbar .dropdown-menu-end {
   right: 0;
   left: auto;
