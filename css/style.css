@@ -584,3 +584,8 @@ label {
   height: 100%;
   z-index: 6;
 }
+
+.overlay-text {
+  position:relative;
+  top: 50%;
+}
