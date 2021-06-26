@@ -575,7 +575,7 @@ label {
 }
 
 .overlay {
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0, 0.6);
   position: absolute;
   top:50%;
   left:50%;
@@ -586,6 +586,7 @@ label {
 }
 
 .overlay-text {
-  position:relative;
-  top: 50%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
 }
