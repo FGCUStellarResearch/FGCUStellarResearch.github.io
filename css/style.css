@@ -276,6 +276,10 @@ footer {
   height: auto;
 }
 
+footer a:hover {
+  color: #004785;
+}
+
 .ftco-section {
   padding: 7em 0;
 }
