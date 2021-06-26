@@ -24,6 +24,7 @@ html {
 /* Navbar Styles */
 .navbar {
   border-radius: 0;
+  border-bottom:5px solid #00794C;
 }
 
 .navbar-toggler {
@@ -414,11 +415,10 @@ footer a:hover {
     margin-right: auto;
   }
 
-  #about h3, p {
+  #about h3, #about p {
     text-align: center;
   }
 }
-
 .navbar .dropdown-menu-end {
   right: 0;
   left: auto;
