@@ -21,18 +21,6 @@ html {
   margin: -100px 0 0;
 }
 
-.navbar-toggler {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.navbar-toggler:hover {
-  background: #f0f0f0;
-}
-
-.navbar-toggler:focus {
-  outline: 0;
-}
-
 /* Navbar Collapse Styles To Stack Items At Mobile Widths*/
 @media (max-width: 47.9em) {
   .navbar .navbar-brand {
@@ -426,6 +414,48 @@ footer a:hover {
     text-align: center;
   }
 }
+
+/* Navbar Styles */
+.navbar {
+  border-radius: 0;
+  border-bottom:5px solid #00794C;
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler:hover {
+  background: #f0f0f0;
+}
+
+.navbar-toggler:focus {
+  outline: 0;
+}
+/* Navbar Animated Border Bottom */
+li.underline{
+  border:none;
+  position: relative;
+}
+li.underline:hover{
+  border: none;
+}
+.underline::after{
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 3px;
+  left: 50%;
+  bottom:0;
+  background-color: #004785;
+  transition: all ease-in-out .2s;
+}
+.underline:hover::after{
+  width: 100%;
+  left: 0;
+}
+
+/* Navbar Dropdown */
 .navbar .dropdown-menu-end {
   right: 0;
   left: auto;
@@ -439,6 +469,18 @@ footer a:hover {
 }
 .navbar .nav-item:hover .nav-link {
   color: #004785;
+}
+.navbar-nav > .active > a {
+  color: #004785 !important;
+}
+
+.navbar-nav > .active > a::after {
+  border-bottom: 3px solid #004785;
+  bottom: 0px;
+  content: " ";
+  left: 0;
+  position: absolute;
+  right: 0;
 }
 .dropdown-item:active {
   background-color: #004785;
