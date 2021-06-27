@@ -148,7 +148,7 @@ a > h3:hover,
 a > h4:hover,
 a > h5:hover,
 a > h6:hover {
-  color: #004785 !important;
+  color: #004785;
 }
 
 h5 {
@@ -413,12 +413,6 @@ footer a:hover {
   #about p {
     text-align: center;
   }
-}
-
-/* Navbar Styles */
-.navbar {
-  border-radius: 0;
-  border-bottom:5px solid #00794C;
 }
 
 .navbar-toggler {
