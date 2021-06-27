@@ -426,29 +426,51 @@ footer a:hover {
 .navbar-toggler:focus {
   outline: 0;
 }
-/* Navbar Animated Border Bottom */
-li.underline{
-  border:none;
-  position: relative;
-}
-li.underline:hover{
-  border: none;
-}
-.underline::after{
-  content: '';
-  position: absolute;
-  width: 0px;
-  height: 3px;
-  left: 50%;
-  bottom:0;
-  background-color: #004785;
-  transition: all ease-in-out .2s;
-}
-.underline:hover::after{
-  width: 100%;
-  left: 0;
-}
 
+.navbar .nav-item:hover .nav-link {
+  color: #004785;
+}
+.navbar-nav > .active > a {
+  color: #00794C !important;
+}
+@media only screen and (min-width: 992px) {
+  /* Navbar animated border bottom */
+  li.underline{
+    border:none;
+    position: relative;
+  }
+  li.underline:hover{
+    border: none;
+  }
+  .underline::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 50%;
+    bottom:0;
+    background-color: #004785;
+    transition: all ease-in-out .2s;
+  }
+  .underline:hover::after{
+    width: 100%;
+    left: 0;
+  }
+  /* Active navbar items */
+  .navbar-nav > .nav-item {
+    position: relative;
+  }
+  .navbar-nav > li.underline.active::after {
+    border-bottom: 3px solid #00794C;
+    bottom: 0;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    transition-property: none;
+  }
+}
 /* Navbar Dropdown */
 .navbar .dropdown-menu-end {
   right: 0;
@@ -461,24 +483,11 @@ li.underline:hover{
   transition: 0.3s;
   margin-top: 0;
 }
-.navbar .nav-item:hover .nav-link {
-  color: #004785;
-}
-.navbar-nav > .active > a {
-  color: #00794C !important;
-}
-
-.navbar-nav > .active > a::after {
-  border-bottom: 3px solid #00794C;
-  bottom: 0px;
-  content: " ";
-  left: 0;
-  position: absolute;
-  right: 0;
-}
 .dropdown-item:active {
   background-color: #004785;
 }
+
+/* Dropdown menu hover animation */
 .navbar .dropdown-menu.fade-down {
   top: 80%;
   transform: rotateX(-75deg);
@@ -495,6 +504,7 @@ li.underline:hover{
   transform: rotateX(0deg);
 }
 
+/* Dropdown menu mobile behavior */
 @media (max-width: 992px) {
   .navbar .nav-item .dropdown-menu {
     display: none;
