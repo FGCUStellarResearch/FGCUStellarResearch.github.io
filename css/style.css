@@ -147,12 +147,27 @@ body {
   padding-top: 77px;
 }
 
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #262626;
+}
+
+a > h2:hover,
+a > h3:hover,
+a > h4:hover,
+a > h5:hover,
+a > h6:hover {
+  color: #004785 !important;
+}
+
 h5 {
   font-size: 1rem;
   line-height: 1.375;
   font-family: "Lato", sans-serif;
   font-weight: 500;
-  color: #030929;
 }
 
 a {
@@ -286,11 +301,6 @@ footer a:hover {
   padding: 7em 0;
 }
 
-.heading-section {
-  font-size: 28px;
-  color: #000;
-}
-
 .wrapper {
   width: 100%;
   -webkit-box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18);
@@ -373,12 +383,14 @@ footer a:hover {
 }
 
 .header-separator {
+  background-color: #00794c;
   height: 4px;
   width: 80px;
   margin: 14px 0 20px 0;
 }
 
 .header-separator-centered {
+  background-color: #00794c;
   height: 4px;
   width: 80px;
   margin: 14px auto 20px auto;
@@ -409,7 +421,8 @@ footer a:hover {
     margin-right: auto;
   }
 
-  #about h3, #about p {
+  #about h3,
+  #about p {
     text-align: center;
   }
 }
@@ -533,18 +546,19 @@ label {
   padding: 6px;
   margin-left: 4px;
   border-radius: 5px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .activity-done {
-  font-weight: 600
+  font-weight: 600;
 }
 
 .list-group li {
-  margin-bottom: 12px
+  margin-bottom: 12px;
 }
 
-.list-group-item {}
+.list-group-item {
+}
 
 .list li {
   list-style: none;
@@ -552,20 +566,20 @@ label {
   border: 1px solid #e3dada;
   margin-top: 12px;
   border-radius: 5px;
-  background: #fff
+  background: #fff;
 }
 
 .checkicon {
   color: green;
-  font-size: 19px
+  font-size: 19px;
 }
 
 .date-time {
-  font-size: 12px
+  font-size: 12px;
 }
 
 .profile-image img {
-  margin-left: 3px
+  margin-left: 3px;
 }
 
 .border-radius-top {
@@ -575,14 +589,6 @@ label {
 
 .border-radius-all {
   border-radius: 10px;
-}
-
-.background-secondary {
-  background-color: #00794c;
-}
-
-.background-white {
-  background: #fff;
 }
 
 .carousel-item {
@@ -600,9 +606,9 @@ label {
 .overlay {
   background-color: rgb(0, 0, 0, 0.6);
   position: absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   z-index: 6;
@@ -610,8 +616,9 @@ label {
 
 .overlay-text {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .fixed-top {
@@ -620,8 +627,8 @@ label {
 
 /* style for when sitcky is applied */
 .stuck .navbar.fixed-top {
-  padding-top: .10rem !important;
-  padding-bottom: .10rem !important;
+  padding-top: 0.1rem !important;
+  padding-bottom: 0.1rem !important;
   border-radius: 0;
-  border-bottom:5px solid #00794C;
+  border-bottom: 5px solid #00794c;
 }
