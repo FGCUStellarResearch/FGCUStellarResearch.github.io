@@ -465,11 +465,11 @@ li.underline:hover{
   color: #004785;
 }
 .navbar-nav > .active > a {
-  color: #004785 !important;
+  color: #00794C !important;
 }
 
 .navbar-nav > .active > a::after {
-  border-bottom: 3px solid #004785;
+  border-bottom: 3px solid #00794C;
   bottom: 0px;
   content: " ";
   left: 0;
