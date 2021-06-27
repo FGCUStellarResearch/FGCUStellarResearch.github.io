@@ -426,12 +426,15 @@ footer a:hover {
 .navbar-toggler:focus {
   outline: 0;
 }
-
-.navbar .nav-item:hover .nav-link {
+.navbar .nav-item .nav-link {
   color: #004785;
 }
+
+.navbar .nav-item:hover .nav-link {
+  color: #00478580;
+}
 .navbar-nav > .active > a {
-  color: #00794C !important;
+  color: #00478580 !important;
 }
 @media only screen and (min-width: 992px) {
   /* Navbar animated border bottom */
@@ -449,7 +452,7 @@ footer a:hover {
     height: 3px;
     left: 50%;
     bottom:0;
-    background-color: #004785;
+    background-color: #00478580;
     transition: all ease-in-out .2s;
   }
   .underline:hover::after{
@@ -461,7 +464,6 @@ footer a:hover {
     position: relative;
   }
   .navbar-nav > li.underline.active::after {
-    border-bottom: 3px solid #00794C;
     bottom: 0;
     content: " ";
     left: 0;
@@ -484,7 +486,7 @@ footer a:hover {
   margin-top: 0;
 }
 .dropdown-item:active {
-  background-color: #004785;
+  background-color: #00478580;
 }
 
 /* Dropdown menu hover animation */
