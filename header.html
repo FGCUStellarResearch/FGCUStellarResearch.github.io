@@ -3,13 +3,24 @@
 <meta name="designer" content="Lindsey Carboneau" />
 <meta name="author" content="Lindsey Carboneau" />
 
+<span class="position-absolute trigger">
+  <!-- hidden trigger to apply 'stuck' styles -->
+</span>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
     <a href="/" class="navbar-brand">
-      <img src="img/horizontal-logo.svg" width="250"/>
+      <img src="img/horizontal-logo.svg" width="300" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -18,30 +29,56 @@
           <a class="nav-link" href="/#top" title="Home">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/meet-the-team.html#top" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meet The Team</a>
+          <a
+            class="nav-link dropdown-toggle"
+            href="/meet-the-team.html#top"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Meet The Team</a
+          >
           <ul class="dropdown-menu dropdown-menu-end fade-down" role="menu">
             <li>
-              <a class="dropdown-item" href="./meet-the-team.html#current-members">Current Members</a>
+              <a
+                class="dropdown-item"
+                href="./meet-the-team.html#current-members"
+                >Current Members</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="./meet-the-team.html#former-members">Former Members</a>
+              <a
+                class="dropdown-item"
+                href="./meet-the-team.html#former-members"
+                >Former Members</a
+              >
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./facilities.html#top" title="Facilities">Facilities</a>
+          <a class="nav-link" href="./facilities.html#top" title="Facilities"
+            >Facilities</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./research.html#top" title="Research">Research</a>
+          <a class="nav-link" href="./research.html#top" title="Research"
+            >Research</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./publications.html#top" title="Publications">Publications</a>
+          <a
+            class="nav-link"
+            href="./publications.html#top"
+            title="Publications"
+            >Publications</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./news.html#top" title="News">News</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./contact-us.html#top" title="Contact Us">Contact Us</a>
+          <a class="nav-link" href="./contact-us.html#top" title="Contact Us"
+            >Contact Us</a
+          >
         </li>
       </ul>
     </div>
@@ -50,6 +87,15 @@
 <! -- End Navbar -->
 
 <script>
+
+(new IntersectionObserver(function(e,o){
+    if (e[0].intersectionRatio > 0){
+        document.documentElement.removeAttribute('class');
+    } else {
+        document.documentElement.setAttribute('class','stuck');
+    };
+})).observe(document.querySelector('.trigger'));
+
   $(document).ready(function () {
     var url = window.location;
     // Will only work if string in href matches with location
@@ -68,4 +114,5 @@
       .parent()
       .addClass("active");
   });
+  
 </script>

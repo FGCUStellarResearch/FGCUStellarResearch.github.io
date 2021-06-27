@@ -21,12 +21,6 @@ html {
   margin: -100px 0 0;
 }
 
-/* Navbar Styles */
-.navbar {
-  border-radius: 0;
-  border-bottom:5px solid #00794C;
-}
-
 .navbar-toggler {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -618,4 +612,16 @@ label {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
+}
+
+.fixed-top {
+  transition: all 0.25s ease-in;
+}
+
+/* style for when sitcky is applied */
+.stuck .navbar.fixed-top {
+  padding-top: .10rem !important;
+  padding-bottom: .10rem !important;
+  border-radius: 0;
+  border-bottom:5px solid #00794C;
 }
