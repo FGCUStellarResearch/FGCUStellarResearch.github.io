@@ -72,7 +72,7 @@ html {
 
 .facilities-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://www.apo.nmsu.edu/0635interior.jpg") no-repeat center center;
+    url("/img/apo-3.5.jpg") no-repeat center center;
   color: white;
   background-position: bottom bottom;
   background-repeat: no-repeat;
