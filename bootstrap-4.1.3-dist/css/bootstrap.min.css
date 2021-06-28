@@ -3993,9 +3993,6 @@ input[type="submit"].btn-block {
 .navbar-light .navbar-brand:hover {
   color: rgba(0, 0, 0, 0.9);
 }
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
-}
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
   color: rgba(0, 0, 0, 0.7);
@@ -8220,9 +8217,6 @@ a.text-dark:hover {
 }
 .text-muted {
   color: #6c757d !important;
-}
-.text-black-50 {
-  color: rgba(0, 0, 0, 0.5) !important;
 }
 .text-white-50 {
   color: rgba(255, 255, 255, 0.5) !important;

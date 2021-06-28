@@ -13,9 +13,11 @@ $olive: #B8CA99;
 // Miscellaneous
 $banner-background: rgba(0, 0, 0, 0.5);
 $former-members-background: rgba(81, 122, 155, 0.75);
-$secondary-header: #262626;
+// #262626
+$secondary-header: #2c70f0;
 $body-background-color: #eeeeee;
-$body-text-color: #607289;
+$body-text-color: red;
+// #607289
 
 html {
   scroll-behavior: smooth;
@@ -162,19 +164,16 @@ h5 {
 }
 
 a {
-  color: #818494;
+  color: $body-text-color;
   font-weight: 500;
   text-decoration: none;
   background-color: transparent;
+  transition: 0.2s;
 }
 
 a:hover {
-  color: #007bff;
+  color: $cobalt-blue-80;
   text-decoration: none;
-}
-
-footer {
-  background: white;
 }
 
 .fsr-social-icons .icon-wrapper {
@@ -246,7 +245,7 @@ footer {
   border-radius: 15px;
 }
 .material-card .box p {
-  color: $secondary-header;
+  color: $body-text-color;
 }
 .material-card .box span {
   display: inline-flex;
@@ -262,14 +261,14 @@ footer {
 
 .material-card .box ul li a {
   display: block;
-  color: #aaa;
+  color: $body-text-color;
   margin: 0 10px;
   font-size: 20px;
   transition: 0.5s;
   text-align: center;
 }
 .material-card .box ul li:hover a {
-  color: #00794c;
+  color: $emerald-green;
   transform: rotateY(360deg);
 }
 
@@ -283,13 +282,13 @@ footer {
   margin-right: 10px;
 }
 
+footer {
+  background: white;
+}
+
 .footer-img {
   max-width: 250px;
   height: auto;
-}
-
-footer a:hover {
-  color: #004785;
 }
 
 .ftco-section {
@@ -378,14 +377,14 @@ footer a:hover {
 }
 
 .header-separator {
-  background-color: #00794c;
+  background-color: $emerald-green;
   height: 4px;
   width: 80px;
   margin: 14px 0 20px 0;
 }
 
 .header-separator-centered {
-  background-color: #00794c;
+  background-color: $emerald-green;
   height: 4px;
   width: 80px;
   margin: 14px auto 20px auto;
@@ -431,6 +430,8 @@ footer a:hover {
   }
 }
 
+
+
 .navbar-toggler {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -444,10 +445,10 @@ footer a:hover {
 }
 
 .navbar .nav-item:hover .nav-link {
-  color: #00478580;
+  color: $cobalt-blue-80;
 }
 .navbar-nav > .active > a {
-  color: #004785 !important;
+  color: $cobalt-blue !important;
 }
 @media only screen and (min-width: 992px) {
   /* Navbar animated border bottom */
@@ -465,7 +466,7 @@ footer a:hover {
     height: 3px;
     left: 50%;
     bottom:0;
-    background-color: #00478580;
+    background-color: $cobalt-blue-80;
     transition: all ease-in-out .2s;
   }
   .underline:hover::after{
@@ -481,7 +482,7 @@ footer a:hover {
     content: " ";
     left: 0;
     position: absolute;
-    background-color: #004785;
+    background-color: $cobalt-blue;
     right: 0;
     width: 100%;
     transition-property: none;
@@ -500,7 +501,7 @@ footer a:hover {
   margin-top: 0;
 }
 .dropdown-item:active {
-  background-color: #004785;
+  background-color: $cobalt-blue;
 }
 
 /* Dropdown menu hover animation */
@@ -676,4 +677,12 @@ label {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.text-black-50 {
+  color: $body-text-color !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: $body-text-color;
 }

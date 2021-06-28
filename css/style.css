@@ -117,7 +117,7 @@ body {
   font-size: 1rem;
   overflow-x: hidden;
   background: #eeeeee;
-  color: #607289;
+  color: red;
   padding-top: 77px;
 }
 
@@ -126,7 +126,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #262626;
+  color: #2c70f0;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -147,19 +147,17 @@ h5 {
 }
 
 a {
-  color: #818494;
+  color: red;
   font-weight: 500;
   text-decoration: none;
   background-color: transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 a:hover {
-  color: #007bff;
+  color: #00478580;
   text-decoration: none;
-}
-
-footer {
-  background: white;
 }
 
 .fsr-social-icons .icon-wrapper {
@@ -233,7 +231,7 @@ footer {
 
 .material-card .box h2 {
   font-size: 20px;
-  color: #262626;
+  color: #2c70f0;
   margin: 20px auto;
 }
 
@@ -247,7 +245,7 @@ footer {
 }
 
 .material-card .box p {
-  color: #262626;
+  color: red;
 }
 
 .material-card .box span {
@@ -268,7 +266,7 @@ footer {
 
 .material-card .box ul li a {
   display: block;
-  color: #aaa;
+  color: red;
   margin: 0 10px;
   font-size: 20px;
   -webkit-transition: 0.5s;
@@ -277,7 +275,7 @@ footer {
 }
 
 .material-card .box ul li:hover a {
-  color: #00794c;
+  color: #00794C;
   -webkit-transform: rotateY(360deg);
           transform: rotateY(360deg);
 }
@@ -292,13 +290,13 @@ footer {
   margin-right: 10px;
 }
 
+footer {
+  background: white;
+}
+
 .footer-img {
   max-width: 250px;
   height: auto;
-}
-
-footer a:hover {
-  color: #004785;
 }
 
 .ftco-section {
@@ -394,14 +392,14 @@ footer a:hover {
 }
 
 .header-separator {
-  background-color: #00794c;
+  background-color: #00794C;
   height: 4px;
   width: 80px;
   margin: 14px 0 20px 0;
 }
 
 .header-separator-centered {
-  background-color: #00794c;
+  background-color: #00794C;
   height: 4px;
   width: 80px;
   margin: 14px auto 20px auto;
@@ -700,5 +698,13 @@ label {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.text-black-50 {
+  color: red !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: red;
 }
 /*# sourceMappingURL=style.css.map */
