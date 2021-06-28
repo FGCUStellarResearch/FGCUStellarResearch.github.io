@@ -397,6 +397,15 @@ footer a:hover {
   }
 }
 
+#about img {
+  border-radius: 10px;
+}
+
+#about p {
+  margin: 0; 
+  padding: 0;
+}
+
 @media (max-width: 768px) {
   #about img {
     display: block;
