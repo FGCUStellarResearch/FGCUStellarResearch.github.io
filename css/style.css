@@ -397,6 +397,23 @@ footer a:hover {
   }
 }
 
+.list-group li {
+  margin-bottom: 12px;
+}
+
+.list li {
+  list-style: none;
+  border: 1px solid #e3dada;
+  margin-top: 12px;
+  padding-right: 24px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+#recent-news img.card-img-top {
+  border-radius: 5px 0px 0px 5px;
+}
+
 #about img {
   border-radius: 10px;
 }
@@ -407,6 +424,14 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+  .list li {
+    padding-right: 0px;
+  }
+
+  #recent-news img.card-img-top {
+    border-radius: 5px 5px 0px 0px;
+  }
+
   #about img {
     display: block;
     margin-left: auto;
@@ -607,22 +632,6 @@ label {
 
 .activity-done {
   font-weight: 600;
-}
-
-.list-group li {
-  margin-bottom: 12px;
-}
-
-.list-group-item {
-}
-
-.list li {
-  list-style: none;
-  padding: 10px;
-  border: 1px solid #e3dada;
-  margin-top: 12px;
-  border-radius: 5px;
-  background: #fff;
 }
 
 .checkicon {
