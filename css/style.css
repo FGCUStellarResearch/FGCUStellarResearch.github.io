@@ -676,13 +676,3 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.fixed-top {
-  transition: all 0.25s ease-in;
-}
-
-/* style for when sitcky is applied */
-.stuck .navbar.fixed-top {
-  padding-top: 0.1rem !important;
-  padding-bottom: 0.1rem !important;
-}
