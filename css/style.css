@@ -117,7 +117,7 @@ body {
   font-size: 1rem;
   overflow-x: hidden;
   background: #eeeeee;
-  color: #607289;
+  color: #00000087;
   padding-top: 77px;
 }
 
@@ -126,7 +126,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #262626;
+  color: #000000;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -147,7 +147,7 @@ h5 {
 }
 
 a {
-  color: #607289;
+  color: #00000087;
   font-weight: 500;
   text-decoration: none;
   background-color: transparent;
@@ -231,7 +231,7 @@ a:hover {
 
 .material-card .box h2 {
   font-size: 20px;
-  color: #262626;
+  color: #000000;
   margin: 20px auto;
 }
 
@@ -245,7 +245,7 @@ a:hover {
 }
 
 .material-card .box p {
-  color: #262626;
+  color: #00000087;
 }
 
 .material-card .box span {
@@ -266,7 +266,7 @@ a:hover {
 
 .material-card .box ul li a {
   display: block;
-  color: #607289;
+  color: #00000060;
   margin: 0 10px;
   font-size: 20px;
   -webkit-transition: 0.5s;
@@ -725,11 +725,11 @@ label {
 }
 
 .text-black-50 {
-  color: #607289 !important;
+  color: #00000087 !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #607289;
+  color: #00000087;
 }
 
 .form-control {
@@ -745,13 +745,16 @@ label {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -776,22 +779,22 @@ label {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #607289;
+  color: #00000087;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #607289;
+  color: #00000087;
   opacity: 1;
 }
 
 .form-control::-ms-input-placeholder {
-  color: #607289;
+  color: #00000087;
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #607289;
+  color: #00000087;
   opacity: 1;
 }
 

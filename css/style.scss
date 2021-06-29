@@ -3,6 +3,7 @@
 $cobalt-blue: #004785;
 $cobalt-blue-80: #00478580;
 $cobalt-blue-25: #00478525;
+
 $emerald-green: #00794C;
 
 // Secondary Colors
@@ -12,12 +13,13 @@ $straw: #FEDBB4;
 $olive: #B8CA99;
 
 // Miscellaneous
-$banner-background: rgba(0, 0, 0, 0.5);
-$former-members-background: rgba(81, 122, 155, 0.75);
-// #262626
-$secondary-header: #262626;
+$banner-background-color: rgba(0, 0, 0, 0.5);
+$fm-background-color: rgba(81, 122, 155, 0.75);
 $body-background-color: #eeeeee;
-$body-text-color: #607289;
+
+$header-color: #000000;
+$body-text-color-87: #00000087;
+$body-text-color-60: #00000060;
 
 html {
   scroll-behavior: smooth;
@@ -50,7 +52,7 @@ html {
 }
 
 .about-us-banner {
-  background: linear-gradient($banner-background, $banner-background),
+  background: linear-gradient($banner-background-color, $banner-background-color),
     url("/img/Stellargroup2019.jpg") no-repeat center center;
   color: white;
   background-position: bottom bottom;
@@ -62,7 +64,7 @@ html {
 }
 
 .facilities-banner {
-  background: linear-gradient($banner-background, $banner-background),
+  background: linear-gradient($banner-background-color, $banner-background-color),
     url("/img/apo-3.5.jpg") no-repeat center center;
   color: white;
   background-position: bottom bottom;
@@ -90,7 +92,7 @@ html {
 }
 
 .bg-layer {
-  background-color: $former-members-background;
+  background-color: $fm-background-color;
   backdrop-filter: blur(4px);
   position: absolute;
   top: 0;
@@ -135,7 +137,7 @@ body {
   font-size: 1rem;
   overflow-x: hidden;
   background: $body-background-color;
-  color: $body-text-color;
+  color: $body-text-color-87;
   padding-top: 77px;
 }
 
@@ -144,7 +146,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $secondary-header;
+  color: $header-color;
   transition: 0.2s;
 }
 
@@ -164,7 +166,7 @@ h5 {
 }
 
 a {
-  color: $body-text-color;
+  color: $body-text-color-87;
   font-weight: 500;
   text-decoration: none;
   background-color: transparent;
@@ -233,7 +235,7 @@ a:hover {
 }
 .material-card .box h2 {
   font-size: 20px;
-  color: $secondary-header;
+  color: $header-color;
   margin: 20px auto;
 }
 .material-card .box h2 span {
@@ -245,7 +247,7 @@ a:hover {
   border-radius: 15px;
 }
 .material-card .box p {
-  color: $secondary-header;
+  color: $body-text-color-87;
 }
 .material-card .box span {
   display: inline-flex;
@@ -261,7 +263,7 @@ a:hover {
 
 .material-card .box ul li a {
   display: block;
-  color: $body-text-color;
+  color: $body-text-color-60;
   margin: 0 10px;
   font-size: 20px;
   transition: 0.5s;
@@ -702,11 +704,11 @@ label {
 }
 
 .text-black-50 {
-  color: $body-text-color !important;
+  color: $body-text-color-87 !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: $body-text-color;
+  color: $body-text-color-87;
 }
 
 .form-control {
@@ -751,19 +753,19 @@ label {
   box-shadow: 0 0 0 0.2rem $cobalt-blue-25;
 }
 .form-control::-webkit-input-placeholder {
-  color: $body-text-color;
+  color: $body-text-color-87;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: $body-text-color;
+  color: $body-text-color-87;
   opacity: 1;
 }
 .form-control::-ms-input-placeholder {
-  color: $body-text-color;
+  color: $body-text-color-87;
   opacity: 1;
 }
 .form-control::placeholder {
-  color: $body-text-color;
+  color: $body-text-color-87;
   opacity: 1;
 }
 .form-control:disabled,
