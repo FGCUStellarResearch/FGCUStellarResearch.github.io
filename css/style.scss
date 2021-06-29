@@ -288,6 +288,14 @@ footer {
   background: white;
 }
 
+footer .col-md-12 {
+  background-color: $cobalt-blue-25;
+}
+
+footer .col-md-12 p {
+  margin: 0px;
+}
+
 .footer-img {
   max-width: 250px;
   height: auto;
