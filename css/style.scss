@@ -6,6 +6,9 @@ $cobalt-blue-25: #00478525;
 
 $emerald-green: #00794C;
 
+$cobalt-blue-opaque: rgba(0, 71, 133, 0.75);
+$emerald-green-opaque: rgba(1, 121, 76, 0.75);
+
 // Secondary Colors
 $denim: #5F879F;
 $slate: #B4CBCF;
@@ -14,7 +17,6 @@ $olive: #B8CA99;
 
 // Miscellaneous
 $banner-background-color: rgba(0, 0, 0, 0.5);
-$fm-background-color: rgba(81, 122, 155, 0.75);
 $body-background-color: #eeeeee;
 
 $header-color: #000000;
@@ -92,7 +94,7 @@ html {
 }
 
 .bg-layer {
-  background-color: $fm-background-color;
+  background: linear-gradient($cobalt-blue-opaque, $emerald-green-opaque);
   backdrop-filter: blur(4px);
   position: absolute;
   top: 0;
