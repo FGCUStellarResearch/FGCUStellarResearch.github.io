@@ -793,3 +793,14 @@ select.form-control:focus::-ms-value {
   display: block;
   width: 100%;
 }
+
+#Logo {
+  width: 300px;
+  transition: width 0.2s;
+}
+
+@media screen and (max-width: 1200px) {
+  #Logo {
+    width: 250px;
+  }
+}
