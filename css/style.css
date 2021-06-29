@@ -73,7 +73,8 @@ html {
 }
 
 .bg-layer {
-  background-color: rgba(81, 122, 155, 0.75);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 71, 133, 0.75)), to(rgba(1, 121, 76, 0.75)));
+  background: linear-gradient(rgba(0, 71, 133, 0.75), rgba(1, 121, 76, 0.75));
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   position: absolute;
