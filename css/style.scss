@@ -418,8 +418,9 @@ footer {
   padding: 10px;
 }
 
-#recent-news .list li {
-  padding-right: 10px;
+#recent-news .col-md-8 {
+  padding-top: 16px;
+  padding-right: 40px;
 }
 
 #recent-news img.card-img-top {
@@ -436,12 +437,19 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .list li {
+  #recent-news .list li {
     padding-right: 0px;
   }
 
   #recent-news img.card-img-top {
     border-radius: 5px 5px 0px 0px;
+  }
+
+  #recent-news .col-md-8 {
+    padding-top: 16px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 16px;
   }
 
   #about img {
