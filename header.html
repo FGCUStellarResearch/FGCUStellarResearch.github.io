@@ -108,16 +108,39 @@
     growShrinkLogo();
   };
 
-  function growShrinkLogo() {
+  function returnWindowWidth() {
+    // Get width and height of the window excluding scrollbars
+    var w = $(window).width();
+
+    // Display result inside a div element
+    console.log("Width: " + w);
+
+    growShrinkLogo(w);
+  }
+
+  // Attaching the event listener function to window's resize event
+  window.addEventListener("resize", returnWindowWidth);
+
+  function growShrinkLogo(w) {
     var Logo = document.getElementById("Logo");
+    var width = $(window).width();
+    console.log(width);
     Logo.style.transition = "width 0.2s";
     if (
       document.body.scrollTop > 77 ||
       document.documentElement.scrollTop > 77
     ) {
-      Logo.style.width = "250px";
+      if (w < (1200-17)) {
+        Logo.style.width = "250px";
+      } else {
+        Logo.style.width = "250px";
+      }
     } else {
-      Logo.style.width = "300px";
+      if (w < (1200-17)) {
+        Logo.style.width = "250px";
+      } else {
+        Logo.style.width = "300px";
+      }
     }
   }
 
