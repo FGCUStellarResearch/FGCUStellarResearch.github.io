@@ -2,6 +2,7 @@
 // Primary Colors
 $cobalt-blue: #004785;
 $cobalt-blue-80: #00478580;
+$cobalt-blue-25: #00478525;
 $emerald-green: #00794C;
 
 // Secondary Colors
@@ -14,10 +15,9 @@ $olive: #B8CA99;
 $banner-background: rgba(0, 0, 0, 0.5);
 $former-members-background: rgba(81, 122, 155, 0.75);
 // #262626
-$secondary-header: #2c70f0;
+$secondary-header: #262626;
 $body-background-color: #eeeeee;
-$body-text-color: red;
-// #607289
+$body-text-color: #607289;
 
 html {
   scroll-behavior: smooth;
@@ -245,7 +245,7 @@ a:hover {
   border-radius: 15px;
 }
 .material-card .box p {
-  color: $body-text-color;
+  color: $secondary-header;
 }
 .material-card .box span {
   display: inline-flex;
@@ -685,4 +685,78 @@ label {
 
 .navbar-light .navbar-nav .nav-link {
   color: $body-text-color;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-control {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #00478550;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem $cobalt-blue-25;
+  box-shadow: 0 0 0 0.2rem $cobalt-blue-25;
+}
+.form-control::-webkit-input-placeholder {
+  color: $body-text-color;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: $body-text-color;
+  opacity: 1;
+}
+.form-control::-ms-input-placeholder {
+  color: $body-text-color;
+  opacity: 1;
+}
+.form-control::placeholder {
+  color: $body-text-color;
+  opacity: 1;
+}
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+select.form-control:focus::-ms-value {
+  color: #495057;
+  background-color: #fff;
+}
+
+.form-control-file,
+.form-control-range {
+  display: block;
+  width: 100%;
 }
