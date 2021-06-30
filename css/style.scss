@@ -70,20 +70,20 @@ html {
 
 /* Extra small devices */
 @media (max-width: 544px) {  
-  h1 {
-    font-size:1.75rem;
+  .header-caption {
+    font-size:20sp;
   }
   h3 {
     font-size:1.75rem;
   }
-  p.lead {
-    font-size:1.0rem;
+  #p.lead {
+    font-size:14sp;
   }
   p {
     font-size:1rem;
   }
   .btn {
-    font-size:0.75rem;
+    font-size:14sp;
     padding:8.4px 16.8px;
   }
 }
