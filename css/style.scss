@@ -70,10 +70,18 @@ html {
 
 /* Extra small devices */
 @media (max-width: 544px) {  
-  h1 {font-size:1.75rem;}
-  h3 {font-size:1.25rem;}
-  p.lead {font-size:1.0rem;}
-  p {font-size:1rem;}
+  h1 {
+    font-size:1.75rem;
+  }
+  h3 {
+    font-size:1.75rem;
+  }
+  p.lead {
+    font-size:1.0rem;
+  }
+  p {
+    font-size:1rem;
+  }
   .btn {
     font-size:0.75rem;
     padding:8.4px 16.8px;
@@ -92,10 +100,18 @@ html {
  
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-  h1 {font-size:2.5rem;}
-  h3 {font-size:1.75rem;}
-  p.lead {font-size:1.25rem;}
-  p {font-size:1rem;}
+  h1 {
+    font-size:2.5rem;
+  }
+  h3 {
+    font-size:1.75rem;
+  }
+  p.lead {
+    font-size:1.25rem;
+  }
+  p {
+    font-size:1rem;
+  }
 
   .btn {
     font-size:1rem;
