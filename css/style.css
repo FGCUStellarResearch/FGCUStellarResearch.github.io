@@ -9,27 +9,6 @@ html {
   margin: -100px 0 0;
 }
 
-/* Navbar Collapse Styles To Stack Items At Mobile Widths*/
-@media (max-width: 47.9em) {
-  .navbar .navbar-brand {
-    float: none;
-    display: inline-block;
-    width: 80%;
-    height: auto;
-  }
-  .navbar .navbar-nav > .nav-item {
-    float: none;
-    margin-left: 0.1rem;
-  }
-  .navbar .navbar-nav {
-    float: none !important;
-  }
-  .nav-item {
-    width: 100%;
-    text-align: left;
-  }
-}
-
 /* Header separator */
 .header-separator {
   background-color: #00794C;
@@ -569,7 +548,7 @@ footer .col-md-12 p {
   padding: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #recent-news .list li {
     padding-right: 0px;
   }
@@ -660,6 +639,15 @@ footer .col-md-12 p {
           transform: rotateX(0deg);
 }
 
+.logo {
+  width: 300px;
+}
+
+.navbar li {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* Dropdown menu mobile behavior */
 @media (max-width: 992px) {
   .navbar .nav-item .dropdown-menu {
@@ -667,6 +655,10 @@ footer .col-md-12 p {
   }
   .navbar .nav-item:hover .dropdown-menu {
     display: block;
+  }
+  .logo {
+    width: 80%;
+    height: auto;
   }
 }
 
@@ -889,17 +881,9 @@ select.form-control:focus::-ms-value {
   width: 100%;
 }
 
-#Logo {
-  height: auto;
-  width: 100%;
-  max-width: 300px;
-  -webkit-transition: width 0.2s;
-  transition: width 0.2s;
-}
-
 @media screen and (max-width: 1200px) {
-  #Logo {
-    max-width: 250px;
+  .logo {
+    width: 250px;
   }
 }
 
