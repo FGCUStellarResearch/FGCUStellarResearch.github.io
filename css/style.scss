@@ -53,6 +53,100 @@ html {
   }
 }
 
+/* Header separator */
+.header-separator {
+  background-color: $emerald-green;
+  height: 4px;
+  width: 80px;
+  margin: 14px 0 20px 0;
+}
+
+.header-separator-centered {
+  background-color: $emerald-green;
+  height: 4px;
+  width: 80px;
+  margin: 14px auto 20px auto;
+}
+
+/* Extra small devices */
+@media (max-width: 544px) {  
+  h1 {font-size:1.75rem;}
+  h3 {font-size:1.25rem;}
+  p.lead {font-size:1.0rem;}
+  p {font-size:1rem;}
+  .btn {
+    font-size:0.75rem;
+    padding:8.4px 16.8px;
+  }
+}
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {  
+  
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+  
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  h1 {font-size:2.5rem;}
+  h3 {font-size:1.75rem;}
+  p.lead {font-size:1.25rem;}
+  p {font-size:1rem;}
+
+  .btn {
+    font-size:1rem;
+    padding:11.2px 22.4px;
+  }
+
+  .info-wrap {
+    margin-top: -20px;
+    margin-bottom: -20px;
+    border-radius: 5px;
+  }
+
+  /* Navbar animated border bottom */
+  li.underline{
+    border:none;
+    position: relative;
+  }
+  li.underline:hover{
+    border: none;
+  }
+  .underline::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    left: 50%;
+    bottom:0;
+    background-color: $cobalt-blue-80;
+    transition: all ease-in-out .2s;
+  }
+  .underline:hover::after{
+    width: 100%;
+    left: 0;
+  }
+
+  /* Active navbar items */
+  .navbar-nav > .nav-item {
+    position: relative;
+  }
+  .navbar-nav > li.underline.active::after {
+    bottom: 0;
+    content: " ";
+    left: 0;
+    position: absolute;
+    background-color: $cobalt-blue;
+    right: 0;
+    width: 100%;
+    transition-property: none;
+  }
+}
+
 .about-us-banner {
   background: linear-gradient($banner-background-color, $banner-background-color),
     url("/img/Stellargroup2019.jpg") no-repeat center center;
@@ -208,7 +302,7 @@ a:hover {
 .material-card {
   float: none;
   width: 300px;
-  min-height: 275px;
+  min-height: 250px;
   background: white;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -389,30 +483,8 @@ footer .col-md-12 p {
   width: calc(100% - 50px);
 }
 
-.header-separator {
-  background-color: $emerald-green;
-  height: 4px;
-  width: 80px;
-  margin: 14px 0 20px 0;
-}
-
-.header-separator-centered {
-  background-color: $emerald-green;
-  height: 4px;
-  width: 80px;
-  margin: 14px auto 20px auto;
-}
-
 .no-padding {
   padding: 0;
-}
-
-@media (min-width: 992px) {
-  .info-wrap {
-    margin-top: -20px;
-    margin-bottom: -20px;
-    border-radius: 5px;
-  }
 }
 
 .list-group li {
@@ -502,44 +574,7 @@ footer .col-md-12 p {
 .navbar-nav > .active > a {
   color: $cobalt-blue !important;
 }
-@media only screen and (min-width: 992px) {
-  /* Navbar animated border bottom */
-  li.underline{
-    border:none;
-    position: relative;
-  }
-  li.underline:hover{
-    border: none;
-  }
-  .underline::after{
-    content: '';
-    position: absolute;
-    width: 0px;
-    height: 3px;
-    left: 50%;
-    bottom:0;
-    background-color: $cobalt-blue-80;
-    transition: all ease-in-out .2s;
-  }
-  .underline:hover::after{
-    width: 100%;
-    left: 0;
-  }
-  /* Active navbar items */
-  .navbar-nav > .nav-item {
-    position: relative;
-  }
-  .navbar-nav > li.underline.active::after {
-    bottom: 0;
-    content: " ";
-    left: 0;
-    position: absolute;
-    background-color: $cobalt-blue;
-    right: 0;
-    width: 100%;
-    transition-property: none;
-  }
-}
+
 /* Navbar Dropdown */
 .navbar .dropdown-menu-end {
   right: 0;
@@ -806,4 +841,8 @@ select.form-control:focus::-ms-value {
   #Logo {
     width: 250px;
   }
+}
+
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
 }
