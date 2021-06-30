@@ -47,21 +47,21 @@ html {
 
 /* Extra small devices */
 @media (max-width: 544px) {
-  .header-caption {
+  h1 {
     font-size: 20sp;
   }
   h3 {
-    font-size: 1.75rem;
+    font-size: 14sp;
   }
   p.lead {
     font-size: 1.25rem !important;
   }
   p {
-    font-size: 1rem;
+    font-size: 14sp;
   }
   .btn {
     font-size: 14sp;
-    padding: 8.4px 16.8px;
+    padding: 11.2px 22.4px;
   }
   div.overlay-text {
     width: 240px;
@@ -73,19 +73,19 @@ html {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 20sp;
   }
   h3 {
-    font-size: 1.75rem;
+    font-size: 14sp;
   }
   p.lead {
     font-size: 1.25rem !important;
   }
   p {
-    font-size: 1rem;
+    font-size: 14sp;
   }
   .btn {
-    font-size: 1rem;
+    font-size: 14sp;
     padding: 11.2px 22.4px;
   }
   .info-wrap {
@@ -756,7 +756,7 @@ label {
 }
 
 .date-time {
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 
 .profile-image img {
