@@ -1,7 +1,6 @@
+<img src="img/logo-type.jpg" align="right" />
+
 # FGCUStellarResearch.github.io
-Experimenting with hosting the group's website and future projects as a github page.
+The official hosting domain of FGCU Stellar Research's webpage, in which one can find information pertaining to the organization's background as well as any research and/or projects we have embarked on.
 
-Also allows for changes to be viewed and shared from anywhere
-
-
-## [Visit us!](https://FGCUStellarResearch.github.io)
+## [Come Visit Us!](https://FGCUStellarResearch.github.io)
