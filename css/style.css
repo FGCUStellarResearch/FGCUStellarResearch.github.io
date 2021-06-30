@@ -409,8 +409,20 @@ footer .col-md-12 p {
   height: auto;
 }
 
+@media screen and (max-width: 1200px) {
+  .footer-img {
+    max-width: 200px;
+  }
+}
+
 .ftco-section {
   padding: 7em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .ftco-section {
+    padding: 2em 0;
+  }
 }
 
 .wrapper {
@@ -533,6 +545,9 @@ footer .col-md-12 p {
 
 #about img {
   border-radius: 5px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }
 
 #about p {
