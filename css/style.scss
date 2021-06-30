@@ -199,6 +199,8 @@ html {
 
 .bg-image {
   background-image: url("/img/milky-way.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   z-index: 0;
 }
