@@ -39,6 +39,8 @@ html {
   .navbar .navbar-brand {
     float: none;
     display: inline-block;
+    width:80%;
+    height:auto;
   }
   .navbar .navbar-nav > .nav-item {
     float: none;
@@ -76,8 +78,8 @@ html {
   h3 {
     font-size:1.75rem;
   }
-  #p.lead {
-    font-size:14sp;
+  p.lead {
+    font-size:1.25rem !important;
   }
   p {
     font-size:1rem;
@@ -85,6 +87,9 @@ html {
   .btn {
     font-size:14sp;
     padding:8.4px 16.8px;
+  }
+  div.overlay-text {
+    width: 240px;
   }
 }
 
@@ -107,7 +112,7 @@ html {
     font-size:1.75rem;
   }
   p.lead {
-    font-size:1.25rem;
+    font-size:1.25rem !important;
   }
   p {
     font-size:1rem;
@@ -873,13 +878,15 @@ select.form-control:focus::-ms-value {
 }
 
 #Logo {
-  width: 300px;
+  height: auto;
+  width: 100%;
+  max-width: 300px;
   transition: width 0.2s;
 }
 
 @media screen and (max-width: 1200px) {
   #Logo {
-    width: 250px;
+    max-width: 250px;
   }
 }
 
