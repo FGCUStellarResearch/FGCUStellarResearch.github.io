@@ -488,6 +488,7 @@ footer .col-md-12 p {
 
 .info-wrap .dbox p {
   margin-bottom: 0;
+  overflow-wrap: anywhere;
 }
 
 .info-wrap .dbox p span {
@@ -496,6 +497,12 @@ footer .col-md-12 p {
 }
 
 .info-wrap .dbox p a {
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.info-wrap .dbox p a:hover {
   color: #fff;
 }
 
