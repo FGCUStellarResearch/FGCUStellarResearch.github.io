@@ -643,7 +643,7 @@ footer .col-md-12 p {
   width: 300px;
 }
 
-.navbar li {
+.navbar .nav-item {
   display: inline-block;
   white-space: nowrap;
 }
