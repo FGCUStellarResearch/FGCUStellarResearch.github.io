@@ -405,14 +405,39 @@ footer .col-md-12 p {
   }
 }
 
-#research {
-  min-height: calc(100vh - 380.03px);
+@media screen and (min-width: 768px)  {
+  
+  .ftco-section {
+    padding: 7em 0;
+    min-height: calc(100vh - 380.03px);
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  }
+
+  #publications {
+    min-height: calc(100vh - 380.03px);
+  }
+
+  #research {
+    min-height: calc(100vh - 380.03px);
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  }
 }
 
-.ftco-section {
-  padding: 7em 0;
-  min-height: calc(100vh - 380.03px);
-}
+
 
 .wrapper {
   width: 100%;
@@ -518,9 +543,7 @@ footer .col-md-12 p {
   background: white;
 }
 
-#publications {
-  min-height: calc(100vh - 380.03px);
-}
+
 
 #publications .list li {
   padding: 10px;
