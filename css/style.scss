@@ -236,12 +236,6 @@ body {
   overflow-x: hidden;
   background: $body-background-color;
   color: $body-text-color-87;
-  padding-top: 77px;
-}
-
-/* Prevents body content from overlapping with nav bar */
-@media screen and (max-width: 370px) {
-  body { padding-top: 0px; }
 }
 
 h2,
