@@ -561,9 +561,10 @@ footer .col-md-12 p {
 
 #about img {
   border-radius: 5px;
-  max-width: 300px; 
-  width: 100%; 
-  height: auto;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: 89.5% bottom;
 }
 
 #about p {
