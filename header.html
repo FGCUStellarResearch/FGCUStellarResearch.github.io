@@ -67,11 +67,30 @@
       .addClass("active");
   });
 
-  $(window).on('load', function() {
-    navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
-    document.body.style.paddingTop = navbar_height + 'px';
-    $('html').css('scroll-padding-top', navbar_height);
-  });
+  window.onload= function() {
+    checkReady();
+    function ready() {
+      navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
+      document.body.style.paddingTop = navbar_height + 'px';
+      $('html').css('scroll-padding-top', navbar_height);
+    }
+    function checkReady() {
+      if (document.readyState === "complete") {
+        console.log("document ready")
+        ready();
+      } 
+      else {
+        console.log("document not ready")
+        setTimeout(checkReady, 0);
+      }
+    }
+  };
+
+  //$(window).on('load', function() {
+  //  navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
+  //  document.body.style.paddingTop = navbar_height + 'px';
+  //  $('html').css('scroll-padding-top', navbar_height);
+  //});
 
   $(window).resize(function() {
     navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
