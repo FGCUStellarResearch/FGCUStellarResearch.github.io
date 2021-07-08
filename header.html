@@ -56,7 +56,7 @@
       $('html').css('scroll-padding-top', navbar_height);
     }
     function checkReady() {
-      if (document.readyState === "complete") {
+      if (document.readyState === "complete" && document.getElementsByClassName('navbar')[0].getBoundingClientRect().height != 56) {
         console.log("document ready")
         ready();
       } 
