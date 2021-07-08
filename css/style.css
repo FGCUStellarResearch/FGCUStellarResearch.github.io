@@ -123,6 +123,10 @@ html {
   padding-top: 36px;
 }
 
+#former-members {
+  padding-top: 18px;
+}
+
 .facilities-banner {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/apo-3.5.jpg") no-repeat center center;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/apo-3.5.jpg") no-repeat center center;
