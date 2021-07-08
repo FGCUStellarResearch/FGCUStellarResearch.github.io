@@ -41,7 +41,7 @@
                       accept-charset="utf-8"
                       id="contactForm"
                       name="contactForm"
-                      action="https://formspree.io/f/{id}"
+                      onsubmit = "event.preventDefault(); formValidation();"
                     >
                       <div class="row">
                         <div class="col-md-6">
@@ -55,7 +55,7 @@
                               placeholder="Enter your name"
                             />
                             <div class="invalid-feedback">
-                              Invalid characters found in field 'Name'.
+                              Field 'Name' is empty.
                             </div>
                           </div>
                         </div>
@@ -110,7 +110,9 @@
                             <input
                               type="submit"
                               value="Send Message"
+                              id="submitButton"
                               class="btn btn-primary btn-rounded"
+                              disabled="disabled"
                             />
                             <div class="submitting"></div>
                           </div>

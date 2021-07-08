@@ -906,3 +906,7 @@ select.form-control:focus::-ms-value {
 .text-responsive {
   font-size: calc(100% + 1vw + 1vh);
 }
+
+.btn-disabled {
+  opacity: 0.65;
+}
