@@ -567,10 +567,6 @@ footer .col-md-12 p {
   object-position: 89.5% bottom;
 }
 
-label {
-  cursor: default !important;
-}
-
 #about p {
   margin: 0; 
   padding: 0;
@@ -749,8 +745,10 @@ input[type="file"] {
 }
 
 label {
-  cursor: pointer;
+  cursor: default;
   padding-top: 10px;
+  font-weight: bold;
+  color: $header-color;
 }
 
 .page-wrap {
@@ -825,10 +823,6 @@ label {
   color: $body-text-color-87;
 }
 
-.ftco-section label {
-  color: $body-text-color-87;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -837,7 +831,7 @@ label {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
+  color: $body-text-color-87;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -863,7 +857,7 @@ label {
   border: 0;
 }
 .form-control:focus {
-  color: #495057;
+  color: $body-text-color-87;
   background-color: #fff;
   border-color: #00478550;
   outline: 0;
@@ -883,7 +877,7 @@ label {
   opacity: 1;
 }
 .form-control::placeholder {
-  color: $body-text-color-87;
+  color: $body-text-color-60;
   opacity: 1;
 }
 .form-control:disabled,

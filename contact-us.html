@@ -36,7 +36,13 @@
                     <div id="form-message-success" class="mb-4">
                       Your message was sent, thank you!
                     </div>
-                    <form method="POST" accept-charset="utf-8" id="contactForm" name="contactForm" action="https://formspree.io/f/{id}">
+                    <form
+                      method="POST"
+                      accept-charset="utf-8"
+                      id="contactForm"
+                      name="contactForm"
+                      action="https://formspree.io/f/{id}"
+                    >
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -47,6 +53,7 @@
                               name="name"
                               id="name"
                               placeholder="Enter your name"
+                              required="true"
                             />
                           </div>
                         </div>
@@ -59,6 +66,7 @@
                               name="email"
                               id="email"
                               placeholder="Enter your email"
+                              required="true"
                             />
                           </div>
                         </div>
@@ -71,6 +79,7 @@
                               name="subject"
                               id="subject"
                               placeholder="Enter your subject"
+                              required="true"
                             />
                           </div>
                         </div>
@@ -84,6 +93,7 @@
                               cols="30"
                               rows="7"
                               placeholder="Enter your message"
+                              required="true"
                             ></textarea>
                           </div>
                         </div>
@@ -174,7 +184,9 @@
                       <div class="text pl-3">
                         <p>
                           <span>Website</span>
-                          <a href="https://www.fgcu.edu/cas/centers/whitaker/" target="blank"
+                          <a
+                            href="https://www.fgcu.edu/cas/centers/whitaker/"
+                            target="blank"
                             >https://www.fgcu.edu/cas/centers/whitaker/</a
                           >
                         </p>
@@ -188,49 +200,7 @@
         </div>
       </div>
     </section>
-
-    <!-- <form
-      id="fs-frm"
-      name="simple-contact-form"
-      accept-charset="utf-8"
-      action="https://formspree.io/f/{form_id}"
-      method="post"
-    >
-      <fieldset id="fs-frm-inputs">
-        <label for="full-name">Full Name</label>
-        <input
-          type="text"
-          name="name"
-          id="full-name"
-          placeholder="First and Last"
-          required=""
-        />
-        <label for="email-address">Email Address</label>
-        <input
-          type="email"
-          name="_replyto"
-          id="email-address"
-          placeholder="email@domain.tld"
-          required=""
-        />
-        <label for="message">Message</label>
-        <textarea
-          rows="5"
-          name="message"
-          id="message"
-          placeholder="Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla nullam quis risus."
-          required=""
-        ></textarea>
-        <input
-          type="hidden"
-          name="_subject"
-          id="email-subject"
-          value="Contact Form Submission"
-        />
-      </fieldset>
-      <input type="submit" value="Submit" />
-    </form> -->
-
+    
     <div id="footer"></div>
 
     <!-- JQuery is important -->
