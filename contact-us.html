@@ -41,7 +41,7 @@
                       accept-charset="utf-8"
                       id="contactForm"
                       name="contactForm"
-                      onsubmit = "event.preventDefault(); formValidation();"
+                      onsubmit="return validateForm();"
                     >
                       <div class="row">
                         <div class="col-md-6">
@@ -112,7 +112,6 @@
                               value="Send Message"
                               id="submitButton"
                               class="btn btn-primary btn-rounded"
-                              disabled="disabled"
                             />
                             <div class="submitting"></div>
                           </div>
