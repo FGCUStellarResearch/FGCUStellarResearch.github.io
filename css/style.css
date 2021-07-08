@@ -2,13 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-:target:before {
-  content: "";
-  display: block;
-  height: 100px;
-  margin: -100px 0 0;
-}
-
 /* Header separator */
 .header-separator {
   background-color: #00794C;
@@ -123,6 +116,11 @@ html {
   height: 50vh;
   -ms-flex-line-pack: center;
       align-content: center;
+  margin-bottom: 0em;
+}
+
+#current-members {
+  padding-top: 36px;
 }
 
 .facilities-banner {
