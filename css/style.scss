@@ -567,6 +567,10 @@ footer .col-md-12 p {
   object-position: 89.5% bottom;
 }
 
+label {
+  cursor: default !important;
+}
+
 #about p {
   margin: 0; 
   padding: 0;
@@ -818,6 +822,10 @@ label {
 }
 
 .navbar-light .navbar-nav .nav-link {
+  color: $body-text-color-87;
+}
+
+.ftco-section label {
   color: $body-text-color-87;
 }
 
