@@ -64,3 +64,14 @@ function validateForm() {
   }
   return true;
 }
+
+function checkForm() {
+  var f = document.forms["contactForm"].elements;
+  var canSubmit = true;
+
+  for (var i = 0; i < f.length; i++) {
+    if (f[i].value.length == 0) canSubmit = false;
+  }
+
+  document.getElementById('submitButton').disabled = !canSubmit;
+}
