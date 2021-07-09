@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FGCU Stellar Research - Facilities</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <section id="header"></section>
+
+    <div class="jumbotron jumbotron-fluid facilities-banner">
+      <div id="outer" class="container text-center">
+        <div id="inner">
+          <h1 class="font-weight-bold">Facilities</h1>
+        </div>
+      </div>
+    </div>
+
+    <section id="facilities" class="pb-4">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 pt-4">
+          <!-- Row 1 -->
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="material-card mx-auto">
+              <a href="https://www.saraobservatory.org/" target="blank"><img
+                class="card-img-top border-radius-top"
+                src="https://static.wixstatic.com/media/6d54bc_3d6de127ed91457fa0103233b1ff1cb8~mv2.jpg/v1/fill/w_800,h_533,al_c,q_85/6d54bc_3d6de127ed91457fa0103233b1ff1cb8~mv2.webp"
+                alt="Kitt Peak National Observatory"
+                style="width: 100%"
+              /></a>
+              <div class="card-body">
+                <a href="https://www.saraobservatory.org/" target="blank"><h4 class="card-title">SARA Observatory</h4></a>
+                <p class="card-text">
+                  Our institution is a member of the SARA (The Southeastern Association for Research in Astronomy) Consortium. Instruments used include SARA-KP and SARA-CT.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="material-card mx-auto">
+              <a href="https://www.apo.nmsu.edu/" target="blank"><img
+                class="card-img-top border-radius-top"
+                src="https://www.apo.nmsu.edu/09siteA.jpg"
+                alt="Apache Point Observatory"
+                style="width: 100%"
+              /></a>
+              <div class="card-body">
+                <a href="https://www.apo.nmsu.edu/" target="blank"><h4 class="card-title">Apache Point Observatory</h4></a>
+                <p class="card-text">
+                  Dr. Derek Buzasi is a leasing partner for the Apache Point Observatory. Instruments used include the 3.5 meter and the 0.5 meter.
+                </p>      
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+            <div class="material-card mx-auto">
+              <a href="https://heasarc.gsfc.nasa.gov/docs/tess/" target="blank"><img
+                class="card-img-top border-radius-top"
+                src="https://pbs.twimg.com/profile_images/859473638713643011/bGb3qMqj.jpg"
+                alt="TESS Science Support Center"
+                style="width: 100%"
+              /></a>
+              <div class="card-body">
+                <a href="https://heasarc.gsfc.nasa.gov/docs/tess/" target="blank"><h4 class="card-title">TESS Science Support Center</h4></a>
+                <p class="card-text">
+                  Dr. Derek Buzasi and students who are an active part of his project have had the opportunity of studying data sent back from TESS (Transiting Exoplanet Survey Satellite).
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <section id="footer"></section>
+
+    <!-- JQuery is important -->
+    <script src="bootstrap-4.1.3-dist/js/jquery-3.1.1.min.js"></script>
+    <script>
+      // for future reference: this could maybe be SSI instead, but local testing doesn't seem to work - LC, 06-2019
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
+    </script>
+    <script src="bootstrap-4.1.3-dist/js/slim.min.js"></script>
+    <script src="bootstrap-4.1.3-dist/js/popper.min.js"></script>
+    <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

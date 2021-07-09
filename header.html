@@ -1,20 +1,94 @@
-<title>FGCU Stellar Research Homepage</title>
-<meta charset="utf-8">
-<meta name="description" content="AstroDev Webviewer - FGCU Stelar Reasearch">
-<meta name="designer" content="Lindsey Carboneau">
-<meta name="author" content="Lindsey Carboneau">
-<meta name="shortcut icon" href="./img/favicon.ico">
-<!-- TODO: update with acutal favicon name/path -->
+<meta charset="utf-8" />
+<meta name="description" content="FGCU Stellar Research" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<nav class="Navigation">
-    <a class="Logo" href="/">
-        <img src="./img/Logo-draft2.png" alt="FGCU Stellar Research" width="400" height="87">
-    </a>
-    <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-        <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="/" title="Home">Home</a>
-        <a class="link dim gray f6 f5-l dib mr3 mr4-l avenir" href="./aboutus.html" title="About Us">About Us</a>
-        <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./research.html" title="Research">Research</a>
-        <a class="link dim gray f6 f5-l dib mr3 mr4-l no-underline avenir" href="./news.html" title="News">News</a>
-        <a class="link dim gray f6 f5-l dib no-underline avenir" href="./contact.html" title="Contact">Contact</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-none">
+  <div class="container">
+    <div class="d-flex flex-nowrap w-100">
+      <a class="navbar-brand" href="/#top"><img class="img-fluid logo" src="img/horizontal-logo.svg" /></a>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="/#top" title="Home">Home</a>
+        </li>
+        <li class="nav-item dropdown underline">
+          <a class="nav-link dropdown-toggle font-weight-bold" href="/meet-the-team.html#top" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meet The Team</a>
+          <ul class="dropdown-menu dropdown-menu-end fade-down" role="menu">
+            <li>
+              <a class="dropdown-item" href="./meet-the-team.html#current-members">Current Members</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="./meet-the-team.html#former-members">Former Members</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="./facilities.html#top" title="Facilities">Facilities</a>
+        </li>
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="./research.html#top" title="Research">Research</a>
+        </li>
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="./publications.html#top" title="Publications">Publications</a>
+        </li>
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="./news.html#top" title="News">News</a>
+        </li>
+        <li class="nav-item underline">
+          <a class="nav-link font-weight-bold" href="./contact-us.html#top" title="Contact Us">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
+
+<script>
+
+  window.onload = function() {
+    checkReady();
+    function ready() {
+      navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
+      document.body.style.paddingTop = navbar_height + 'px';
+      $('html').css('scroll-padding-top', navbar_height);
+    }
+    function checkReady() {
+      if (document.readyState === "complete" && document.getElementsByClassName('navbar')[0].getBoundingClientRect().height != 56) {
+        ready();
+      } 
+      else {
+        setTimeout(checkReady, 0);
+      }
+    }
+  };
+  window.onload();
+
+  $(window).resize(function() {
+    navbar_height = document.getElementsByClassName('navbar')[0].getBoundingClientRect().height;
+    document.body.style.paddingTop = navbar_height + 'px';
+    $('html').css('scroll-padding-top', navbar_height);
+  });
+
+  $(document).ready(function () {
+    var url = window.location;
+    // Will only work if string in href matches with location
+    $('ul.navbar-nav a[href="' + url + '"]')
+      .parent()
+      .addClass("active");
+
+    // Will also work for relative and absolute hrefs
+    $("ul.navbar-nav a")
+      .filter(function () {
+        return this.href == url;
+      })
+      .parent()
+      .addClass("active")
+      .parent()
+      .parent()
+      .addClass("active");
+  });
+
+</script>

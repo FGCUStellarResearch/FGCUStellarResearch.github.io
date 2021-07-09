@@ -64,7 +64,7 @@ function errorHandler(evt) {
 
 function switchview() {
     // exclusively used to hide and show elements on the webviewer's first page load
-    document.getElementById("info-box").style.visibility="hidden";
+    
     document.getElementById("graph-area").style.display="block";
     document.getElementById("container").style.visibility="visible";
     document.getElementById("analysis").style.visibility="visible";
