@@ -106,12 +106,11 @@ html {
 }
 
 .about-us-banner {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/Stellargroup2019.jpg") no-repeat center center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/Stellargroup2019.jpg") no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/Stellargroup2019.jpg") no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/Stellargroup2019.jpg") no-repeat center center fixed;
   color: white;
   background-position: bottom bottom;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   height: 50vh;
   -ms-flex-line-pack: center;
       align-content: center;
@@ -130,16 +129,16 @@ html {
 }
 
 .facilities-banner {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/apo-3.5.jpg") no-repeat center center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/apo-3.5.jpg") no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("/img/apo-3.5.jpg") no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/apo-3.5.jpg") no-repeat center center fixed;
   color: white;
   background-position: bottom bottom;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   height: 50vh;
   -ms-flex-line-pack: center;
       align-content: center;
+  background-size: 100%;
+  background-size: cover;
 }
 
 #outer {
