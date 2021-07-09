@@ -503,7 +503,7 @@ footer .col-md-12 p {
 
 .info-wrap .dbox p {
   margin-bottom: 0;
-  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .info-wrap .dbox p span {

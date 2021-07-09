@@ -522,7 +522,7 @@ footer .col-md-12 p {
 }
 .info-wrap .dbox p {
   margin-bottom: 0;
-  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 .info-wrap .dbox p span {
   font-weight: 600;
@@ -566,8 +566,6 @@ footer .col-md-12 p {
   border-radius: 5px;
   background: white;
 }
-
-
 
 #publications .list li {
   padding: 10px;
