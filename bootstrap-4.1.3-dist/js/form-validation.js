@@ -64,7 +64,7 @@ function checkForm() {
     } 
   }
 
-  if (!(valName) || !(valEmail) || !(valSubject) || !(valMessage)) {
+  if (!(valName()) || !(valEmail()) || !(valSubject()) || !(valMessage())) {
     return false;
   }
 
