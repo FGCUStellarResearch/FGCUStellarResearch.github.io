@@ -10,18 +10,14 @@ email.addEventListener("blur", valEmail);
 subject.addEventListener("blur", valSubject);
 message.addEventListener("blur", valMessage);
 
-var nameIsValid = false;
-var emailIsValid = false;
-var subjectIsValid = false;
-var messageIsValid = false;
-
 function valName() {
   if (name.value) {
     name.classList.remove("is-invalid");
-    nameIsValid = true;
-  } else {
+    return true;
+  } 
+  else {
     name.classList.add("is-invalid");
-    nameIsValid = false;
+    return false;
   }
 }
 
@@ -29,45 +25,62 @@ function valEmail() {
   const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
   if (!re.test(email.value)) {
     email.classList.add("is-invalid");
-    emailIsValid = false;
-  } else {
+    return false;
+  } 
+  else {
     email.classList.remove("is-invalid");
-    emailIsValid = true;
+    return true;
   }
 }
 
 function valSubject() {
   if (subject.value) {
     subject.classList.remove("is-invalid");
-    subjectIsValid = true;
-  } else {
+    return true;
+  } 
+  else {
     subject.classList.add("is-invalid");
-    subjectIsValid = false;
+    return false;
   }
 }
 
 function valMessage() {
   if (message.value) {
     message.classList.remove("is-invalid");
-    messageIsValid = true;
-  } else {
+    return true;
+  } 
+  else {
     message.classList.add("is-invalid");
-    messageIsValid = false;
+    return false;
   }
 }
 
 function checkForm() {
   var f = document.forms["contactForm"].elements;
-  var canSubmit = true;
 
   for (var i = 0; i < f.length; i++) {
     if (f[i].value.length == 0) {
-      canSubmit = false;
+      return false;
     } 
   }
 
-  if (!(nameIsValid) || !(emailIsValid) || !(subjectIsValid) || !(messageIsValid)) {
-    canSubmit = false;
+  if (!(valName) || !(valEmail) || !(valSubject) || !(valMessage)) {
+    return false;
   }
-  document.getElementById('submitButton').disabled = !canSubmit;
+
+  return true;
+}
+
+function toggleSubmit() {
+  console.log('button toggle');
+  // if form is valid
+  if(checkForm()) {
+    // enable button
+    document.getElementById('submitButton').disabled = false;
+  }
+  // if form is not valid
+  else {
+    // disable button
+    document.getElementById('submitButton').disabled = true;
+  } 
 }
