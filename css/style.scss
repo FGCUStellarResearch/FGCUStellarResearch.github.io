@@ -142,10 +142,11 @@ html {
 
 .about-us-banner {
   background: linear-gradient($banner-background-color, $banner-background-color),
-    url("/img/Stellargroup2019.jpg") no-repeat center center fixed;
+    url("/img/Stellargroup2019.jpg") no-repeat center center;
   color: white;
   background-position: bottom bottom;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 50vh;
   align-content: center;
   margin-bottom: 0em;
@@ -171,10 +172,11 @@ html {
 
 .facilities-banner {
   background: linear-gradient($banner-background-color, $banner-background-color),
-    url("/img/apo-3.5.jpg") no-repeat center center fixed;
+    url("/img/apo-3.5.jpg") no-repeat center center;
   color: white;
   background-position: bottom bottom;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 50vh;
   align-content: center;
 
@@ -713,6 +715,14 @@ footer .col-md-12 p {
   .logo {
     width:80%;
     height:auto;
+  }
+
+  .about-us-banner {
+    background-attachment: initial;
+  }
+
+  .facilities-banner {
+    background-attachment: initial;
   }
 }
 
