@@ -56,22 +56,18 @@ function valMessage() {
   }
 }
 
-function validateForm() {
-  if (nameIsValid && emailIsValid && subjectIsValid && messageIsValid) {
-    form.setAttribute("action", "https://formspree.io/f/{id}");
-  } else {
-    event.preventDefault();
-  }
-  return true;
-}
-
 function checkForm() {
   var f = document.forms["contactForm"].elements;
   var canSubmit = true;
 
   for (var i = 0; i < f.length; i++) {
-    if (f[i].value.length == 0) canSubmit = false;
+    if (f[i].value.length == 0) {
+      canSubmit = false;
+    } 
   }
 
+  if (!(nameIsValid) || !(emailIsValid) || !(subjectIsValid) || !(messageIsValid)) {
+    canSubmit = false;
+  }
   document.getElementById('submitButton').disabled = !canSubmit;
 }
