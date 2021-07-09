@@ -112,11 +112,12 @@ html {
   background-position: bottom bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
   height: 50vh;
   -ms-flex-line-pack: center;
       align-content: center;
   margin-bottom: 0em;
+  background-size: 100%;
+  background-size: cover;
 }
 
 #current-members {
