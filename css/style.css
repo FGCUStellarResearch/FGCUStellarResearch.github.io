@@ -428,6 +428,14 @@ footer .col-md-12 p {
   }
 }
 
+#research p {
+  margin-bottom: 0px;
+}
+
+#research div.ml-2 {
+  padding: 10px;
+}
+
 .wrapper {
   width: 100%;
   -webkit-box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18);
