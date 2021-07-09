@@ -2103,7 +2103,7 @@ textarea.form-control {
 
 .btn {
   display: inline-block;
-  padding: 0.7em 1.4em;
+  min-width: 150px;
   margin: 0 0.3em 0.3em 0;
   border-radius: 0.15em;
   box-sizing: border-box;

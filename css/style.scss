@@ -42,6 +42,11 @@ html {
   margin: 14px auto 20px auto;
 }
 
+.btn {
+  font-size:14sp;
+  padding:11.2px 22.4px;
+}
+
 /* Extra small devices */
 @media (max-width: 544px) {  
   h1 {
@@ -55,10 +60,6 @@ html {
   }
   p {
     font-size:14sp;
-  }
-  .btn {
-    font-size:14sp;
-    padding:11.2px 22.4px;
   }
   div.overlay-text {
     width: 240px;
@@ -89,12 +90,6 @@ html {
   p {
     font-size:14sp;
   }
-
-  .btn {
-    font-size:14sp;
-    padding:11.2px 22.4px;
-  }
-
   .info-wrap {
     margin-top: -20px;
     margin-bottom: -20px;
