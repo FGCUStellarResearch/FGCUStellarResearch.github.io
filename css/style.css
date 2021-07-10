@@ -42,14 +42,17 @@ html {
   #current-members .container {
     padding-left: 0px;
     padding-right: 0px;
+    overflow-x: hidden;
   }
   #former-members .container {
     padding-left: 0px;
     padding-right: 0px;
+    overflow-x: hidden;
   }
   #facilities .container {
     padding-left: 0px;
     padding-right: 0px;
+    overflow-x: hidden;
   }
 }
 
