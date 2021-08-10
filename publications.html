@@ -241,16 +241,24 @@
     <script src="bootstrap-4.1.3-dist/js/popper.min.js"></script>
     <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <script>
-      fetch('')
-        .then(res => {
-          if(res.ok) {
-            console.log('GET Request Successful')
-          }          
-          else {
-            console.log('GET Request Failed')
+      function fetchData() {
+        fetch('')
+        .then(response => {
+          if(!response.ok) {
+            throw Error("GET Request Failed");
           }
+          return response.json();
         })
-        .then(data => console.log(data))
+        .then(data => {
+          console.log(data.data)
+          const html = data.data.map()
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+      
+      fetchData();
     </script>
   </body>
 </html>
