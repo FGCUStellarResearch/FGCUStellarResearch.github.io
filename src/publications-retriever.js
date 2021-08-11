@@ -35,7 +35,7 @@ fetch(
           <div class="d-flex flex-row align-items-center">
             <div class="ml-2">
               <a
-                href="https://ui.adsabs.harvard.edu/abs/" + ${docs.bibcode} + "/abstract"
+                href="https://ui.adsabs.harvard.edu/abs/${docs.bibcode}/abstract"
                 target="blank"
                 ><h6 class="mb-0">
                   ${docs.title}
