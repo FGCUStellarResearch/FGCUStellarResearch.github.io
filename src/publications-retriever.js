@@ -11,7 +11,7 @@ fetch(
   {
     method: "GET",
     headers: {
-      Authorization: "Bearer",
+      Authorization: "Bearer xx5iCCh2NpnoEh7PYD6wKC15hWXBZh10gbfnZtfM",
     },
   }
 )
@@ -22,7 +22,6 @@ fetch(
     return response.json();
   })
   .then((data) => {
-    console.log(data.response.docs);
     const html = data.response.docs
       .map((docs) => {
         date = new Date(docs.date).toLocaleString("en-us", {
